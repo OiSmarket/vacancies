@@ -237,11 +237,7 @@
                 margin-bottom: 10px;
             }
         }
-            @media (max-width: 600px) {
-            .filter-options {
-                flex-direction: column;
-                align-items: center;
-            }
+            
             .filter-button {
                 width: 100%;
                 margin-bottom: 10px;
@@ -325,11 +321,12 @@
                     <option value="Познань">Познань</option>
                 </select>
             </div>
+            <!-- Removed redundant duplicate filter buttons -->
             <div class="filter-options">
-                <button onclick="filterVacancies('specialist')" class="filter-button">Спеціалісти</button>
-                <button onclick="filterVacancies('no-experience')" class="filter-button">Досвід не потрібен</button>
-                <button onclick="filterVacancies('all')" class="filter-button">Усі вакансії</button>
-            </div>
+            <button onclick="filterVacancies('specialist')" class="filter-button">Спеціалісти</button>
+            <button onclick="filterVacancies('no-experience')" class="filter-button">Досвід не потрібен</button>
+            <button onclick="filterVacancies('all')" class="filter-button">Усі вакансії</button>
+        </div>
                 <button onclick="filterVacancies('specialist')" class="filter-button">Спеціалісти</button>
                 <button onclick="filterVacancies('no-experience')" class="filter-button">Досвід не потрібен</button>
                 <button onclick="filterVacancies('all')" class="filter-button">Усі вакансії</button>
