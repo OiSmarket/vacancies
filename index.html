@@ -9,161 +9,92 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #f0f2f5;
-            color: #333;
             margin: 0;
             padding: 0;
             overflow-x: hidden;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
         header {
-            background: #ff7a00;
-            padding: 100px 20px;
-            color: #fff;
-            text-align: center;
-            margin-bottom: 50px;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-        header h1 {
-            font-size: 3em;
-            margin: 0;
-            letter-spacing: 1px;
-        }
-        .job-listings {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            justify-content: center;
-        }
-        .job-listing {
-            background: #ffffff;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
+            width: 100%;
+            height: 100vh;
+            background: url('https://www.freepik.com/free-ai-image/business-scene-with-nature_138694242.htm#fromView=search&page=2&position=2&uuid=c67cec0b-cd27-490a-b94d-d5616e7ac19a') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            color: #fff;
+            padding: 0 50px;
+            box-sizing: border-box;
             overflow: hidden;
+        }
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            transition: all 0.5s ease;
             z-index: 1;
         }
-        .job-listing:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        header:hover::after {
+            background: rgba(0, 0, 0, 0.7);
         }
-        .job-title {
-            font-size: 1.8em;
-            color: #ff7a00;
-            margin-bottom: 15px;
+        header h1 {
+            font-size: 4em;
             font-weight: 700;
+            margin: 0;
+            z-index: 2;
+            position: relative;
+            transform: translateX(-150%);
+            opacity: 0;
+            animation: slideIn 1.5s ease forwards;
         }
-        .job-details {
-            line-height: 1.8;
-            color: #555;
-            margin-bottom: 20px;
+        header p {
+            font-size: 1.2em;
+            margin: 20px 0;
+            line-height: 1.6;
+            max-width: 600px;
+            z-index: 2;
+            position: relative;
+            transform: translateX(-150%);
+            opacity: 0;
+            animation: slideIn 1.5s ease forwards 0.3s;
         }
-        .highlight {
-            font-weight: bold;
-            color: #ff4500;
-        }
-        .apply-button {
+        .work-button {
             display: inline-block;
-            margin-top: 15px;
             padding: 15px 30px;
-            background-color: #ff4500;
-            color: #fff;
+            background-color: #ffffff;
+            color: #000;
             font-weight: bold;
             text-align: center;
             text-decoration: none;
-            border-radius: 50px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 20px;
+            z-index: 2;
+            position: relative;
+            transition: transform 0.3s;
+            transform: translateX(-150%);
+            opacity: 0;
+            animation: slideIn 1.5s ease forwards 0.6s;
         }
-        .apply-button:hover {
-            background-color: #e03e00;
-            transform: scale(1.05);
+        .work-button:hover {
+            transform: scale(1.1);
         }
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 40px;
-            margin-top: 60px;
-            border-radius: 15px;
-        }
-        footer p {
-            font-size: 1.1em;
-            margin: 0;
+        @keyframes slideIn {
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Найдите свою работу мечты</h1>
+        <h1>Made by A</h1>
+        <p>Good design makes a statement, and that's what sets Aiyla apart. Her mediums are as bold as her message. Loud, proud, no limits allowed - these are what define anything Made by A.</p>
+        <a href="#" class="work-button">Work with A</a>
     </header>
-
-    <div class="container">
-        <div class="job-listings">
-            <div class="job-listing">
-                <div class="job-title">Сварщик Mig/Mag 135-136</div>
-                <div class="job-details">
-                    <p><span class="highlight">Место работы:</span> Глубчице</p>
-                    <p><span class="highlight">Количество вакансий:</span> 5 человек</p>
-                    <p><span class="highlight">Ставка:</span> до 55 злотых/час</p>
-                    <p><span class="highlight">Оплата за жилье:</span> 500 злотых/месяц</p>
-                    <p><span class="highlight">Дополнительно:</span> Требуются медицинское освидетельствование и санитарная книжка</p>
-                    <a href="#" class="apply-button">Подать заявку</a>
-                </div>
-            </div>
-
-            <div class="job-listing">
-                <div class="job-title">Повар</div>
-                <div class="job-details">
-                    <p><span class="highlight">Место работы:</span> Вроцлав</p>
-                    <p><span class="highlight">Количество вакансий:</span> 1 человек/ж</p>
-                    <p><span class="highlight">Ставка:</span> 30 злотых/час</p>
-                    <a href="#" class="apply-button">Подать заявку</a>
-                </div>
-            </div>
-
-            <div class="job-listing">
-                <div class="job-title">Повар</div>
-                <div class="job-details">
-                    <p><span class="highlight">Место работы:</span> Варшава</p>
-                    <p><span class="highlight">Количество вакансий:</span> 1 человек</p>
-                    <p><span class="highlight">Ставка:</span> 27 злотых/час (после первого месяца 30 злотых/час)</p>
-                    <a href="#" class="apply-button">Подать заявку</a>
-                </div>
-            </div>
-
-            <div class="job-listing">
-                <div class="job-title">Швея</div>
-                <div class="job-details">
-                    <p><span class="highlight">Место работы:</span> Надолице Мале</p>
-                    <p><span class="highlight">Количество вакансий:</span> 2 женщины</p>
-                    <p><span class="highlight">Ставка:</span> 24 злотых/час</p>
-                    <a href="#" class="apply-button">Подать заявку</a>
-                </div>
-            </div>
-
-            <div class="job-listing">
-                <div class="job-title">Механик</div>
-                <div class="job-details">
-                    <p><span class="highlight">Место работы:</span> Бржег Дольны</p>
-                    <p><span class="highlight">Количество вакансий:</span> 2 человека</p>
-                    <p><span class="highlight">Ставка:</span> 32.5 злотых/час</p>
-                    <p><span class="highlight">Оплата за жилье:</span> 1.5 злотых/день</p>
-                    <a href="#" class="apply-button">Подать заявку</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <p>&copy; 2024 Найдите свою работу мечты. Все права защищены.</p>
-    </footer>
 </body>
 </html>
