@@ -211,6 +211,23 @@
             background-color: #0056b3;
             transform: scale(1.05);
         }
+            @media (max-width: 600px) {
+            .filter-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            .filter-location {
+                order: -1;
+                width: 100%;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+            .filter-button {
+                width: 90%;
+                margin-bottom: 10px;
+                font-size: 1em;
+            }
+        }
     </style>
 <style>
         .filter-location {
