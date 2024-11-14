@@ -9,7 +9,7 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #f0f0f5;
+            background-color: #ffffff;
             color: #333;
             margin: 0;
             padding: 0;
@@ -20,70 +20,70 @@
             padding: 20px;
         }
         header {
-            background: #1e3a8a;
+            background: #004085;
             padding: 60px;
             color: #fff;
             text-align: center;
-            border-radius: 8px;
             margin-bottom: 40px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
         header h1 {
-            font-size: 2.5em;
+            font-size: 3em;
             margin: 0;
         }
         .job-listings {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
         }
         .job-listing {
-            background: #ffffff;
-            border-radius: 8px;
-            padding: 25px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-left: 5px solid #1e3a8a;
+            width: calc(33% - 40px);
+            max-width: 380px;
+            cursor: pointer;
         }
         .job-listing:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
         .job-title {
-            font-size: 1.6em;
-            color: #1e3a8a;
+            font-size: 1.8em;
+            color: #004085;
             margin-bottom: 15px;
         }
         .job-details {
-            line-height: 1.6;
+            line-height: 1.8;
+            color: #333;
         }
         .highlight {
             font-weight: bold;
-            color: #f59e0b;
+            color: #d9534f;
         }
         .apply-button {
             display: inline-block;
             margin-top: 20px;
-            padding: 12px 25px;
-            background-color: #f59e0b;
+            padding: 15px 30px;
+            background-color: #28a745;
             color: #fff;
             font-weight: bold;
             text-align: center;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 8px;
             transition: background-color 0.3s ease;
         }
         .apply-button:hover {
-            background-color: #d97706;
+            background-color: #218838;
         }
         footer {
-            background-color: #1e3a8a;
+            background-color: #004085;
             color: #fff;
             text-align: center;
-            padding: 20px;
+            padding: 40px;
             margin-top: 50px;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
