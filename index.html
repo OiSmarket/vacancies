@@ -21,24 +21,49 @@
             padding: 20px;
         }
         header {
-            background-color: #263466;
-            padding: 20px;
+            background: linear-gradient(135deg, #263466, #C7212C);
+            padding: 40px;
             color: #fff;
             text-align: center;
             border-radius: 10px;
             margin-bottom: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 2s ease;
         }
         header h1 {
-            font-size: 2.5em;
+            font-size: 3em;
             margin: 0;
+        }
+        .banner {
+            background-image: url('https://via.placeholder.com/1200x300');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 40px;
+            position: relative;
+            animation: slideIn 1.5s ease;
+        }
+        .banner-text {
+            position: absolute;
+            bottom: 20px;
+            left: 30px;
+            color: #fff;
+            font-size: 2em;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
         }
         .job-listing {
             background-color: #fff;
-            padding: 30px;
+            padding: 20px;
             margin: 20px 0;
             border-radius: 15px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            overflow: hidden;
+            animation: fadeInUp 1.5s ease;
         }
         .job-listing:hover {
             transform: translateY(-5px);
@@ -68,6 +93,7 @@
             text-decoration: none;
             border-radius: 8px;
             transition: background-color 0.3s;
+            animation: bounceIn 1.5s ease;
         }
         .apply-button:hover {
             background-color: #C7212C;
@@ -79,6 +105,24 @@
             padding: 15px;
             margin-top: 50px;
             border-radius: 10px;
+            animation: fadeIn 2s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes bounceIn {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-15px); }
+            60% { transform: translateY(-7px); }
         }
     </style>
 </head>
@@ -88,6 +132,10 @@
     </header>
 
     <div class="container">
+        <div class="banner">
+            <div class="banner-text">Найди свою работу уже сегодня!</div>
+        </div>
+
         <div class="job-listing">
             <div class="job-title">Сварщик Mig/Mag 135-136</div>
             <div class="job-details">
