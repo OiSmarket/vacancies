@@ -212,22 +212,11 @@
             transform: scale(1.05);
         }
     @media (max-width: 768px) {
-            .filter-location {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                margin-bottom: 10px;
-            }
             .filter-options {
-                display: flex;
                 flex-direction: column;
                 align-items: center;
-                margin-top: 10px;
+                margin-top: 20px;
             }
-            .filter-button {
-                margin: 5px 0;
-            }
-        }
             .filter-location {
                 flex-direction: column;
                 align-items: center;
@@ -235,21 +224,6 @@
             }
             .filter-location select {
                 margin-bottom: 10px;
-            }
-        }
-            
-            .filter-button {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-            .filter-location {
-                flex-direction: column;
-                align-items: center;
-                width: 100%;
-            }
-            .filter-location select {
-                width: 100%;
-                margin: 10px 0;
             }
         }
     </style>
@@ -322,10 +296,9 @@
                 </select>
             </div>
             <div class="filter-options">
-            <button onclick="filterVacancies('specialist')" class="filter-button">Спеціалісти</button>
-            <button onclick="filterVacancies('no-experience')" class="filter-button">Досвід не потрібен</button>
-            <button onclick="filterVacancies('all')" class="filter-button">Усі вакансії</button>
-        </div>
+                <button onclick="filterVacancies('specialist')" class="filter-button">Спеціалісти</button>
+                <button onclick="filterVacancies('no-experience')" class="filter-button">Досвід не потрібен</button>
+                <button onclick="filterVacancies('all')" class="filter-button">Усі вакансії</button>
             </div>
         <div class="vacancy-list" style="justify-content: center;">
             <div class="vacancy specialist">
