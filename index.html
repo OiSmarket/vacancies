@@ -196,6 +196,20 @@
                 opacity: 1;
             }
         }
+    .apply-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 15px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .apply-button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -242,29 +256,60 @@
         <h2 class="bio-title">СПЕЦІАЛІСТИ ТА РОБОТА БЕЗ ДОСВІДУ</h2>
         <div class="filter-options">
             <button onclick="filterVacancies('specialist')" class="filter-button">Спеціалісти</button>
-            <button onclick="filterVacancies('no-experience')" class="filter-button">Опит не потрібен</button>
+            <button onclick="filterVacancies('no-experience')" class="filter-button">Досвід не потрібен</button>
             <button onclick="filterVacancies('all')" class="filter-button">Усі вакансії</button>
         </div>
         <div class="vacancy-list">
             <div class="vacancy specialist">
                 <h3>Вакансія: Кухар</h3>
-                <p>Робота у Варшаві. Кількість вакансій: 1 особа. Ставка 27 злотих/год (після першого місяця 30 злотих/год). Чудова можливість для професіоналів, які хочуть розвиватися в гастрономії.</p>
+                <ul>
+                    <li>Локація: Варшава</li>
+                    <li>Кількість вакансій: 1 особа</li>
+                    <li>Ставка: 27 злотих/год (після першого місяця 30 злотих/год)</li>
+                    <li>Опис: Чудова можливість для професіоналів, які хочуть розвиватися в гастрономії</li>
+                </ul>
+                <button class="apply-button">Подати заявку</button>
             </div>
             <div class="vacancy specialist">
                 <h3>Вакансія: Швачка</h3>
-                <p>Робота в Надолице Мале. Кількість вакансій: 2 жінки. Ставка 24 злотих/год. Чудові умови для досвідчених швачок, які бажають працювати в команді.</p>
+                <ul>
+                    <li>Локація: Надолице Мале</li>
+                    <li>Кількість вакансій: 2 жінки</li>
+                    <li>Ставка: 24 злотих/год</li>
+                    <li>Опис: Чудові умови для досвідчених швачок, які бажають працювати в команді</li>
+                </ul>
+                <button class="apply-button">Подати заявку</button>
             </div>
             <div class="vacancy specialist">
                 <h3>Вакансія: Механік</h3>
-                <p>Робота в Бржег Дольни. Кількість вакансій: 2 особи. Ставка 32.5 злотих/год. Оплата за житло: 1.5 злотих на день. Чудова можливість для досвідчених механіків.</p>
+                <ul>
+                    <li>Локація: Бржег Дольни</li>
+                    <li>Кількість вакансій: 2 особи</li>
+                    <li>Ставка: 32.5 злотих/год</li>
+                    <li>Оплата за житло: 1.5 злотих на день</li>
+                    <li>Опис: Чудова можливість для досвідчених механіків</li>
+                </ul>
+                <button class="apply-button">Подати заявку</button>
             </div>
             <div class="vacancy no-experience">
                 <h3>Вакансія: Оператор виробничої лінії</h3>
-                <p>Робота в Лодзі. Кількість вакансій: 5 осіб. Ставка 20 злотих/год. Робота на сучасному виробництві, навчання на місці.</p>
+                <ul>
+                    <li>Локація: Лодзь</li>
+                    <li>Кількість вакансій: 5 осіб</li>
+                    <li>Ставка: 20 злотих/год</li>
+                    <li>Опис: Робота на сучасному виробництві, навчання на місці</li>
+                </ul>
+                <button class="apply-button">Подати заявку</button>
             </div>
             <div class="vacancy no-experience">
                 <h3>Вакансія: Пакувальник</h3>
-                <p>Робота в Познані. Кількість вакансій: 3 особи. Ставка 19 злотих/год. Легка робота, не потребує досвіду, забезпечується навчання.</p>
+                <ul>
+                    <li>Локація: Познань</li>
+                    <li>Кількість вакансій: 3 особи</li>
+                    <li>Ставка: 19 злотих/год</li>
+                    <li>Опис: Легка робота, не потребує досвіду, забезпечується навчання</li>
+                </ul>
+                <button class="apply-button">Подати заявку</button>
             </div>
         </div>
     </section>
