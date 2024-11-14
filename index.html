@@ -212,6 +212,20 @@
             transform: scale(1.05);
         }
     </style>
+<style>
+        .filter-location {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .filter-location select {
+            padding: 10px;
+            font-size: 1em;
+            margin: 0 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -256,6 +270,17 @@
     <section class="bio-section">
         <h2 class="bio-title">СПЕЦІАЛІСТИ ТА РОБОТА БЕЗ ДОСВІДУ</h2>
         <div class="filter-options">
+            <div class="filter-location">
+                <label for="location-filter">Локація:</label>
+                <select id="location-filter" onchange="filterByLocation()">
+                    <option value="all">Усі локації</option>
+                    <option value="Варшава">Варшава</option>
+                    <option value="Надолице Мале">Надолице Мале</option>
+                    <option value="Бржег Дольни">Бржег Дольни</option>
+                    <option value="Лодзь">Лодзь</option>
+                    <option value="Познань">Познань</option>
+                </select>
+            </div>
             <button onclick="filterVacancies('specialist')" class="filter-button">Спеціалісти</button>
             <button onclick="filterVacancies('no-experience')" class="filter-button">Досвід не потрібен</button>
             <button onclick="filterVacancies('all')" class="filter-button">Усі вакансії</button>
@@ -385,6 +410,32 @@
                 if (type === 'all') {
                     vacancy.style.display = 'block';
                 } else if (vacancy.classList.contains(type)) {
+                    vacancy.style.display = 'block';
+                } else {
+                    vacancy.style.display = 'none';
+                }
+            });
+        }
+    </script>
+<script>
+        function filterByLocation() {
+            const location = document.getElementById('location-filter').value;
+            const vacancies = document.querySelectorAll('.vacancy');
+            vacancies.forEach(vacancy => {
+                const locationText = vacancy.querySelector('ul li:nth-child(1)').innerText;
+                if (location === 'all' || locationText.includes(location)) {
+                    vacancy.style.display = 'block';
+                } else {
+                    vacancy.style.display = 'none';
+                }
+            });
+        }
+        function filterVacancies(type) {
+            const vacancies = document.querySelectorAll('.vacancy');
+            const location = document.getElementById('location-filter').value;
+            vacancies.forEach(vacancy => {
+                const locationText = vacancy.querySelector('ul li:nth-child(1)').innerText;
+                if ((type === 'all' || vacancy.classList.contains(type)) && (location === 'all' || locationText.includes(location))) {
                     vacancy.style.display = 'block';
                 } else {
                     vacancy.style.display = 'none';
