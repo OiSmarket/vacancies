@@ -241,9 +241,9 @@
     <section class="bio-section">
         <h2 class="bio-title">СПЕЦІАЛІСТИ ТА РОБОТА БЕЗ ДОСВІДУ</h2>
         <div class="filter-options">
-            <button onclick="filterVacancies('specialist')">Спеціалісти</button>
-            <button onclick="filterVacancies('no-experience')">Опит не потрібен</button>
-            <button onclick="filterVacancies('all')">Усі вакансії</button>
+            <button onclick="filterVacancies('specialist')" class="filter-button">Спеціалісти</button>
+            <button onclick="filterVacancies('no-experience')" class="filter-button">Опит не потрібен</button>
+            <button onclick="filterVacancies('all')" class="filter-button">Усі вакансії</button>
         </div>
         <div class="vacancy-list">
             <div class="vacancy specialist">
@@ -268,6 +268,60 @@
             </div>
         </div>
     </section>
+    <style>
+        .bio-title {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #1b1b1b;
+        }
+        .filter-options {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .filter-button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .filter-button:hover {
+            background-color: #555;
+        }
+        .vacancy-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .vacancy {
+            background: #f8f8f8;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+        .vacancy:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+        .vacancy h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #1b1b1b;
+        }
+        .vacancy p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #333;
+        }
+    </style>
     <script>
         function filterVacancies(type) {
             const vacancies = document.querySelectorAll('.vacancy');
