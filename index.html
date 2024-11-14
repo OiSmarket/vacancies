@@ -54,20 +54,35 @@
             font-weight: bold;
             text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
         }
+        .section {
+            margin-bottom: 50px;
+        }
+        .section-title {
+            font-size: 2.5em;
+            color: #263466;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .job-listings {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
         .job-listing {
             background-color: #fff;
             padding: 20px;
-            margin: 20px 0;
-            border-radius: 15px;
+            border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
             overflow: hidden;
             animation: fadeInUp 1.5s ease;
+            border-left: 5px solid #263466;
         }
         .job-listing:hover {
             transform: translateY(-5px);
             box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+            border-left: 5px solid #C7212C;
         }
         .job-title {
             font-size: 1.8em;
@@ -136,56 +151,61 @@
             <div class="banner-text">Найди свою работу уже сегодня!</div>
         </div>
 
-        <div class="job-listing">
-            <div class="job-title">Сварщик Mig/Mag 135-136</div>
-            <div class="job-details">
-                <p><span class="highlight">Место работы:</span> Глубчице</p>
-                <p><span class="highlight">Количество вакансий:</span> 5 человек</p>
-                <p><span class="highlight">Ставка:</span> до 55 злотых/час</p>
-                <p><span class="highlight">Оплата за жилье:</span> 500 злотых/месяц</p>
-                <p><span class="highlight">Дополнительно:</span> Требуются медицинское освидетельствование и санитарная книжка</p>
-                <a href="#" class="apply-button">Подать заявку</a>
-            </div>
-        </div>
+        <div class="section">
+            <h2 class="section-title">Список вакансий</h2>
+            <div class="job-listings">
+                <div class="job-listing">
+                    <div class="job-title">Сварщик Mig/Mag 135-136</div>
+                    <div class="job-details">
+                        <p><span class="highlight">Место работы:</span> Глубчице</p>
+                        <p><span class="highlight">Количество вакансий:</span> 5 человек</p>
+                        <p><span class="highlight">Ставка:</span> до 55 злотых/час</p>
+                        <p><span class="highlight">Оплата за жилье:</span> 500 злотых/месяц</p>
+                        <p><span class="highlight">Дополнительно:</span> Требуются медицинское освидетельствование и санитарная книжка</p>
+                        <a href="#" class="apply-button">Подать заявку</a>
+                    </div>
+                </div>
 
-        <div class="job-listing">
-            <div class="job-title">Повар</div>
-            <div class="job-details">
-                <p><span class="highlight">Место работы:</span> Вроцлав</p>
-                <p><span class="highlight">Количество вакансий:</span> 1 человек/ж</p>
-                <p><span class="highlight">Ставка:</span> 30 злотых/час</p>
-                <a href="#" class="apply-button">Подать заявку</a>
-            </div>
-        </div>
+                <div class="job-listing">
+                    <div class="job-title">Повар</div>
+                    <div class="job-details">
+                        <p><span class="highlight">Место работы:</span> Вроцлав</p>
+                        <p><span class="highlight">Количество вакансий:</span> 1 человек/ж</p>
+                        <p><span class="highlight">Ставка:</span> 30 злотых/час</p>
+                        <a href="#" class="apply-button">Подать заявку</a>
+                    </div>
+                </div>
 
-        <div class="job-listing">
-            <div class="job-title">Повар</div>
-            <div class="job-details">
-                <p><span class="highlight">Место работы:</span> Варшава</p>
-                <p><span class="highlight">Количество вакансий:</span> 1 человек</p>
-                <p><span class="highlight">Ставка:</span> 27 злотых/час (после первого месяца 30 злотых/час)</p>
-                <a href="#" class="apply-button">Подать заявку</a>
-            </div>
-        </div>
+                <div class="job-listing">
+                    <div class="job-title">Повар</div>
+                    <div class="job-details">
+                        <p><span class="highlight">Место работы:</span> Варшава</p>
+                        <p><span class="highlight">Количество вакансий:</span> 1 человек</p>
+                        <p><span class="highlight">Ставка:</span> 27 злотых/час (после первого месяца 30 злотых/час)</p>
+                        <a href="#" class="apply-button">Подать заявку</a>
+                    </div>
+                </div>
 
-        <div class="job-listing">
-            <div class="job-title">Швея</div>
-            <div class="job-details">
-                <p><span class="highlight">Место работы:</span> Надолице Мале</p>
-                <p><span class="highlight">Количество вакансий:</span> 2 женщины</p>
-                <p><span class="highlight">Ставка:</span> 24 злотых/час</p>
-                <a href="#" class="apply-button">Подать заявку</a>
-            </div>
-        </div>
+                <div class="job-listing">
+                    <div class="job-title">Швея</div>
+                    <div class="job-details">
+                        <p><span class="highlight">Место работы:</span> Надолице Мале</p>
+                        <p><span class="highlight">Количество вакансий:</span> 2 женщины</p>
+                        <p><span class="highlight">Ставка:</span> 24 злотых/час</p>
+                        <a href="#" class="apply-button">Подать заявку</a>
+                    </div>
+                </div>
 
-        <div class="job-listing">
-            <div class="job-title">Механик</div>
-            <div class="job-details">
-                <p><span class="highlight">Место работы:</span> Бржег Дольны</p>
-                <p><span class="highlight">Количество вакансий:</span> 2 человека</p>
-                <p><span class="highlight">Ставка:</span> 32.5 злотых/час</p>
-                <p><span class="highlight">Оплата за жилье:</span> 1.5 злотых/день</p>
-                <a href="#" class="apply-button">Подать заявку</a>
+                <div class="job-listing">
+                    <div class="job-title">Механик</div>
+                    <div class="job-details">
+                        <p><span class="highlight">Место работы:</span> Бржег Дольны</p>
+                        <p><span class="highlight">Количество вакансий:</span> 2 человека</p>
+                        <p><span class="highlight">Ставка:</span> 32.5 злотых/час</p>
+                        <p><span class="highlight">Оплата за жилье:</span> 1.5 злотых/день</p>
+                        <a href="#" class="apply-button">Подать заявку</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
