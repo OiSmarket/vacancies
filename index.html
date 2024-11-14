@@ -211,6 +211,22 @@
             background-color: #0056b3;
             transform: scale(1.05);
         }
+            @media (max-width: 600px) {
+            .filter-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            .filter-location {
+                order: -1;
+                width: 100%;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+            .filter-button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
     </style>
 <style>
         .filter-location {
@@ -281,6 +297,10 @@
                     <option value="Познань">Познань</option>
                 </select>
             </div>
+            <button onclick="filterVacancies('specialist')" class="filter-button">Спеціалісти</button>
+            <button onclick="filterVacancies('no-experience')" class="filter-button">Досвід не потрібен</button>
+            <button onclick="filterVacancies('all')" class="filter-button">Усі вакансії</button>
+        </div>
             <button onclick="filterVacancies('specialist')" class="filter-button">Спеціалісти</button>
             <button onclick="filterVacancies('no-experience')" class="filter-button">Досвід не потрібен</button>
             <button onclick="filterVacancies('all')" class="filter-button">Усі вакансії</button>
