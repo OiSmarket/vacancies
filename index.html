@@ -82,6 +82,40 @@
         .work-button:hover {
             transform: scale(1.1);
         }
+        .section {
+            background-color: #1b1b1b;
+            color: #fff;
+            padding: 100px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .section h2 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        .section p {
+            max-width: 600px;
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+        .see-more-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #ffffff;
+            color: #000;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        .see-more-button:hover {
+            transform: scale(1.1);
+            background-color: #e83e8c;
+        }
         @keyframes slideIn {
             to {
                 transform: translateX(0);
@@ -96,5 +130,11 @@
         <p>Good design makes a statement, and that's what sets Aiyla apart. Her mediums are as bold as her message. Loud, proud, no limits allowed - these are what define anything Made by A.</p>
         <a href="#" class="work-button">Work with A</a>
     </header>
+    
+    <section class="section">
+        <h2>Hi, I'm A.</h2>
+        <p>The medium is the message, but the message also defines the medium. I am constantly experimenting with both, without limits or restrictions. My only rule: Create only when there's something to say. My art is my statement, and always will be.</p>
+        <a href="#" class="see-more-button">See what I've done</a>
+    </section>
 </body>
 </html>
