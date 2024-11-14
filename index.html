@@ -211,6 +211,21 @@
             background-color: #0056b3;
             transform: scale(1.05);
         }
+    @media (max-width: 768px) {
+            .filter-options {
+                flex-direction: column;
+                align-items: center;
+                margin-top: 20px;
+            }
+            .filter-location {
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+            .filter-location select {
+                margin-bottom: 10px;
+            }
+        }
     </style>
 <style>
         .filter-location {
@@ -269,8 +284,7 @@
 
     <section class="bio-section">
         <h2 class="bio-title">СПЕЦІАЛІСТИ ТА РОБОТА БЕЗ ДОСВІДУ</h2>
-        <div class="filter-options">
-            <div class="filter-location">
+        <div class="filter-location">
                 <label for="location-filter">Локація:</label>
                 <select id="location-filter" onchange="filterByLocation()">
                     <option value="all">Усі локації</option>
@@ -281,10 +295,11 @@
                     <option value="Познань">Познань</option>
                 </select>
             </div>
-            <button onclick="filterVacancies('specialist')" class="filter-button">Спеціалісти</button>
-            <button onclick="filterVacancies('no-experience')" class="filter-button">Досвід не потрібен</button>
-            <button onclick="filterVacancies('all')" class="filter-button">Усі вакансії</button>
-        </div>
+            <div class="filter-options">
+                <button onclick="filterVacancies('specialist')" class="filter-button">Спеціалісти</button>
+                <button onclick="filterVacancies('no-experience')" class="filter-button">Досвід не потрібен</button>
+                <button onclick="filterVacancies('all')" class="filter-button">Усі вакансії</button>
+            </div>
         <div class="vacancy-list" style="justify-content: center;">
             <div class="vacancy specialist">
                 <h3>Вакансія: Кухар</h3>
