@@ -9,7 +9,7 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #f8fafc;
+            background-color: #f0f2f5;
             color: #333;
             margin: 0;
             padding: 0;
@@ -21,81 +21,44 @@
             padding: 20px;
         }
         header {
-            background: linear-gradient(135deg, #0062cc, #004085);
-            padding: 80px 20px;
+            background: #ff7a00;
+            padding: 100px 20px;
             color: #fff;
             text-align: center;
             margin-bottom: 50px;
-            position: relative;
-            overflow: hidden;
-        }
-        header::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            left: -50px;
-            width: 150%;
-            height: 150%;
-            background: url('https://via.placeholder.com/800x800/c9daf8/ffffff?text=Pattern') repeat;
-            opacity: 0.05;
-            transform: rotate(25deg);
-            pointer-events: none;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
         header h1 {
-            font-size: 2.5em;
+            font-size: 3em;
             margin: 0;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.8em;
-            }
+            letter-spacing: 1px;
         }
         .job-listings {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
             justify-content: center;
         }
         .job-listing {
             background: #ffffff;
             border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             overflow: hidden;
             z-index: 1;
         }
-        .job-listing::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0, 98, 204, 0.1), rgba(0, 72, 133, 0.1));
-            z-index: -1;
-            transition: opacity 0.3s ease;
-        }
-        .job-listing:hover::after {
-            opacity: 0.2;
-        }
         .job-listing:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
         .job-title {
             font-size: 1.8em;
-            color: #004085;
+            color: #ff7a00;
             margin-bottom: 15px;
             font-weight: 700;
-        }
-        @media (max-width: 768px) {
-            .job-title {
-                font-size: 1.5em;
-            }
         }
         .job-details {
             line-height: 1.8;
@@ -104,53 +67,42 @@
         }
         .highlight {
             font-weight: bold;
-            color: #e83e8c;
+            color: #ff4500;
         }
         .apply-button {
             display: inline-block;
-            margin-top: 10px;
-            padding: 12px 25px;
-            background-color: #28a745;
+            margin-top: 15px;
+            padding: 15px 30px;
+            background-color: #ff4500;
             color: #fff;
             font-weight: bold;
             text-align: center;
             text-decoration: none;
             border-radius: 50px;
             transition: background-color 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
         .apply-button:hover {
-            background-color: #218838;
+            background-color: #e03e00;
             transform: scale(1.05);
         }
-        @media (max-width: 768px) {
-            .apply-button {
-                padding: 10px 20px;
-                font-size: 0.9em;
-            }
-        }
         footer {
-            background-color: #004085;
+            background-color: #333;
             color: #fff;
             text-align: center;
-            padding: 30px;
+            padding: 40px;
             margin-top: 60px;
-            position: relative;
+            border-radius: 15px;
         }
         footer p {
-            font-size: 1em;
+            font-size: 1.1em;
             margin: 0;
-        }
-        @media (max-width: 768px) {
-            footer {
-                padding: 20px;
-            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Актуальные вакансии</h1>
+        <h1>Найдите свою работу мечты</h1>
     </header>
 
     <div class="container">
@@ -211,7 +163,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2024 Лендинг с вакансиями. Все права защищены.</p>
+        <p>&copy; 2024 Найдите свою работу мечты. Все права защищены.</p>
     </footer>
 </body>
 </html>
