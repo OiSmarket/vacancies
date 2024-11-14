@@ -9,10 +9,11 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #ffffff;
+            background-color: #f8fafc;
             color: #333;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
         }
         .container {
             max-width: 1200px;
@@ -20,70 +21,109 @@
             padding: 20px;
         }
         header {
-            background: #004085;
-            padding: 60px;
+            background: linear-gradient(135deg, #0062cc, #004085);
+            padding: 80px 20px;
             color: #fff;
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 150%;
+            height: 150%;
+            background: url('https://via.placeholder.com/800x800/c9daf8/ffffff?text=Pattern') repeat;
+            opacity: 0.05;
+            transform: rotate(25deg);
+            pointer-events: none;
         }
         header h1 {
-            font-size: 3em;
+            font-size: 3.5em;
             margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
         .job-listings {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
             justify-content: center;
         }
         .job-listing {
-            background: #f8f9fa;
-            border-radius: 12px;
+            background: #ffffff;
+            border-radius: 15px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            width: calc(33% - 40px);
-            max-width: 380px;
-            cursor: pointer;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .job-listing::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 98, 204, 0.1), rgba(0, 72, 133, 0.1));
+            z-index: -1;
+            transition: opacity 0.3s ease;
+        }
+        .job-listing:hover::after {
+            opacity: 0.2;
         }
         .job-listing:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
         }
         .job-title {
-            font-size: 1.8em;
+            font-size: 2em;
             color: #004085;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-weight: 700;
         }
         .job-details {
             line-height: 1.8;
-            color: #333;
+            color: #555;
+            margin-bottom: 20px;
         }
         .highlight {
             font-weight: bold;
-            color: #d9534f;
+            color: #e83e8c;
         }
         .apply-button {
             display: inline-block;
-            margin-top: 20px;
+            margin-top: 10px;
             padding: 15px 30px;
             background-color: #28a745;
             color: #fff;
             font-weight: bold;
             text-align: center;
             text-decoration: none;
-            border-radius: 8px;
-            transition: background-color 0.3s ease;
+            border-radius: 50px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
         .apply-button:hover {
             background-color: #218838;
+            transform: scale(1.05);
         }
         footer {
             background-color: #004085;
             color: #fff;
             text-align: center;
             padding: 40px;
-            margin-top: 50px;
+            margin-top: 60px;
+            position: relative;
+        }
+        footer p {
+            font-size: 1.1em;
+            margin: 0;
         }
     </style>
 </head>
