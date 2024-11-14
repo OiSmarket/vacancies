@@ -116,7 +116,52 @@
             transform: scale(1.1);
             background-color: #e83e8c;
         }
+        .bio-section {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 100px 20px;
+            background-color: #ffffff;
+            color: #333;
+        }
+        .bio-section img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transform: translateX(-150%);
+            opacity: 0;
+            animation: slideInImage 1.5s ease forwards;
+        }
+        .bio-content {
+            max-width: 500px;
+            transform: translateX(150%);
+            opacity: 0;
+            animation: slideInContent 1.5s ease forwards 0.3s;
+        }
+        .bio-content h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        .bio-content p {
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
         @keyframes slideIn {
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        @keyframes slideInImage {
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        @keyframes slideInContent {
             to {
                 transform: translateX(0);
                 opacity: 1;
@@ -135,6 +180,16 @@
         <h2>Hi, I'm A.</h2>
         <p>The medium is the message, but the message also defines the medium. I am constantly experimenting with both, without limits or restrictions. My only rule: Create only when there's something to say. My art is my statement, and always will be.</p>
         <a href="#" class="see-more-button">See what I've done</a>
+    </section>
+
+    <section class="bio-section">
+        <img src="https://via.placeholder.com/500x600" alt="Bio Image">
+        <div class="bio-content">
+            <h3>BIO</h3>
+            <p>Originating from the lively streets of Melbourne, Australia, Patty Moore is a celebrated director renowned for her enigmatic cinematic flair. Unveiling the depths of the human psyche and pushing the boundaries of storytelling, Patty Moore is the brilliant mind behind some of the most gripping psychological thrillers in the industry. With a unique ability to blur the lines between reality and illusion, Patty Moore's films are a rollercoaster of suspense, taking viewers on a relentless journey into the enigmatic realms of the mind.</p>
+            <h3>MY APPROACH</h3>
+            <p>I have always been captivated by the intricacies of suspense and the power of mystery in storytelling. My approach to crafting compelling and unforgettable thrillers is rooted in my passion for creating intense, thought-provoking, and immersive experiences that leave a lasting impact on the audience. I look forward to continuing to craft gripping stories that challenge, entertain, and push the boundaries of the thriller genre.</p>
+        </div>
     </section>
 </body>
 </html>
