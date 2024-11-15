@@ -68,21 +68,6 @@
             transform: scale(1.1);
         }
 
-        .filter-options {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            padding: 20px;
-            background-color: #f9f9f9;
-        }
-
-        .filter-options select, .filter-options button {
-            padding: 10px;
-            font-size: 1em;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-        }
-
         .vacancy-list {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -96,7 +81,6 @@
             padding: 20px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             text-align: left;
-            position: relative;
         }
 
         .vacancy h3 {
@@ -142,61 +126,50 @@
         </div>
     </header>
 
-    <div class="filter-options">
-        <select id="location-filter" onchange="filterVacancies()">
-            <option value="all">Усі локації</option>
-            <option value="Варшава">Варшава</option>
-            <option value="Лодзь">Лодзь</option>
-            <option value="Познань">Познань</option>
-        </select>
-        <button onclick="filterVacancies('specialist')">Спеціалісти</button>
-        <button onclick="filterVacancies('no-experience')">Без досвіду</button>
-        <button onclick="filterVacancies('all')">Усі вакансії</button>
-    </div>
-
     <div class="vacancy-list">
-        <div class="vacancy no-experience" data-location="Лодзь">
-            <h3>Швачка</h3>
+        <!-- Вакансія з атрибутами для фільтрації -->
+        <div class="vacancy" 
+             data-location="Варшава" 
+             data-requirements="досвід роботи кухарем, комунікативна польська мова, санепід">
+            <h3>Kucharz</h3>
             <ul>
-                <li>Локація: Лодзь</li>
-                <li>Ставка: 24 зл/год</li>
-                <li>Графік: 8-годинний робочий день</li>
-            </ul>
-            <button class="apply-button">Подати заявку</button>
-        </div>
-        <div class="vacancy specialist" data-location="Варшава">
-            <h3>Інженер</h3>
-            <ul>
-                <li>Локація: Варшава</li>
-                <li>Ставка: 30 зл/год</li>
-                <li>Графік: Повний робочий день</li>
-            </ul>
-            <button class="apply-button">Подати заявку</button>
-        </div>
-        <div class="vacancy no-experience" data-location="Познань">
-            <h3>Прибиральник</h3>
-            <ul>
-                <li>Локація: Познань</li>
-                <li>Ставка: 20 зл/год</li>
-                <li>Графік: Гнучкий</li>
+                <li><b>Назва та місце роботи:</b> <a href="https://kuchniamarche.pl/" target="_blank">Kuchnia Marche</a></li>
+                <li><b>Посада:</b> кухар</li>
+                <li><b>Відео:</b> 
+                    <a href="https://youtu.be/PNCUQOLBi_k" target="_blank">Огляд 1</a>, 
+                    <a href="https://youtu.be/VDigpoEb_cI" target="_blank">Огляд 2</a>
+                </li>
+                <li><b>Ставка (год/нетто):</b> 28 зл, після першого місяця 30 зл (PIT2); 27 зл, після першого місяця 29 зл</li>
+                <li><b>Тип угоди:</b> Umowa zlecenia</li>
+                <li><b>Години роботи в місяць:</b> 180-240</li>
+                <li><b>Графік роботи:</b> 06:30-17:00, 7:00-19:00, 9:00-21:30 та інші</li>
+                <li><b>Обов’язки:</b> приготування страв, утримання чистоти на робочому місці</li>
+                <li><b>Проживання:</b> по стороні працівника</li>
+                <li><b>Харчування:</b> надається</li>
+                <li><b>Вимоги:</b> санепід, досвід роботи кухарем, комунікативна польська</li>
             </ul>
             <button class="apply-button">Подати заявку</button>
         </div>
     </div>
 
     <script>
-        function filterVacancies(type = 'all') {
-            const location = document.getElementById('location-filter').value.toLowerCase();
+        // Фільтрація вакансій за локацією та вимогами
+        function filterVacancies(location, requirements = []) {
             const vacancies = document.querySelectorAll('.vacancy');
 
             vacancies.forEach(vacancy => {
-                const vacancyLocation = vacancy.dataset.location.toLowerCase();
-                const matchesType = type === 'all' || vacancy.classList.contains(type);
-                const matchesLocation = location === 'all' || vacancyLocation.includes(location);
+                const vacancyLocation = vacancy.getAttribute('data-location').toLowerCase();
+                const vacancyRequirements = vacancy.getAttribute('data-requirements').toLowerCase();
 
-                vacancy.style.display = matchesType && matchesLocation ? 'block' : 'none';
+                const matchesLocation = location === 'all' || vacancyLocation.includes(location.toLowerCase());
+                const matchesRequirements = requirements.every(req => vacancyRequirements.includes(req.toLowerCase()));
+
+                vacancy.style.display = matchesLocation && matchesRequirements ? 'block' : 'none';
             });
         }
+
+        // Приклад виклику фільтрації
+        filterVacancies('Варшава', ['досвід роботи кухарем', 'санепід']);
     </script>
 </body>
 </html>
