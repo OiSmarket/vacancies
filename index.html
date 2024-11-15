@@ -499,8 +499,9 @@
             const location = document.getElementById('location-filter').value;
             const vacancies = document.querySelectorAll('.vacancy');
             vacancies.forEach(vacancy => {
-                const locationText = vacancy.querySelector('ul li:nth-child(1)').innerText.split(',')[1].trim();
-                if (location === 'all' || locationText.includes(location)) {
+                const locationText = vacancy.querySelector('ul li:nth-child(1)').innerText;
+                const city = locationText.split(',')[1]?.trim().toLowerCase();
+                if (location === 'all' || (city && city.includes(location.toLowerCase()))) {
                     vacancy.style.display = 'block';
                 } else {
                     vacancy.style.display = 'none';
