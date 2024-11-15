@@ -1,32 +1,31 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Лендінг з вакансіями</title>
+    <title>Вакансии Flambir</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* Основные стили */
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
         }
+
         header {
             position: relative;
             width: 100%;
             height: 100vh;
-            background: url('https://img.freepik.com/free-photo/cute-girl-studying-computer-home_1303-25493.jpg?t=st=1731622214~exp=1731625814~hmac=b916f0459fbd856b74461a4e49cfdd935197b5a8a87235309c626fb3cfac0446&w=1060') no-repeat center center/cover;
+            background: url('https://img.freepik.com/free-photo/cute-girl-studying-computer-home_1303-25493.jpg') no-repeat center center/cover;
             display: flex;
-            flex-direction: column;
             justify-content: center;
-            align-items: flex-start;
+            align-items: center;
             color: #fff;
-            padding: 0 50px;
-            box-sizing: border-box;
-            overflow: hidden;
+            text-align: center;
         }
+
         header::after {
             content: '';
             position: absolute;
@@ -35,491 +34,168 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.5);
-            transition: all 0.5s ease;
             z-index: 1;
         }
-        header:hover::after {
-            background: rgba(0, 0, 0, 0.7);
-        }
-        header h1 {
-            font-size: 4em;
-            font-weight: 700;
-            margin: 0;
-            z-index: 2;
+
+        header h1, header p {
             position: relative;
-            transform: translateX(-150%);
-            opacity: 0;
-            animation: slideIn 1.5s ease forwards;
+            z-index: 2;
         }
+
+        header h1 {
+            font-size: 3em;
+            margin: 0 0 10px;
+        }
+
         header p {
             font-size: 1.2em;
-            margin: 20px 0;
-            line-height: 1.6;
-            max-width: 600px;
-            z-index: 2;
-            position: relative;
-            transform: translateX(-150%);
-            opacity: 0;
-            animation: slideIn 1.5s ease forwards 0.3s;
+            margin: 0;
         }
+
         .work-button {
             display: inline-block;
-            padding: 15px 30px;
-            background-color: #ffffff;
-            color: #000;
-            font-weight: bold;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 8px;
-            margin-top: 20px;
-            z-index: 2;
-            position: relative;
-            transition: transform 0.3s;
-            transform: translateX(-150%);
-            opacity: 0;
-            animation: slideIn 1.5s ease forwards 0.6s;
-        }
-        .work-button:hover {
-            transform: scale(1.1);
-        }
-        .section {
-            background-color: #1b1b1b;
-            color: #fff;
-            padding: 100px 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .section h2 {
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
-        .section p {
-            max-width: 600px;
-            font-size: 1.2em;
-            line-height: 1.8;
-            margin-bottom: 40px;
-        }
-        .see-more-button {
-            display: inline-block;
-            padding: 15px 30px;
-            background-color: #ffffff;
-            color: #000;
-            font-weight: bold;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: transform 0.3s, background-color 0.3s;
-        }
-        .see-more-button:hover {
-            transform: scale(1.1);
-            background-color: #e83e8c;
-        }
-        .bio-section {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            padding: 100px 20px;
-            background-color: #ffffff;
-            color: #333;
-        }
-        .bio-section img {
-            max-width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transform: translateX(-150%);
-            opacity: 0;
-            animation: slideInImage 1.5s ease forwards;
-        }
-        .bio-content {
-            max-width: 500px;
-            transform: translateX(150%);
-            opacity: 0;
-            animation: slideInContent 1.5s ease forwards 0.3s;
-        }
-        .bio-content h3 {
-            font-size: 2em;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #333;
-            padding-bottom: 10px;
-        }
-        .bio-content p {
-            line-height: 1.8;
-            margin-bottom: 30px;
-        }
-        .why-us-section {
-            background-color: #1b1b1b;
-            color: #fff;
-            padding: 100px 20px;
-            text-align: center;
-        }
-        .why-us-title {
-            font-size: 3em;
-            margin-bottom: 50px;
-        }
-        .why-us-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            gap: 20px;
-        }
-        .why-us-item {
-            display: flex;
-            align-items: center;
-            font-size: 1.2em;
-            width: calc(50% - 20px);
-            max-width: 500px;
-            margin-bottom: 30px;
-        }
-        .why-us-item img {
-            width: 40px;
-            height: 40px;
-            margin-right: 20px;
-        }
-        @keyframes slideIn {
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-        @keyframes slideInImage {
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-        @keyframes slideInContent {
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-    .apply-button {
-            display: inline-block;
-            padding: 12px 25px;
+            padding: 10px 20px;
             margin-top: 20px;
             background-color: #007BFF;
             color: #fff;
-            border: none;
             border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, background-color 0.3s;
         }
-        .apply-button:hover {
+
+        .work-button:hover {
             background-color: #0056b3;
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
-            @media (max-width: 600px) {
-            .vacancy-list {
-                grid-template-columns: 1fr;
-                padding: 10px;
-            }
-            .vacancy {
-                padding: 15px;
-                font-size: 0.9em;
-                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-                margin-bottom: 15px;
-            }
-            .vacancy ul {
-                padding: 0;
-                list-style-type: none;
-                text-align: left;
-                margin: 0;
-            }
-            .vacancy li {
-                margin-bottom: 10px;
-                font-size: 0.95em;
-            }
-            .filter-options {
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-                margin-bottom: 20px;
-            }
-            .filter-button {
-                width: 90%;
-                margin: 5px 0;
-                font-size: 1em;
-            }
-            .filter-location {
-                order: -1;
-                width: 100%;
-                margin-bottom: 10px;
-                text-align: center;
-            }
-        }
-            .vacancy {
-                padding: 15px;
-                font-size: 0.9em;
-                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-                margin-bottom: 15px;
-            }
-            .vacancy ul {
-                padding: 0;
-                list-style-type: none;
-                text-align: left;
-                margin: 0;
-            }
-            .vacancy li {
-                margin-bottom: 10px;
-                font-size: 0.95em;
-            }
-        }
-            .filter-location {
-                order: -1;
-                width: 100%;
-                margin-bottom: 10px;
-                text-align: center;
-            }
-            .filter-button {
-                width: 100%;
-                margin: 5px 0;
-                font-size: 1em;
-            }
-        }
-            .filter-location {
-                order: -1;
-                width: 100%;
-                margin-bottom: 10px;
-                text-align: center;
-            }
-            .filter-button {
-                width: 90%;
-                margin-bottom: 10px;
-                font-size: 1em;
-            }
-        }
-            details {
-            transition: max-height 0.6s ease, padding 0.6s ease;
-            overflow: hidden;
-        }
-        summary {
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            color: #007BFF;
-        }
-        details[open] {
-            animation: expand 1s ease;
-        }
-        @keyframes expand {
-            from {
-                max-height: 0;
-            }
-            to {
-                max-height: 1000px;
-            }
-        }
-            to {
-                max-height: 1000px;
-            }
-        }
-    </style>
-<style>
-        .filter-location {
-            margin-top: 20px;
+
+        .filter-options {
             display: flex;
             justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            background-color: #f9f9f9;
         }
-        .filter-location select {
+
+        .filter-options select, .filter-options button {
             padding: 10px;
             font-size: 1em;
-            margin: 0 10px;
             border-radius: 8px;
             border: 1px solid #ccc;
+        }
+
+        .vacancy-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .vacancy {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            position: relative;
+        }
+
+        .vacancy h3 {
+            font-size: 1.5em;
+            color: #007BFF;
+            margin-bottom: 10px;
+        }
+
+        .vacancy ul {
+            list-style-type: none;
+            padding: 0;
+            font-size: 0.9em;
+            margin: 0 0 15px;
+        }
+
+        .vacancy ul li {
+            margin-bottom: 5px;
+        }
+
+        .apply-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .apply-button:hover {
+            transform: scale(1.1);
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Актуальні вакансії Flambir</h1>
-        <p>Робота в Польщі для українців</p>
-        <a href="#" class="work-button">Подати заявку</a>
+        <div>
+            <h1>Актуальные вакансии Flambir</h1>
+            <p>Работа в Польше для украинцев</p>
+            <a href="#" class="work-button">Подать заявку</a>
+        </div>
     </header>
-    
-    <section class="why-us-section">
-        <h2 class="why-us-title">ЧОМУ ОБИРАЮТЬ НАС</h2>
-        <div class="why-us-list">
-            <div class="why-us-item"><span>ПРЯМИЙ РОБОТОДАВЕЦЬ</span>
-            </div>
-            <div class="why-us-item"><span>ПРИВАТНЕ МЕДИЧНЕ СТРАХУВАННЯ</span>
-            </div>
-            <div class="why-us-item"><span>ONLINE ПІДТРИМКА 24/7</span>
-            </div>
-            <div class="why-us-item">
-                
-                <span>ВИДАЧА ПОЛЬСЬКИХ SIM</span>
-            </div>
-            <div class="why-us-item">
-                
-                <span>ВЕЛИКИЙ ВИБІР ВАКАНСІЙ</span>
-            </div>
-            <div class="why-us-item">
-                
-                <span>ОРГАНІЗАЦІЯ ДОЇЗДУ</span>
-            </div>
-            <div class="why-us-item">
-              
-                <span>АВАНС ПІСЛЯ 5 ДНІВ ПРАЦІ</span>
-            </div>
-            <div class="why-us-item">
-               
-                <span>ВИСОКА ЗАРОБІТНЯ ПЛАТА</span>
-            </div>
-        </div>
-        <h2 style="margin-top: 50px;">НАМ ДОВІРЯЮТЬ</h2>
-    </section>
 
-    <section class="bio-section">
-        <h2 class="bio-title">СПЕЦІАЛІСТИ ТА РОБОТА БЕЗ ДОСВІДУ</h2>
-        <div class="filter-options">
-            <div class="filter-location">
-                <label for="location-filter">Локація:</label>
-                <select id="location-filter" onchange="filterByLocation()">
-                    <option value="all">Усі локації</option>
-                    <option value="Варшава">Варшава</option>
-                    <option value="Надолице Мале">Надолице Мале</option>
-                    <option value="Бржег Дольни">Бржег Дольни</option>
-                    <option value="Лодзь">Лодзь</option>
-                    <option value="Познань">Познань</option>
-                    <option value="Вроцлав">Вроцлав</option>
-                </select>
-            </div>
-            <button onclick="filterVacancies('specialist')" class="filter-button">Спеціалісти</button>
-            <button onclick="filterVacancies('no-experience')" class="filter-button">Досвід не потрібен</button>
-            <button onclick="filterVacancies('all')" class="filter-button">Усі вакансії</button>
+    <div class="filter-options">
+        <select id="location-filter" onchange="filterVacancies()">
+            <option value="all">Все локации</option>
+            <option value="Варшава">Варшава</option>
+            <option value="Лодзь">Лодзь</option>
+            <option value="Познань">Познань</option>
+        </select>
+        <button onclick="filterVacancies('specialist')">Специалисты</button>
+        <button onclick="filterVacancies('no-experience')">Без опыта</button>
+        <button onclick="filterVacancies('all')">Все вакансии</button>
+    </div>
+
+    <div class="vacancy-list">
+        <div class="vacancy no-experience" data-location="Лодзь">
+            <h3>Швея</h3>
+            <ul>
+                <li>Локация: Лодзь</li>
+                <li>Ставка: 24 зл/час</li>
+                <li>График: 8-часовой рабочий день</li>
+            </ul>
+            <button class="apply-button">Подать заявку</button>
         </div>
-        
-            
-            
-            <details class="vacancy no-experience">
-                <summary style="font-size: 1.8em; margin-bottom: 20px; color: #007BFF;">Вакансія: Swaczka</summary>
-                <ul>
-                    <li>Назва та місце роботи: Polna 37, 55-003 Nadolice Małe</li>
-                    <li>Посада: Swaczka</li>
-                    <li>Ставка (год/нетто): PIT2 - 24 zl, Ставка - 23 zl</li>
-                    <li>Тип угоди: Umowa zlecenia</li>
-                    <li>Проживання: По стороні працівника</li>
-                    <li>Харчування: По стороні працівника</li>
-                    <li>Доїзд від житла до місця роботи: По стороні працівника</li>
-                    <li>Кількість роб год в місяць: 8-ми годинний робочий день з понеділка по п'ятницю, можлива робота в суботу</li>
-                    <li>Графік роботи: 7-15 або з 8-16, є одна 20-хвилинна оплачувана перерва</li>
-                    <li>Вихідні дні: сб, нд</li>
-                    <li>Основні обов’язки: шиття одежі легкої, комплекти спортивні, білизна, костюми для виступів</li>
-                    <li>Вимоги: немає обмежень по віку, вміти шити</li>
-                    <li>Додаткова інформація: свій зручний одяг</li>
-                    <li>Медична книжка: не вимагається</li>
-                    <li>Система виплат: Аванс після 5 днів праці - 100 зл, після 14 днів - 200 зл, після 21 дня - 200 зл. Заробітна плата з 15 по 20 число кожного місяця, банківським переказом. Штраф за не відпрацювання 14 днів - 500 зл</li>
-                </ul>
-                <button class="apply-button">Подати заявку</button>
-            </details>
+        <div class="vacancy specialist" data-location="Варшава">
+            <h3>Инженер</h3>
+            <ul>
+                <li>Локация: Варшава</li>
+                <li>Ставка: 30 зл/час</li>
+                <li>График: Полный рабочий день</li>
+            </ul>
+            <button class="apply-button">Подать заявку</button>
         </div>
+        <div class="vacancy no-experience" data-location="Познань">
+            <h3>Уборщик</h3>
+            <ul>
+                <li>Локация: Познань</li>
+                <li>Ставка: 20 зл/час</li>
+                <li>График: Гибкий</li>
+            </ul>
+            <button class="apply-button">Подать заявку</button>
         </div>
-    </section>
-    <style>
-        .bio-title {
-            font-size: 2.5em;
-            text-align: center;
-            margin-bottom: 50px;
-            color: #1b1b1b;
-        }
-        .filter-options {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 30px;
-        }
-        .filter-button {
-            padding: 10px 20px;
-            margin: 0 10px;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .filter-button:hover {
-            background-color: #555;
-        }
-        .vacancy-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            justify-content: center;
-            padding: 20px;
-            background: linear-gradient(135deg, #e6e6e6, #ffffff);
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        .vacancy {
-            background: #ffffff;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            padding: 20px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            overflow: hidden;
-            position: relative;
-            text-align: center;
-            margin: 10px auto;
-            border-left: 5px solid #007BFF;
-            max-width: 90%;
-        }
-        .vacancy:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-            border-left: 5px solid #0056b3;
-        }
-        .vacancy h3 {
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            color: #007BFF;
-        }
-        .vacancy p {
-            font-size: 1.1em;
-            line-height: 1.6;
-            color: #333;
-            margin-bottom: 15px;
-        }
-    </style>
+    </div>
+
     <script>
-        function filterVacancies(type) {
+        function filterVacancies(type = 'all') {
+            const location = document.getElementById('location-filter').value.toLowerCase();
             const vacancies = document.querySelectorAll('.vacancy');
+
             vacancies.forEach(vacancy => {
-                if (type === 'all') {
-                    vacancy.style.display = 'block';
-                } else if (vacancy.classList.contains(type)) {
-                    vacancy.style.display = 'block';
-                } else {
-                    vacancy.style.display = 'none';
-                }
-            });
-        }
-    </script>
-<script>
-        function filterByLocation() {
-            const location = document.getElementById('location-filter').value;
-            const vacancies = document.querySelectorAll('.vacancy');
-            vacancies.forEach(vacancy => {
-                const locationText = vacancy.querySelector('ul li:nth-child(1)').innerText;
-                const city = locationText.split(',')[1]?.trim().toLowerCase();
-                if (location === 'all' || (city && city.includes(location.toLowerCase()))) {
-                    vacancy.style.display = 'block';
-                } else {
-                    vacancy.style.display = 'none';
-                }
-            });
-        }
-        function filterVacancies(type) {
-            const vacancies = document.querySelectorAll('.vacancy');
-            const location = document.getElementById('location-filter').value;
-            vacancies.forEach(vacancy => {
-                const locationText = vacancy.querySelector('ul li:nth-child(1)').innerText;
-                if ((type === 'all' || vacancy.classList.contains(type)) && (location === 'all' || locationText.includes(location))) {
-                    vacancy.style.display = 'block';
-                } else {
-                    vacancy.style.display = 'none';
-                }
+                const vacancyLocation = vacancy.dataset.location.toLowerCase();
+                const matchesType = type === 'all' || vacancy.classList.contains(type);
+                const matchesLocation = location === 'all' || vacancyLocation.includes(location);
+
+                vacancy.style.display = matchesType && matchesLocation ? 'block' : 'none';
             });
         }
     </script>
