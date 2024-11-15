@@ -142,81 +142,152 @@
     </header>
 
     <div class="filter-options">
-        <select id="location-filter" onchange="applyFilters()">
+        <select id="location-filter">
             <option value="all">Усі локації</option>
-            <option value="Варшава">Варшава</option>
-            <option value="Краків">Краків</option>
+            <!-- Места работы будут добавляться динамически -->
         </select>
 
-        <select id="qualification-filter" onchange="applyFilters()">
+        <select id="qualification-filter">
             <option value="all">Усі кваліфікації</option>
-            <option value="Кухар">Кухар</option>
-            <option value="Касир">Касир</option>
-            <option value="Бухгалтер">Бухгалтер</option>
+            <!-- Квалификации будут добавляться динамически -->
         </select>
 
         <button onclick="applyFilters()">Показати всі вакансії</button>
     </div>
 
-    <div class="vacancy-list">
-        <!-- Вакансія Kucharz -->
-        <div class="vacancy" 
-             data-location="Варшава" 
-             data-qualification="Кухар"
-             data-requirements="досвід роботи кухарем, комунікативна польська мова, санепід">
-            <h3>Kucharz</h3>
+    <div class="vacancy-list" id="vacancy-list">
+        <!-- Вакансії будуть додаватися тут -->
+        <div class="vacancy" data-location="Вроцлав" data-qualification="Спеціалісти">
+            <h3>Kucharz - Вроцлав</h3>
             <ul>
-                <li><b>Назва та місце роботи:</b> <a href="https://kuchniamarche.pl/" target="_blank">Kuchnia Marche</a></li>
-                <li><b>Посада:</b> кухар</li>
-                <li><b>Ставка (год/нетто):</b> 28 зл, після першого місяця 30 зл (PIT2); 27 зл, після першого місяця 29 зл</li>
-                <li><b>Тип угоди:</b> Umowa zlecenia</li>
-                <li><b>Години роботи в місяць:</b> 180-240</li>
-                <li><b>Графік роботи:</b> 06:30-17:00, 7:00-19:00 та інші</li>
-                <li><b>Обов’язки:</b> приготування страв, утримання чистоти на робочому місці</li>
-                <li><b>Вимоги:</b> санепід, досвід роботи кухарем, комунікативна польська</li>
+                <li><strong>Ставка:</strong> 27 зл/год, після місяця - 29 зл/год</li>
+                <li><strong>Тип угоди:</strong> Umowa zlecenia</li>
+                <li><strong>Графік роботи:</strong> 06:30-17:00, 7:00-19:00, 7:00-21:00, 9:00-21:30, 11:00-21:00, 11:00-22:00</li>
+                <li><strong>Обов’язки:</strong> Приготування страв, порціонування, контроль якості, підтримка чистоти на робочому місці</li>
+                <li><strong>Вимоги:</strong> Досвід роботи кухарем, знання польської мови, медична книжка</li>
+                <li><strong>Житло:</strong> За рахунок працівника</li>
+                <li><strong>Харчування:</strong> надається</li>
             </ul>
-            <button class="apply-button">Подати заявку</button>
-        </div>
-
-        <!-- Вакансія Kasjer -->
-        <div class="vacancy" 
-             data-location="Варшава" 
-             data-qualification="Касир"
-             data-requirements="польська мова B1, обслуговування каси, санепід">
-            <h3>Kasjer, pracownik obsługi</h3>
-            <ul>
-                <li><b>Назва та місце роботи:</b> <a href="https://kuchniamarche.pl/" target="_blank">Kuchnia Marche</a></li>
-                <li><b>Посада:</b> Касир</li>
-                <li><b>Ставка (год/нетто):</b> 24 зл (PIT2); 23 зл</li>
-                <li><b>Тип угоди:</b> Umowa zlecenia</li>
-                <li><b>Години роботи в місяць:</b> 180-240</li>
-                <li><b>Графік роботи:</b> 06:30-17:00, 7:00-19:00 та інші</li>
-                <li><b>Обов’язки:</b> обслуговування клієнтів, продаж, приготування напоїв, розрахунок каси</li>
-                <li><b>Вимоги:</b> польська мова B1, досвід роботи, санепід</li>
-            </ul>
-            <button class="apply-button">Подати заявку</button>
+            <a href="#" class="apply-button">Подати заявку</a>
         </div>
     </div>
 
     <script>
-        // Функція для застосування фільтрів
-        function applyFilters() {
-            const location = document.getElementById('location-filter').value.toLowerCase();
-            const qualification = document.getElementById('qualification-filter').value.toLowerCase();
-            const vacancies = document.querySelectorAll('.vacancy');
+        const vacancies = [
+            {
+                title: "Kucharz - Вроцлав",
+                location: "Вроцлав",
+                qualification: "Спеціалісти",
+                hourlyRate: "27 зл/год, після місяця - 29 зл/год",
+                workSchedule: "06:30-17:00, 7:00-19:00, 7:00-21:00, 9:00-21:30, 11:00-21:00, 11:00-22:00",
+                duties: [
+                    "Приготування страв",
+                    "Порціонування страв",
+                    "Контроль якості",
+                    "Підтримка чистоти на робочому місці"
+                ],
+                requirements: [
+                    "Досвід роботи кухарем",
+                    "Знання польської мови",
+                    "Медична книжка"
+                ],
+                housing: "За рахунок працівника",
+                food: "надається"
+            }
+            // Додати інші вакансії по аналогії
+        ];
+
+        // Динамічно додаємо місця роботи та кваліфікації
+        const locationFilter = document.getElementById('location-filter');
+        const qualificationFilter = document.getElementById('qualification-filter');
+        const vacancyList = document.getElementById('vacancy-list');
+
+        function updateFilters() {
+            let locations = new Set();
+            let qualifications = new Set();
 
             vacancies.forEach(vacancy => {
-                const vacancyLocation = vacancy.getAttribute('data-location').toLowerCase();
-                const vacancyQualification = vacancy.getAttribute('data-qualification').toLowerCase();
+                locations.add(vacancy.location);
+                qualifications.add(vacancy.qualification);
+            });
 
-                if ((location === 'all' || vacancyLocation.includes(location)) &&
-                    (qualification === 'all' || vacancyQualification.includes(qualification))) {
-                    vacancy.style.display = 'block'; // Показуємо вакансію
-                } else {
-                    vacancy.style.display = 'none'; // Приховуємо вакансію
-                }
+            locations.forEach(location => {
+                let option = document.createElement('option');
+                option.value = location;
+                option.textContent = location;
+                locationFilter.appendChild(option);
+            });
+
+            qualifications.forEach(qualification => {
+                let option = document.createElement('option');
+                option.value = qualification;
+                option.textContent = qualification;
+                qualificationFilter.appendChild(option);
             });
         }
+
+        // Додаємо вакансії до списку
+        function displayVacancies() {
+            vacancies.forEach(vacancy => {
+                let vacancyElement = document.createElement('div');
+                vacancyElement.classList.add('vacancy');
+                vacancyElement.setAttribute('data-location', vacancy.location);
+                vacancyElement.setAttribute('data-qualification', vacancy.qualification);
+
+                vacancyElement.innerHTML = `
+                    <h3>${vacancy.title}</h3>
+                    <ul>
+                        <li><strong>Ставка:</strong> ${vacancy.hourlyRate}</li>
+                        <li><strong>Тип угоди:</strong> Umowa zlecenia</li>
+                        <li><strong>Графік роботи:</strong> ${vacancy.workSchedule}</li>
+                        <li><strong>Обов’язки:</strong> ${vacancy.duties.join(', ')}</li>
+                        <li><strong>Вимоги:</strong> ${vacancy.requirements.join(', ')}</li>
+                        <li><strong>Житло:</strong> ${vacancy.housing}</li>
+                        <li><strong>Харчування:</strong> ${vacancy.food}</li>
+                    </ul>
+                    <a href="#" class="apply-button">Подати заявку</a>
+                `;
+                vacancyList.appendChild(vacancyElement);
+            });
+        }
+
+        function applyFilters() {
+            const selectedLocation = locationFilter.value;
+            const selectedQualification = qualificationFilter.value;
+
+            const filteredVacancies = vacancies.filter(vacancy => {
+                const matchesLocation = selectedLocation === 'all' || vacancy.location === selectedLocation;
+                const matchesQualification = selectedQualification === 'all' || vacancy.qualification === selectedQualification;
+                return matchesLocation && matchesQualification;
+            });
+
+            vacancyList.innerHTML = '';
+            filteredVacancies.forEach(vacancy => {
+                let vacancyElement = document.createElement('div');
+                vacancyElement.classList.add('vacancy');
+                vacancyElement.setAttribute('data-location', vacancy.location);
+                vacancyElement.setAttribute('data-qualification', vacancy.qualification);
+
+                vacancyElement.innerHTML = `
+                    <h3>${vacancy.title}</h3>
+                    <ul>
+                        <li><strong>Ставка:</strong> ${vacancy.hourlyRate}</li>
+                        <li><strong>Тип угоди:</strong> Umowa zlecenia</li>
+                        <li><strong>Графік роботи:</strong> ${vacancy.workSchedule}</li>
+                        <li><strong>Обов’язки:</strong> ${vacancy.duties.join(', ')}</li>
+                        <li><strong>Вимоги:</strong> ${vacancy.requirements.join(', ')}</li>
+                        <li><strong>Житло:</strong> ${vacancy.housing}</li>
+                        <li><strong>Харчування:</strong> ${vacancy.food}</li>
+                    </ul>
+                    <a href="#" class="apply-button">Подати заявку</a>
+                `;
+                vacancyList.appendChild(vacancyElement);
+            });
+        }
+
+        // ініціалізація
+        updateFilters();
+        displayVacancies();
     </script>
 </body>
 </html>
