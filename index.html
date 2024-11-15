@@ -148,12 +148,6 @@
             <option value="Краків">Краків</option>
         </select>
 
-        <select id="country-filter" onchange="applyFilters()">
-            <option value="all">Усі країни</option>
-            <option value="Польща">Польща</option>
-            <option value="Україна">Україна</option>
-        </select>
-
         <select id="qualification-filter" onchange="applyFilters()">
             <option value="all">Усі кваліфікації</option>
             <option value="Кухар">Кухар</option>
@@ -168,7 +162,6 @@
         <!-- Вакансія Kucharz -->
         <div class="vacancy" 
              data-location="Варшава" 
-             data-country="Польща"
              data-qualification="Кухар"
              data-requirements="досвід роботи кухарем, комунікативна польська мова, санепід">
             <h3>Kucharz</h3>
@@ -188,7 +181,6 @@
         <!-- Вакансія Kasjer -->
         <div class="vacancy" 
              data-location="Варшава" 
-             data-country="Польща"
              data-qualification="Касир"
              data-requirements="польська мова B1, обслуговування каси, санепід">
             <h3>Kasjer, pracownik obsługi</h3>
@@ -207,8 +199,24 @@
     </div>
 
     <script>
-        // Функция для применения фильтров
+        // Функція для застосування фільтрів
         function applyFilters() {
             const location = document.getElementById('location-filter').value.toLowerCase();
-            const country = document.getElementById('country-filter').value.toLowerCase();
-            const qualification = document.getElement
+            const qualification = document.getElementById('qualification-filter').value.toLowerCase();
+            const vacancies = document.querySelectorAll('.vacancy');
+
+            vacancies.forEach(vacancy => {
+                const vacancyLocation = vacancy.getAttribute('data-location').toLowerCase();
+                const vacancyQualification = vacancy.getAttribute('data-qualification').toLowerCase();
+
+                if ((location === 'all' || vacancyLocation.includes(location)) &&
+                    (qualification === 'all' || vacancyQualification.includes(qualification))) {
+                    vacancy.style.display = 'block'; // Показуємо вакансію
+                } else {
+                    vacancy.style.display = 'none'; // Приховуємо вакансію
+                }
+            });
+        }
+    </script>
+</body>
+</html>
