@@ -258,4 +258,41 @@
 
         function applyFilters() {
             const selectedLocation = locationFilter.value;
-           
+            const selectedQualification = qualificationFilter.value;
+
+            const filteredVacancies = vacancies.filter(vacancy => {
+                const matchesLocation = selectedLocation === 'all' || vacancy.location === selectedLocation;
+                const matchesQualification = selectedQualification === 'all' || vacancy.qualification === selectedQualification;
+                return matchesLocation && matchesQualification;
+            });
+
+            vacancyList.innerHTML = '';
+            filteredVacancies.forEach(vacancy => {
+                let vacancyElement = document.createElement('div');
+                vacancyElement.classList.add('vacancy');
+                vacancyElement.setAttribute('data-location', vacancy.location);
+                vacancyElement.setAttribute('data-qualification', vacancy.qualification);
+
+                vacancyElement.innerHTML = `
+                    <h3>${vacancy.title}</h3>
+                    <ul>
+                        <li><strong>Ставка:</strong> ${vacancy.hourlyRate}</li>
+                        <li><strong>Тип угоди:</strong> Umowa zlecenia</li>
+                        <li><strong>Графік роботи:</strong> ${vacancy.workSchedule}</li>
+                        <li><strong>Обов’язки:</strong> ${vacancy.duties.join(', ')}</li>
+                        <li><strong>Вимоги:</strong> ${vacancy.requirements.join(', ')}</li>
+                        <li><strong>Житло:</strong> ${vacancy.housing}</li>
+                        <li><strong>Харчування:</strong> ${vacancy.food}</li>
+                    </ul>
+                    <a href="#" class="apply-button">Подати заявку</a>
+                `;
+                vacancyList.appendChild(vacancyElement);
+            });
+        }
+
+        // Ініціалізація
+        updateFilters();
+        displayVacancies();
+    </script>
+</body>
+</html>
