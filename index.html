@@ -14,14 +14,25 @@
             background-color: #f4f4f4;
         }
 
-        @keyframes fadeIn {
+        @keyframes fadeInText {
             0% {
                 opacity: 0;
-                transform: translateY(-20px);
+                transform: translateY(-50px);
             }
             100% {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInButton {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
             }
         }
 
@@ -33,9 +44,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             color: #fff;
             text-align: center;
-            animation: fadeIn 1.5s ease-in-out;
+            overflow: hidden;
         }
 
         header::after {
@@ -49,7 +61,7 @@
             z-index: 1;
         }
 
-        header h1, header p {
+        header h1, header p, .work-button {
             position: relative;
             z-index: 2;
         }
@@ -57,11 +69,15 @@
         header h1 {
             font-size: 3em;
             margin: 0 0 10px;
+            animation: fadeInText 1.5s ease-in-out;
         }
 
         header p {
             font-size: 1.2em;
             margin: 0;
+            animation: fadeInText 1.5s ease-in-out;
+            animation-delay: 0.5s;
+            animation-fill-mode: both;
         }
 
         .work-button {
@@ -75,6 +91,9 @@
             font-weight: bold;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInButton 1s ease-in-out;
+            animation-delay: 1s;
+            animation-fill-mode: both;
         }
 
         .work-button:hover {
@@ -106,32 +125,6 @@
             text-align: center;
         }
 
-        /* Медіазапити для мобільних пристроїв */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.2em;
-            }
-
-            .filter-options {
-                flex-direction: column;
-                gap: 10px;
-                padding: 15px;
-            }
-
-            .filter-options select, .filter-options button {
-                width: 100%;
-                padding: 12px;
-            }
-
-            .filter-options p {
-                font-size: 0.9em;
-                color: #333;
-                margin-top: 15px;
-                padding: 10px;
-            }
-        }
-
-        /* Основні стилі для вакансій */
         .vacancy-list {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -194,11 +187,9 @@
 </head>
 <body>
     <header>
-        <div>
-            <h1>Актуальні вакансії Flambir</h1>
-            <p>Робота в Польщі для українців</p>
-            <a href="#" class="work-button">Подати заявку</a>
-        </div>
+        <h1>Актуальні вакансії Flambir</h1>
+        <p>Робота в Польщі для українців</p>
+        <a href="#" class="work-button">Подати заявку</a>
     </header>
 
     <div class="filter-options">
