@@ -12,6 +12,7 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            overflow-x: hidden;
         }
 
         header {
@@ -54,13 +55,14 @@
 
         .work-button {
             display: inline-block;
-            padding: 10px 20px;
+            padding: 12px 30px;
             margin-top: 20px;
             background-color: #007BFF;
             color: #fff;
             border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
+            font-size: 1.1em;
             transition: transform 0.3s, background-color 0.3s;
         }
 
@@ -76,6 +78,7 @@
             padding: 20px;
             background-color: #fff;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-out;
         }
 
         .filter-options select, .filter-options button {
@@ -124,6 +127,8 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             padding: 20px;
+            opacity: 0; /* Исходно скрыт */
+            animation: fadeIn 1.5s forwards 0.5s; /* Плавное появление */
         }
 
         .vacancy {
@@ -177,6 +182,17 @@
         .apply-button:focus {
             outline: none;
         }
+
+        /* Анимация появления */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -256,8 +272,9 @@
                 vacancyElement.innerHTML = `
                     <h3>${vacancy.title}</h3>
                     <ul>
-                        <li><strong>Ставка:</strong> ${vacancy.hourlyRate}</li>
-                        <li><strong>Тип угоди:</strong> Umowa zlecenia</li>
+                        <li><strong>Місцезнаходження:</strong> ${vacancy.location}</li>
+                        <li><strong>Кваліфікація:</strong> ${vacancy.qualification}</li>
+                        <li><strong>Година оплати:</strong> ${vacancy.hourlyRate}</li>
                         <li><strong>Графік:</strong> ${vacancy.workSchedule}</li>
                         <li><strong>Обов'язки:</strong> ${vacancy.duties.join(', ')}</li>
                         <li><strong>Вимоги:</strong> ${vacancy.requirements.join(', ')}</li>
