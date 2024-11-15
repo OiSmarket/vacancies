@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вакансії Flambir</title>
+    <title>Вакансии Flambir</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Основні стилі */
+        /* Основные стили */
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
@@ -103,7 +103,7 @@
             }
 
             .filter-options select, .filter-options button {
-                width: 100%; /* растягиваем фильтры на весь экран */
+                width: 100%; /* расширение фильтров на весь экран */
                 padding: 12px;
             }
 
@@ -169,150 +169,44 @@
 <body>
     <header>
         <div>
-            <h1>Актуальні вакансії Flambir</h1>
-            <p>Робота в Польщі для українців</p>
-            <a href="#" class="work-button">Подати заявку</a>
+            <h1>Актуальные вакансии Flambir</h1>
+            <p>Работа в Польше для украинцев</p>
+            <a href="#" class="work-button">Подать заявку</a>
         </div>
     </header>
 
     <div class="filter-options">
         <select id="location-filter">
-            <option value="all">Усі локації</option>
-            <!-- Места работы будут добавляться динамически -->
+            <option value="all">Все локации</option>
         </select>
 
         <select id="qualification-filter">
-            <option value="all">Усі кваліфікації</option>
-            <!-- Квалификации будут добавляться динамически -->
+            <option value="all">Все квалификации</option>
         </select>
 
-        <button onclick="applyFilters()">Показати всі вакансії</button>
+        <button onclick="applyFilters()">Показать все вакансии</button>
 
-        <!-- Текстовая подсказка под фильтрами -->
-        <p>Виберіть необхідну локацію та свою кваліфікацію і натисніть "Показати вакансії".</p>
+        <p>Выберите нужную локацию и вашу квалификацию, а затем нажмите "Показать вакансии".</p>
     </div>
 
-    <div class="vacancy-list" id="vacancy-list">
-        <!-- Вакансії будуть додаватися тут -->
-    </div>
+    <div class="vacancy-list" id="vacancy-list"></div>
 
     <script>
         const vacancies = [
             {
-    title: "Kucharz - Wrocław",
-    location: "Wrocław",
-    qualification: "Спеціалісти",
-    hourlyRate: "zł 24 (PIT2: zł 25)",
-    contractType: "Umowa zlecenia",
-    workSchedule: "06:00-14:00, пн-пт, перерва 15 хв в 11 год.",
-    breaks: "Оплачувана перерва на 15 хвилин, безкоштовний обід.",
-    weekends: "П'ятиденний робочий тиждень",
-    duties: [
-        "Приготування страв відповідно до норм та рецептури.",
-        "Утримання робочого місця в чистоті.",
-        "Перевезення страв на іншу локацію."
-    ],
-    additionalDuties: [
-        "Готує домашню їжу, 2 рази на день на території заводу.",
-        "Розвозить їжу на автомобілі Dacia (механіка, коробка передач).",
-        "Присутність фіксується при вході через картку на рецепції."
-    ],
-    requirements: [
-        "Бажано чоловік (орієнтовна вага для перевезення до 10 кг).",
-        "Досвід роботи кухарем.",
-        "Обов'язкова комунікативна польська мова."
-    ],
-    clothing: [
-        "Кухарська сорочка, фартух, шапка.",
-        "Чорні штани, чорне неслизьке взуття (по стороні працівника)."
-    ],
-    medicalRequirements: [
-        "Медична книжка/освядчення лікарське.",
-        "Санепід та ожичення лікарське."
-    ],
-    housing: {
-        providedByEmployee: "По стороні працівника",
-        additionalInfo: "Тип житла не зазначено"
-    },
-    salary: "Аванс: після 5 днів праці - 100 зл; після 14 днів праці - 200 зл; після 21 дня праці - 200 зл.",
-    paymentSchedule: "Аванс: після 5 днів праці - 100 зл; після 14 днів праці - 200 зл; після 21 дня праці - 200 зл.",
-    salaryDates: "Зарплата виплачується з 15 по 20 число кожного місяця. Перерахування через банк.",
-    penalty: "Штраф за не відпрацювання 14 днів: 500 зл.",
-    contactPhone: "+48 123 456 789",
-    videoLinks: [
-        "https://kbcatering.pl/"
-    ]
-},
-
-            {
-                title: "Kucharz - Szczecin",
-                location: "Szczecin",
-                qualification: "Спеціалісти",
-                hourlyRate: "27 зл/год, після місяця - 29 зл/год",
-                workSchedule: "06:30-17:00, 7:00-19:00, 7:00-21:00, 9:00-21:30, 11:00-21:00, 11:00-22:00",
-                duties: [
-                    "Приготування страв",
-                    "Порціонування страв",
-                    "Контроль якості",
-                    "Підтримка чистоти на робочому місці"
-                ],
-                requirements: [
-                    "Досвід роботи кухарем",
-                    "Знання польської мови",
-                    "Медична книжка"
-                ],
-                housing: "За рахунок працівника",
-                food: "надається"
+                title: "Kucharz - Wrocław",
+                location: "Wrocław",
+                qualification: "Специалисты",
+                hourlyRate: "zł 24 (PIT2: zł 25)",
+                workSchedule: "06:00-14:00, пн-пт, перерыв 15 мин в 11:00",
+                duties: ["Приготовление блюд", "Содержание рабочего места в чистоте"],
+                requirements: ["Желательно мужчина", "Опыт работы поваром"],
+                housing: "За счет работника",
+                salary: "Аванс: после 5 дней работы - 100 зл"
             },
-            {
-                title: "Kucharz - Gdańsk",
-                location: "Gdańsk",
-                qualification: "Спеціалісти",
-                hourlyRate: "25 зл/год",
-                workSchedule: "06:30-17:00, 7:00-19:00, 7:00-21:00, 9:00-21:30, 11:00-21:00, 11:00-22:00",
-                duties: [
-                    "Приготування страв",
-                    "Порціонування страв",
-                    "Контроль якості",
-                    "Підтримка чистоти на робочому місці"
-                ],
-                requirements: [
-                    "Без досвіду роботи",
-                    "Знання польської мови буде перевагою"
-                ],
-                housing: "За рахунок працівника",
-                food: "надається"
-            },
-            {
-                title: "Kucharz - Warszawa",
-                location: "Warszawa",
-                qualification: "Спеціалісти",
-                hourlyRate: "zł 28",
-                workSchedule: "06:30-17:00, 7:00-19:00, 7:00-21:00, 9:00-21:30, 11:00-21:00, 11:00-22:00",
-                duties: [
-                    "приготування страв",
-                    "приготування та порціонування страв",
-                    "виготовлення страв",
-                    "забезпечення їх якості та способу обслуговування споживачів",
-                    "утримання робочого місця в чистоті"
-                ],
-                requirements: [
-                    "немає обмежень по віку",
-                    "досвід роботи кухарем",
-                    "комунікативна польська мова"
-                ],
-                housing: "По стороні працівника",
-                food: "надається",
-                additionalInfo: "Медична книжка/освядчення лікарське, Санепід та ожичення лікарське",
-                salary: "Аванс: після 5 днів праці - 100 зл; після 14 днів праці - 200 зл; після 21 дня праці - 200 зл.",
-                videoLinks: [
-                    "https://youtu.be/PNCUQOLBi_k",
-                    "https://youtu.be/VDigpoEb_cI"
-                ],
-            },
+            // Добавьте другие вакансии сюда
         ];
 
-        // Динамічно додаємо місця роботи та кваліфікації
         const locationFilter = document.getElementById('location-filter');
         const qualificationFilter = document.getElementById('qualification-filter');
         const vacancyList = document.getElementById('vacancy-list');
@@ -341,70 +235,43 @@
             });
         }
 
-        // Виведення вакансій
-        function displayVacancies() {
+        function displayVacancies(vacanciesToDisplay) {
             vacancyList.innerHTML = '';
-            vacancies.forEach(vacancy => {
+            vacanciesToDisplay.forEach(vacancy => {
                 let vacancyElement = document.createElement('div');
                 vacancyElement.classList.add('vacancy');
-                vacancyElement.setAttribute('data-location', vacancy.location);
-                vacancyElement.setAttribute('data-qualification', vacancy.qualification);
-
                 vacancyElement.innerHTML = `
                     <h3>${vacancy.title}</h3>
                     <ul>
                         <li><strong>Ставка:</strong> ${vacancy.hourlyRate}</li>
-                        <li><strong>Тип угоди:</strong> Umowa zlecenia</li>
-                        <li><strong>Графік роботи:</strong> ${vacancy.workSchedule}</li>
-                        <li><strong>Обов’язки:</strong> ${vacancy.duties.join(', ')}</li>
-                        <li><strong>Вимоги:</strong> ${vacancy.requirements.join(', ')}</li>
-                        <li><strong>Житло:</strong> ${vacancy.housing}</li>
-                        <li><strong>Харчування:</strong> ${vacancy.food}</li>
+                        <li><strong>Тип соглашения:</strong> Umowa zlecenia</li>
+                        <li><strong>График:</strong> ${vacancy.workSchedule}</li>
+                        <li><strong>Обязанности:</strong> ${vacancy.duties.join(', ')}</li>
+                        <li><strong>Требования:</strong> ${vacancy.requirements.join(', ')}</li>
+                        <li><strong>Жилье:</strong> ${vacancy.housing}</li>
+                        <li><strong>Зарплата:</strong> ${vacancy.salary}</li>
                     </ul>
-                    <a href="#" class="apply-button">Подати заявку</a>
+                    <button class="apply-button">Подать заявку</button>
                 `;
                 vacancyList.appendChild(vacancyElement);
             });
         }
 
-        // Фільтрація вакансій
         function applyFilters() {
             const selectedLocation = locationFilter.value;
             const selectedQualification = qualificationFilter.value;
 
-            const filteredVacancies = vacancies.filter(vacancy => {
-                const matchesLocation = selectedLocation === 'all' || vacancy.location === selectedLocation;
-                const matchesQualification = selectedQualification === 'all' || vacancy.qualification === selectedQualification;
-                return matchesLocation && matchesQualification;
+            let filteredVacancies = vacancies.filter(vacancy => {
+                return (selectedLocation === 'all' || vacancy.location === selectedLocation) &&
+                       (selectedQualification === 'all' || vacancy.qualification === selectedQualification);
             });
 
-            vacancyList.innerHTML = '';
-            filteredVacancies.forEach(vacancy => {
-                let vacancyElement = document.createElement('div');
-                vacancyElement.classList.add('vacancy');
-                vacancyElement.setAttribute('data-location', vacancy.location);
-                vacancyElement.setAttribute('data-qualification', vacancy.qualification);
-
-                vacancyElement.innerHTML = `
-                    <h3>${vacancy.title}</h3>
-                    <ul>
-                        <li><strong>Ставка:</strong> ${vacancy.hourlyRate}</li>
-                        <li><strong>Тип угоди:</strong> Umowa zlecenia</li>
-                        <li><strong>Графік роботи:</strong> ${vacancy.workSchedule}</li>
-                        <li><strong>Обов’язки:</strong> ${vacancy.duties.join(', ')}</li>
-                        <li><strong>Вимоги:</strong> ${vacancy.requirements.join(', ')}</li>
-                        <li><strong>Житло:</strong> ${vacancy.housing}</li>
-                        <li><strong>Харчування:</strong> ${vacancy.food}</li>
-                    </ul>
-                    <a href="#" class="apply-button">Подати заявку</a>
-                `;
-                vacancyList.appendChild(vacancyElement);
-            });
+            displayVacancies(filteredVacancies);
         }
 
-        // Ініціалізація
+        // Инициализация страницы
         updateFilters();
-        displayVacancies();
+        displayVacancies(vacancies);
     </script>
 </body>
 </html>
