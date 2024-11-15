@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вакансии Flambir</title>
+    <title>Вакансії Flambir</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Основные стили */
+        /* Основні стилі */
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f4f4f4;
         }
 
         header {
@@ -73,7 +74,8 @@
             justify-content: center;
             gap: 15px;
             padding: 20px;
-            background-color: #f9f9f9;
+            background-color: #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .filter-options select, .filter-options button {
@@ -90,10 +92,10 @@
             text-align: center;
         }
 
-        /* Медиазапросы для мобильных устройств */
+        /* Медіазапити для мобільних пристроїв */
         @media (max-width: 768px) {
             header h1 {
-                font-size: 2.2em; /* уменьшение заголовка */
+                font-size: 2.2em; /* зменшення заголовка */
             }
 
             .filter-options {
@@ -103,20 +105,20 @@
             }
 
             .filter-options select, .filter-options button {
-                width: 100%; /* расширение фильтров на весь экран */
+                width: 100%; /* розширення фільтрів на весь екран */
                 padding: 12px;
             }
 
-            /* Стиль для подсказки на мобильных устройствах */
+            /* Стиль для підказки на мобільних пристроях */
             .filter-options p {
-                font-size: 0.9em; /* уменьшение шрифта подсказки */
-                color: #333; /* темный цвет текста для лучшей видимости */
+                font-size: 0.9em; /* зменшення шрифта підказки */
+                color: #333; /* темний колір тексту для кращої видимості */
                 margin-top: 15px;
                 padding: 10px;
             }
         }
 
-        /* Основные стили для вакансий */
+        /* Основні стилі для вакансій */
         .vacancy-list {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -126,14 +128,20 @@
 
         .vacancy {
             background: #fff;
-            border-radius: 8px;
+            border-radius: 15px;
             padding: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            text-align: left;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .vacancy:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
 
         .vacancy h3 {
-            font-size: 1.5em;
+            font-size: 1.6em;
             color: #007BFF;
             margin-bottom: 10px;
         }
@@ -151,42 +159,47 @@
 
         .apply-button {
             display: inline-block;
-            padding: 10px 20px;
+            padding: 12px 25px;
             background-color: #28a745;
             color: #fff;
             border: none;
             border-radius: 8px;
             text-decoration: none;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: background-color 0.3s, transform 0.3s;
         }
 
         .apply-button:hover {
+            background-color: #218838;
             transform: scale(1.1);
+        }
+
+        .apply-button:focus {
+            outline: none;
         }
     </style>
 </head>
 <body>
     <header>
         <div>
-            <h1>Актуальные вакансии Flambir</h1>
-            <p>Работа в Польше для украинцев</p>
-            <a href="#" class="work-button">Подать заявку</a>
+            <h1>Актуальні вакансії Flambir</h1>
+            <p>Робота в Польщі для українців</p>
+            <a href="#" class="work-button">Подати заявку</a>
         </div>
     </header>
 
     <div class="filter-options">
         <select id="location-filter">
-            <option value="all">Все локации</option>
+            <option value="all">Усі локації</option>
         </select>
 
         <select id="qualification-filter">
-            <option value="all">Все квалификации</option>
+            <option value="all">Усі кваліфікації</option>
         </select>
 
-        <button onclick="applyFilters()">Показать все вакансии</button>
+        <button onclick="applyFilters()">Показати усі вакансії</button>
 
-        <p>Выберите нужную локацию и вашу квалификацию, а затем нажмите "Показать вакансии".</p>
+        <p>Виберіть потрібну локацію та вашу кваліфікацію, а потім натисніть "Показати вакансії".</p>
     </div>
 
     <div class="vacancy-list" id="vacancy-list"></div>
@@ -196,15 +209,15 @@
             {
                 title: "Kucharz - Wrocław",
                 location: "Wrocław",
-                qualification: "Специалисты",
+                qualification: "Спеціалісти",
                 hourlyRate: "zł 24 (PIT2: zł 25)",
-                workSchedule: "06:00-14:00, пн-пт, перерыв 15 мин в 11:00",
-                duties: ["Приготовление блюд", "Содержание рабочего места в чистоте"],
-                requirements: ["Желательно мужчина", "Опыт работы поваром"],
-                housing: "За счет работника",
-                salary: "Аванс: после 5 дней работы - 100 зл"
+                workSchedule: "06:00-14:00, пн-пт, перерва 15 хв в 11:00",
+                duties: ["Приготування страв", "Утримання робочого місця в чистоті"],
+                requirements: ["Бажано чоловік", "Досвід роботи кухарем"],
+                housing: "За рахунок працівника",
+                salary: "Аванс: після 5 днів роботи - 100 зл"
             },
-            // Добавьте другие вакансии сюда
+            // Додайте інші вакансії сюди
         ];
 
         const locationFilter = document.getElementById('location-filter');
@@ -244,14 +257,14 @@
                     <h3>${vacancy.title}</h3>
                     <ul>
                         <li><strong>Ставка:</strong> ${vacancy.hourlyRate}</li>
-                        <li><strong>Тип соглашения:</strong> Umowa zlecenia</li>
-                        <li><strong>График:</strong> ${vacancy.workSchedule}</li>
-                        <li><strong>Обязанности:</strong> ${vacancy.duties.join(', ')}</li>
-                        <li><strong>Требования:</strong> ${vacancy.requirements.join(', ')}</li>
-                        <li><strong>Жилье:</strong> ${vacancy.housing}</li>
+                        <li><strong>Тип угоди:</strong> Umowa zlecenia</li>
+                        <li><strong>Графік:</strong> ${vacancy.workSchedule}</li>
+                        <li><strong>Обов'язки:</strong> ${vacancy.duties.join(', ')}</li>
+                        <li><strong>Вимоги:</strong> ${vacancy.requirements.join(', ')}</li>
+                        <li><strong>Проживання:</strong> ${vacancy.housing}</li>
                         <li><strong>Зарплата:</strong> ${vacancy.salary}</li>
                     </ul>
-                    <button class="apply-button">Подать заявку</button>
+                    <button class="apply-button">Інтересує</button>
                 `;
                 vacancyList.appendChild(vacancyElement);
             });
@@ -269,7 +282,6 @@
             displayVacancies(filteredVacancies);
         }
 
-        // Инициализация страницы
         updateFilters();
         displayVacancies(vacancies);
     </script>
