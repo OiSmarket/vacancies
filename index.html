@@ -127,7 +127,7 @@
     </header>
 
     <div class="vacancy-list">
-        <!-- Вакансія з атрибутами для фільтрації -->
+        <!-- Вакансія Kucharz -->
         <div class="vacancy" 
              data-location="Варшава" 
              data-requirements="досвід роботи кухарем, комунікативна польська мова, санепід">
@@ -135,18 +135,30 @@
             <ul>
                 <li><b>Назва та місце роботи:</b> <a href="https://kuchniamarche.pl/" target="_blank">Kuchnia Marche</a></li>
                 <li><b>Посада:</b> кухар</li>
-                <li><b>Відео:</b> 
-                    <a href="https://youtu.be/PNCUQOLBi_k" target="_blank">Огляд 1</a>, 
-                    <a href="https://youtu.be/VDigpoEb_cI" target="_blank">Огляд 2</a>
-                </li>
                 <li><b>Ставка (год/нетто):</b> 28 зл, після першого місяця 30 зл (PIT2); 27 зл, після першого місяця 29 зл</li>
                 <li><b>Тип угоди:</b> Umowa zlecenia</li>
                 <li><b>Години роботи в місяць:</b> 180-240</li>
-                <li><b>Графік роботи:</b> 06:30-17:00, 7:00-19:00, 9:00-21:30 та інші</li>
+                <li><b>Графік роботи:</b> 06:30-17:00, 7:00-19:00 та інші</li>
                 <li><b>Обов’язки:</b> приготування страв, утримання чистоти на робочому місці</li>
-                <li><b>Проживання:</b> по стороні працівника</li>
-                <li><b>Харчування:</b> надається</li>
                 <li><b>Вимоги:</b> санепід, досвід роботи кухарем, комунікативна польська</li>
+            </ul>
+            <button class="apply-button">Подати заявку</button>
+        </div>
+
+        <!-- Вакансія Kasjer -->
+        <div class="vacancy" 
+             data-location="Варшава" 
+             data-requirements="польська мова B1, обслуговування каси, санепід">
+            <h3>Kasjer, pracownik obsługi</h3>
+            <ul>
+                <li><b>Назва та місце роботи:</b> <a href="https://kuchniamarche.pl/" target="_blank">Kuchnia Marche</a></li>
+                <li><b>Посада:</b> Касир</li>
+                <li><b>Ставка (год/нетто):</b> 24 зл (PIT2); 23 зл</li>
+                <li><b>Тип угоди:</b> Umowa zlecenia</li>
+                <li><b>Години роботи в місяць:</b> 180-240</li>
+                <li><b>Графік роботи:</b> 06:30-17:00, 7:00-19:00 та інші</li>
+                <li><b>Обов’язки:</b> обслуговування клієнтів, продаж, приготування напоїв, розрахунок каси</li>
+                <li><b>Вимоги:</b> польська мова B1, досвід роботи, санепід</li>
             </ul>
             <button class="apply-button">Подати заявку</button>
         </div>
@@ -167,9 +179,6 @@
                 vacancy.style.display = matchesLocation && matchesRequirements ? 'block' : 'none';
             });
         }
-
-        // Приклад виклику фільтрації
-        filterVacancies('Варшава', ['досвід роботи кухарем', 'санепід']);
     </script>
 </body>
 </html>
