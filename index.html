@@ -12,7 +12,17 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
-            overflow-x: hidden;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         header {
@@ -25,6 +35,7 @@
             align-items: center;
             color: #fff;
             text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
         }
 
         header::after {
@@ -55,20 +66,21 @@
 
         .work-button {
             display: inline-block;
-            padding: 12px 30px;
+            padding: 12px 25px;
             margin-top: 20px;
-            background-color: #007BFF;
+            background: linear-gradient(90deg, #007BFF, #0056b3);
             color: #fff;
-            border-radius: 8px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.1em;
-            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .work-button:hover {
-            background-color: #0056b3;
-            transform: scale(1.1);
+            background: linear-gradient(90deg, #0056b3, #007BFF);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
         .filter-options {
@@ -78,7 +90,6 @@
             padding: 20px;
             background-color: #fff;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 1s ease-out;
         }
 
         .filter-options select, .filter-options button {
@@ -98,7 +109,7 @@
         /* Медіазапити для мобільних пристроїв */
         @media (max-width: 768px) {
             header h1 {
-                font-size: 2.2em; /* зменшення заголовка */
+                font-size: 2.2em;
             }
 
             .filter-options {
@@ -108,14 +119,13 @@
             }
 
             .filter-options select, .filter-options button {
-                width: 100%; /* розширення фільтрів на весь екран */
+                width: 100%;
                 padding: 12px;
             }
 
-            /* Стиль для підказки на мобільних пристроях */
             .filter-options p {
-                font-size: 0.9em; /* зменшення шрифта підказки */
-                color: #333; /* темний колір тексту для кращої видимості */
+                font-size: 0.9em;
+                color: #333;
                 margin-top: 15px;
                 padding: 10px;
             }
@@ -127,8 +137,6 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             padding: 20px;
-            opacity: 0; /* Исходно скрыт */
-            animation: fadeIn 1.5s forwards 0.5s; /* Плавное появление */
         }
 
         .vacancy {
@@ -182,17 +190,6 @@
         .apply-button:focus {
             outline: none;
         }
-
-        /* Анимация появления */
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
     </style>
 </head>
 <body>
@@ -232,8 +229,7 @@
                 requirements: ["Бажано чоловік", "Досвід роботи кухарем"],
                 housing: "За рахунок працівника",
                 salary: "Аванс: після 5 днів роботи - 100 зл"
-            },
-            // Додайте інші вакансії сюди
+            }
         ];
 
         const locationFilter = document.getElementById('location-filter');
@@ -272,9 +268,8 @@
                 vacancyElement.innerHTML = `
                     <h3>${vacancy.title}</h3>
                     <ul>
-                        <li><strong>Місцезнаходження:</strong> ${vacancy.location}</li>
-                        <li><strong>Кваліфікація:</strong> ${vacancy.qualification}</li>
-                        <li><strong>Година оплати:</strong> ${vacancy.hourlyRate}</li>
+                        <li><strong>Ставка:</strong> ${vacancy.hourlyRate}</li>
+                        <li><strong>Тип угоди:</strong> Umowa zlecenia</li>
                         <li><strong>Графік:</strong> ${vacancy.workSchedule}</li>
                         <li><strong>Обов'язки:</strong> ${vacancy.duties.join(', ')}</li>
                         <li><strong>Вимоги:</strong> ${vacancy.requirements.join(', ')}</li>
