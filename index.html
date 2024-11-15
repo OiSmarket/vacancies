@@ -157,26 +157,13 @@
 
     <div class="vacancy-list" id="vacancy-list">
         <!-- Вакансії будуть додаватися тут -->
-        <div class="vacancy" data-location="Вроцлав" data-qualification="Спеціалісти">
-            <h3>Kucharz - Вроцлав</h3>
-            <ul>
-                <li><strong>Ставка:</strong> 27 зл/год, після місяця - 29 зл/год</li>
-                <li><strong>Тип угоди:</strong> Umowa zlecenia</li>
-                <li><strong>Графік роботи:</strong> 06:30-17:00, 7:00-19:00, 7:00-21:00, 9:00-21:30, 11:00-21:00, 11:00-22:00</li>
-                <li><strong>Обов’язки:</strong> Приготування страв, порціонування, контроль якості, підтримка чистоти на робочому місці</li>
-                <li><strong>Вимоги:</strong> Досвід роботи кухарем, знання польської мови, медична книжка</li>
-                <li><strong>Житло:</strong> За рахунок працівника</li>
-                <li><strong>Харчування:</strong> надається</li>
-            </ul>
-            <a href="#" class="apply-button">Подати заявку</a>
-        </div>
     </div>
 
     <script>
         const vacancies = [
             {
-                title: "Kucharz - Вроцлав",
-                location: "Вроцлав",
+                title: "Kucharz - Szczecin",
+                location: "Szczecin",
                 qualification: "Спеціалісти",
                 hourlyRate: "27 зл/год, після місяця - 29 зл/год",
                 workSchedule: "06:30-17:00, 7:00-19:00, 7:00-21:00, 9:00-21:30, 11:00-21:00, 11:00-22:00",
@@ -193,8 +180,26 @@
                 ],
                 housing: "За рахунок працівника",
                 food: "надається"
+            },
+            {
+                title: "Kucharz - Gdańsk",
+                location: "Gdańsk",
+                qualification: "Без досвіду",
+                hourlyRate: "25 зл/год",
+                workSchedule: "06:30-17:00, 7:00-19:00, 7:00-21:00, 9:00-21:30, 11:00-21:00, 11:00-22:00",
+                duties: [
+                    "Приготування страв",
+                    "Порціонування страв",
+                    "Контроль якості",
+                    "Підтримка чистоти на робочому місці"
+                ],
+                requirements: [
+                    "Без досвіду роботи",
+                    "Знання польської мови буде перевагою"
+                ],
+                housing: "За рахунок працівника",
+                food: "надається"
             }
-            // Додати інші вакансії по аналогії
         ];
 
         // Динамічно додаємо місця роботи та кваліфікації
@@ -253,41 +258,4 @@
 
         function applyFilters() {
             const selectedLocation = locationFilter.value;
-            const selectedQualification = qualificationFilter.value;
-
-            const filteredVacancies = vacancies.filter(vacancy => {
-                const matchesLocation = selectedLocation === 'all' || vacancy.location === selectedLocation;
-                const matchesQualification = selectedQualification === 'all' || vacancy.qualification === selectedQualification;
-                return matchesLocation && matchesQualification;
-            });
-
-            vacancyList.innerHTML = '';
-            filteredVacancies.forEach(vacancy => {
-                let vacancyElement = document.createElement('div');
-                vacancyElement.classList.add('vacancy');
-                vacancyElement.setAttribute('data-location', vacancy.location);
-                vacancyElement.setAttribute('data-qualification', vacancy.qualification);
-
-                vacancyElement.innerHTML = `
-                    <h3>${vacancy.title}</h3>
-                    <ul>
-                        <li><strong>Ставка:</strong> ${vacancy.hourlyRate}</li>
-                        <li><strong>Тип угоди:</strong> Umowa zlecenia</li>
-                        <li><strong>Графік роботи:</strong> ${vacancy.workSchedule}</li>
-                        <li><strong>Обов’язки:</strong> ${vacancy.duties.join(', ')}</li>
-                        <li><strong>Вимоги:</strong> ${vacancy.requirements.join(', ')}</li>
-                        <li><strong>Житло:</strong> ${vacancy.housing}</li>
-                        <li><strong>Харчування:</strong> ${vacancy.food}</li>
-                    </ul>
-                    <a href="#" class="apply-button">Подати заявку</a>
-                `;
-                vacancyList.appendChild(vacancyElement);
-            });
-        }
-
-        // ініціалізація
-        updateFilters();
-        displayVacancies();
-    </script>
-</body>
-</html>
+           
