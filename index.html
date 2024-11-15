@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вакансии Flambir</title>
+    <title>Вакансії Flambir</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
     <style>
-        /* Основные стили */
+        /* Основні стилі */
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
@@ -137,51 +136,51 @@
 <body>
     <header>
         <div>
-            <h1>Актуальные вакансии Flambir</h1>
-            <p>Работа в Польше для украинцев</p>
-            <a href="#" class="work-button">Подать заявку</a>
+            <h1>Актуальні вакансії Flambir</h1>
+            <p>Робота в Польщі для українців</p>
+            <a href="#" class="work-button">Подати заявку</a>
         </div>
     </header>
 
     <div class="filter-options">
         <select id="location-filter" onchange="filterVacancies()">
-            <option value="all">Все локации</option>
+            <option value="all">Усі локації</option>
             <option value="Варшава">Варшава</option>
             <option value="Лодзь">Лодзь</option>
             <option value="Познань">Познань</option>
         </select>
-        <button onclick="filterVacancies('specialist')">Специалисты</button>
-        <button onclick="filterVacancies('no-experience')">Без опыта</button>
-        <button onclick="filterVacancies('all')">Все вакансии</button>
+        <button onclick="filterVacancies('specialist')">Спеціалісти</button>
+        <button onclick="filterVacancies('no-experience')">Без досвіду</button>
+        <button onclick="filterVacancies('all')">Усі вакансії</button>
     </div>
 
     <div class="vacancy-list">
         <div class="vacancy no-experience" data-location="Лодзь">
-            <h3>Швея</h3>
+            <h3>Швачка</h3>
             <ul>
-                <li>Локация: Лодзь</li>
-                <li>Ставка: 24 зл/час</li>
-                <li>График: 8-часовой рабочий день</li>
+                <li>Локація: Лодзь</li>
+                <li>Ставка: 24 зл/год</li>
+                <li>Графік: 8-годинний робочий день</li>
             </ul>
-            <button class="apply-button">Подать заявку</button>
+            <button class="apply-button">Подати заявку</button>
         </div>
         <div class="vacancy specialist" data-location="Варшава">
-            <h3>Инженер</h3>
+            <h3>Інженер</h3>
             <ul>
-                <li>Локация: Варшава</li>
-                <li>Ставка: 30 зл/час</li>
-                <li>График: Полный рабочий день</li>
+                <li>Локація: Варшава</li>
+                <li>Ставка: 30 зл/год</li>
+                <li>Графік: Повний робочий день</li>
             </ul>
-            <button class="apply-button">Подать заявку</button>
+            <button class="apply-button">Подати заявку</button>
         </div>
         <div class="vacancy no-experience" data-location="Познань">
-            <h3>Уборщик</h3>
+            <h3>Прибиральник</h3>
             <ul>
-                <li>Локация: Познань</li>
-                <li>Ставка: 20 зл/час</li>
-                <li>График: Гибкий</li>
+                <li>Локація: Познань</li>
+                <li>Ставка: 20 зл/год</li>
+                <li>Графік: Гнучкий</li>
             </ul>
-            <button class="apply-button">Подать заявку</button>
+            <button class="apply-button">Подати заявку</button>
         </div>
     </div>
 
