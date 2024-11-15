@@ -83,6 +83,13 @@
             border: 1px solid #ccc;
         }
 
+        .filter-options p {
+            font-size: 1em;
+            color: #555;
+            margin-top: 10px;
+            text-align: center;
+        }
+
         .vacancy-list {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -153,6 +160,9 @@
         </select>
 
         <button onclick="applyFilters()">Показати всі вакансії</button>
+
+        <!-- Текстовая подсказка под фильтрами -->
+        <p>Виберіть необхідну локацію та свою кваліфікацію і натисніть "Показати вакансії".</p>
     </div>
 
     <div class="vacancy-list" id="vacancy-list">
@@ -256,6 +266,7 @@
             });
         }
 
+        // Фільтрація вакансій
         function applyFilters() {
             const selectedLocation = locationFilter.value;
             const selectedQualification = qualificationFilter.value;
