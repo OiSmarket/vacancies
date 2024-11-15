@@ -14,6 +14,19 @@
             background-color: #f4f4f4;
         }
 
+        /* Анимация для фонового изображения */
+        @keyframes fadeInBackground {
+            0% {
+                opacity: 0;
+                transform: scale(1.1);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Анимация для текста */
         @keyframes fadeInText {
             0% {
                 opacity: 0;
@@ -25,6 +38,7 @@
             }
         }
 
+        /* Анимация для кнопки */
         @keyframes fadeInButton {
             0% {
                 opacity: 0;
@@ -47,6 +61,7 @@
             flex-direction: column;
             color: #fff;
             text-align: center;
+            animation: fadeInBackground 2s ease-in-out;
             overflow: hidden;
         }
 
@@ -101,88 +116,6 @@
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
-
-        .filter-options {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .filter-options select, .filter-options button {
-            padding: 10px;
-            font-size: 1em;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-        }
-
-        .filter-options p {
-            font-size: 1em;
-            color: #555;
-            margin-top: 10px;
-            text-align: center;
-        }
-
-        .vacancy-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .vacancy {
-            background: #fff;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-        }
-
-        .vacancy:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .vacancy h3 {
-            font-size: 1.6em;
-            color: #007BFF;
-            margin-bottom: 10px;
-        }
-
-        .vacancy ul {
-            list-style-type: none;
-            padding: 0;
-            font-size: 0.9em;
-            margin: 0 0 15px;
-        }
-
-        .vacancy ul li {
-            margin-bottom: 5px;
-        }
-
-        .apply-button {
-            display: inline-block;
-            padding: 12px 25px;
-            background-color: #28a745;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            text-decoration: none;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .apply-button:hover {
-            background-color: #218838;
-            transform: scale(1.1);
-        }
-
-        .apply-button:focus {
-            outline: none;
-        }
     </style>
 </head>
 <body>
@@ -191,102 +124,5 @@
         <p>Робота в Польщі для українців</p>
         <a href="#" class="work-button">Подати заявку</a>
     </header>
-
-    <div class="filter-options">
-        <select id="location-filter">
-            <option value="all">Усі локації</option>
-        </select>
-
-        <select id="qualification-filter">
-            <option value="all">Усі кваліфікації</option>
-        </select>
-
-        <button onclick="applyFilters()">Показати усі вакансії</button>
-
-        <p>Виберіть потрібну локацію та вашу кваліфікацію, а потім натисніть "Показати вакансії".</p>
-    </div>
-
-    <div class="vacancy-list" id="vacancy-list"></div>
-
-    <script>
-        const vacancies = [
-            {
-                title: "Kucharz - Wrocław",
-                location: "Wrocław",
-                qualification: "Спеціалісти",
-                hourlyRate: "zł 24 (PIT2: zł 25)",
-                workSchedule: "06:00-14:00, пн-пт, перерва 15 хв в 11:00",
-                duties: ["Приготування страв", "Утримання робочого місця в чистоті"],
-                requirements: ["Бажано чоловік", "Досвід роботи кухарем"],
-                housing: "За рахунок працівника",
-                salary: "Аванс: після 5 днів роботи - 100 зл"
-            }
-        ];
-
-        const locationFilter = document.getElementById('location-filter');
-        const qualificationFilter = document.getElementById('qualification-filter');
-        const vacancyList = document.getElementById('vacancy-list');
-
-        function updateFilters() {
-            let locations = new Set();
-            let qualifications = new Set();
-
-            vacancies.forEach(vacancy => {
-                locations.add(vacancy.location);
-                qualifications.add(vacancy.qualification);
-            });
-
-            locations.forEach(location => {
-                let option = document.createElement('option');
-                option.value = location;
-                option.textContent = location;
-                locationFilter.appendChild(option);
-            });
-
-            qualifications.forEach(qualification => {
-                let option = document.createElement('option');
-                option.value = qualification;
-                option.textContent = qualification;
-                qualificationFilter.appendChild(option);
-            });
-        }
-
-        function displayVacancies(vacanciesToDisplay) {
-            vacancyList.innerHTML = '';
-            vacanciesToDisplay.forEach(vacancy => {
-                let vacancyElement = document.createElement('div');
-                vacancyElement.classList.add('vacancy');
-                vacancyElement.innerHTML = `
-                    <h3>${vacancy.title}</h3>
-                    <ul>
-                        <li><strong>Ставка:</strong> ${vacancy.hourlyRate}</li>
-                        <li><strong>Тип угоди:</strong> Umowa zlecenia</li>
-                        <li><strong>Графік:</strong> ${vacancy.workSchedule}</li>
-                        <li><strong>Обов'язки:</strong> ${vacancy.duties.join(', ')}</li>
-                        <li><strong>Вимоги:</strong> ${vacancy.requirements.join(', ')}</li>
-                        <li><strong>Проживання:</strong> ${vacancy.housing}</li>
-                        <li><strong>Зарплата:</strong> ${vacancy.salary}</li>
-                    </ul>
-                    <button class="apply-button">Інтересує</button>
-                `;
-                vacancyList.appendChild(vacancyElement);
-            });
-        }
-
-        function applyFilters() {
-            const selectedLocation = locationFilter.value;
-            const selectedQualification = qualificationFilter.value;
-
-            let filteredVacancies = vacancies.filter(vacancy => {
-                return (selectedLocation === 'all' || vacancy.location === selectedLocation) &&
-                       (selectedQualification === 'all' || vacancy.qualification === selectedQualification);
-            });
-
-            displayVacancies(filteredVacancies);
-        }
-
-        updateFilters();
-        displayVacancies(vacancies);
-    </script>
 </body>
 </html>
