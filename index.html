@@ -446,24 +446,17 @@
             submitButton.textContent = 'Надсилання...';
 
             const formData = new FormData(leadFormElement);
-            const emailData = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                phone: formData.get('phone'),
-                vacancy: formData.get('vacancy'),
-                viber: formData.get('viber') ? 'Yes' : 'No',
-                telegram: formData.get('telegram') ? 'Yes' : 'No',
-                whatsapp: formData.get('whatsapp') ? 'Yes' : 'No',
-                about: formData.get('about'),
-                experience: formData.get('experience')
-            };
+            const emailData = new URLSearchParams();
+            formData.forEach((value, key) => {
+                emailData.append(key, value);
+            });
 
             fetch('https://script.google.com/macros/s/AKfycbw1dXEZ-hPi0Tmh60Td1FJmaE7xAdT0mTipaPN0ushq1BvB-30WQYIiKaZ5U2IBtv0M/exec', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                body: JSON.stringify(emailData)
+                body: emailData.toString()
             })
             .then(response => {
                 if (!response.ok) {
@@ -516,4 +509,5 @@
         }, 60000); // Оновлення кожні 60 секунд
     </script>
 </body>
+
 </html>
