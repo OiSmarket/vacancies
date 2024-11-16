@@ -226,6 +226,7 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             max-width: 600px;
             margin: 40px auto;
+            display: none;
         }
 
         .lead-form h2 {
@@ -280,7 +281,7 @@
     <header>
         <h1>Актуальні вакансії Flambir</h1>
         <p>Робота в Польщі для українців</p>
-        <a href="#" class="work-button">Подати заявку</a>
+        <a href="#" class="work-button" id="open-lead-form">Подати заявку</a>
     </header>
     <div class="filter-options">
         <select id="location-filter">
@@ -296,9 +297,9 @@
 
     <div class="vacancy-list" id="vacancy-list"></div>
 
-    <div class="lead-form">
+    <div class="lead-form" id="lead-form">
         <h2>Залиште заявку</h2>
-        <form id="lead-form">
+        <form>
             <label for="name">Ім'я:</label>
             <input type="text" id="name" name="name" required>
 
@@ -343,6 +344,8 @@
         const locationFilter = document.getElementById('location-filter');
         const qualificationFilter = document.getElementById('qualification-filter');
         const vacancyList = document.getElementById('vacancy-list');
+        const leadForm = document.getElementById('lead-form');
+        const openLeadFormButton = document.getElementById('open-lead-form');
 
         function updateFilters() {
             let locations = new Set();
@@ -384,7 +387,7 @@
                         <li><strong>Проживання:</strong> ${vacancy.housing}</li>
                         <li><strong>Зарплата:</strong> ${vacancy.salary}</li>
                     </ul>
-                    <button class="apply-button">Інтересує</button>
+                    <button class="apply-button" onclick="showLeadForm()">Інтересує</button>
                 `;
                 vacancyList.appendChild(vacancyElement);
             });
@@ -401,6 +404,16 @@
 
             displayVacancies(filteredVacancies);
         }
+
+        function showLeadForm() {
+            leadForm.style.display = 'block';
+            leadForm.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        openLeadFormButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            showLeadForm();
+        });
 
         // Автоматична фільтрація при зміні значень у фільтрах
         locationFilter.addEventListener('change', applyFilters);
