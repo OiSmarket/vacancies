@@ -325,11 +325,6 @@
             <label for="vacancy">Виберіть вакансію:</label>
             <select id="vacancy" name="vacancy" required>
                 <option value="">Оберіть вакансію</option>
-                <script>
-                    vacancies.forEach(vacancy => {
-                        document.write(`<option value="${vacancy.title}">${vacancy.title}</option>`);
-                    });
-                </script>
             </select>
 
             <div class="checkbox-group">
@@ -365,7 +360,6 @@
                 housing: "За рахунок працівника",
                 salary: "Аванс: після 5 днів роботи - 100 зл"
             }
-            // Добавте додаткові вакансії за необхідності
         ];
 
         const locationFilter = document.getElementById('location-filter');
@@ -375,6 +369,7 @@
         const openLeadFormButton = document.getElementById('open-lead-form');
         const leadFormElement = document.getElementById('lead-form-element');
         const thankYouMessage = document.getElementById('thank-you-message');
+        const vacancySelect = document.getElementById('vacancy');
 
         function updateFilters() {
             let locations = new Set();
@@ -451,6 +446,16 @@
             thankYouMessage.scrollIntoView({ behavior: 'smooth' });
         });
 
+        function updateVacancySelect() {
+            vacancySelect.innerHTML = '<option value="">Оберіть вакансію</option>';
+            vacancies.forEach(vacancy => {
+                let option = document.createElement('option');
+                option.value = vacancy.title;
+                option.textContent = vacancy.title;
+                vacancySelect.appendChild(option);
+            });
+        }
+
         // Автоматична фільтрація при зміні значень у фільтрах
         locationFilter.addEventListener('change', applyFilters);
         qualificationFilter.addEventListener('change', applyFilters);
@@ -458,6 +463,13 @@
         // Ініціалізація
         updateFilters();
         displayVacancies(vacancies);
+        updateVacancySelect();
+
+        // Автоматичне оновлення списку вакансій
+        setInterval(() => {
+            // Тут може бути виклик API для отримання нових вакансій
+            // Наприклад: fetch('api/vacancies').then(response => response.json()).then(newVacancies => { vacancies = newVacancies; updateFilters(); displayVacancies(vacancies); updateVacancySelect(); });
+        }, 60000); // Оновлення кожні 60 секунд
     </script>
 </body>
 </html>
