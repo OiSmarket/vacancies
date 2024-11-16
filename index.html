@@ -235,9 +235,7 @@
             <option value="all">Усі кваліфікації</option>
         </select>
 
-        <button onclick="applyFilters()">Показати усі вакансії</button>
-
-        <p>Виберіть потрібну локацію та вашу кваліфікацію, а потім натисніть "Показати вакансії".</p>
+        <p>Виберіть потрібну локацію та вашу кваліфікацію, щоб переглянути вакансії.</p>
     </div>
 
     <div class="vacancy-list" id="vacancy-list"></div>
@@ -255,6 +253,7 @@
                 housing: "За рахунок працівника",
                 salary: "Аванс: після 5 днів роботи - 100 зл"
             }
+            // Добавьте дополнительные вакансии по необходимости
         ];
 
         const locationFilter = document.getElementById('location-filter');
@@ -319,6 +318,11 @@
             displayVacancies(filteredVacancies);
         }
 
+        // Автоматическая фильтрация при изменении значений в фильтрах
+        locationFilter.addEventListener('change', applyFilters);
+        qualificationFilter.addEventListener('change', applyFilters);
+
+        // Инициализация
         updateFilters();
         displayVacancies(vacancies);
     </script>
