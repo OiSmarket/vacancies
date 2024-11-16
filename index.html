@@ -440,7 +440,24 @@
             showLeadForm();
         });
 
-        function submitFormWithRetry(emailData, retryCount = 3) {
+        leadFormElement.addEventListener('submit', (event) => {
+            event.preventDefault();
+            submitButton.disabled = true;
+            submitButton.textContent = 'Надсилання...';
+
+            const formData = new FormData(leadFormElement);
+            const emailData = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                vacancy: formData.get('vacancy'),
+                viber: formData.get('viber') ? 'Yes' : 'No',
+                telegram: formData.get('telegram') ? 'Yes' : 'No',
+                whatsapp: formData.get('whatsapp') ? 'Yes' : 'No',
+                about: formData.get('about'),
+                experience: formData.get('experience'),
+            };
+
             fetch('https://script.google.com/macros/s/AKfycbw1dXEZ-hPi0Tmh60Td1FJmaE7xAdT0mTipaPN0ushq1BvB-30WQYIiKaZ5U2IBtv0M/exec', {
                 method: 'POST',
                 headers: {
@@ -460,39 +477,13 @@
                 thankYouMessage.scrollIntoView({ behavior: 'smooth' });
             })
             .catch(error => {
-                if (retryCount > 0) {
-                    console.warn('Retrying submission, attempts left:', retryCount);
-                    setTimeout(() => submitFormWithRetry(emailData, retryCount - 1), 2000);
-                } else {
-                    alert('Сталася помилка під час надсилання заявки. Будь ласка, спробуйте ще раз.');
-                    console.error('Error:', error);
-                }
+                alert('Сталася помилка під час надсилання заявки. Будь ласка, спробуйте ще раз.');
+                console.error('Error:', error);
             })
             .finally(() => {
                 submitButton.disabled = false;
                 submitButton.textContent = 'Відправити';
             });
-        }
-
-        leadFormElement.addEventListener('submit', (event) => {
-            event.preventDefault();
-            submitButton.disabled = true;
-            submitButton.textContent = 'Надсилання...';
-
-            const formData = new FormData(leadFormElement);
-            const emailData = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                phone: formData.get('phone'),
-                vacancy: formData.get('vacancy'),
-                viber: formData.get('viber') ? 'Yes' : 'No',
-                telegram: formData.get('telegram') ? 'Yes' : 'No',
-                whatsapp: formData.get('whatsapp') ? 'Yes' : 'No',
-                about: formData.get('about'),
-                experience: formData.get('experience'),
-            };
-
-            submitFormWithRetry(emailData);
         });
 
         function updateVacancySelect() {
@@ -521,5 +512,4 @@
         }, 60000); // Оновлення кожні
     </script>
 </body>
-
 </html>
