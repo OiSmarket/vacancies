@@ -451,39 +451,7 @@
                 emailData.append(key, value);
             });
 
-            fetch('https://script.google.com/macros/s/AKfycbw1dXEZ-hPi0Tmh60Td1FJmaE7xAdT0mTipaPN0ushq1BvB-30WQYIiKaZ5U2IBtv0M/exec', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(Object.fromEntries(formData))
-})
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (data.status === 'success') {
-                    leadForm.style.display = 'none';
-                    thankYouMessage.style.display = 'block';
-                    thankYouMessage.scrollIntoView({ behavior: 'smooth' });
-                } else {
-                    throw new Error('Error in response');
-                }
-            })
-            .catch(error => {
-                alert('Сталася помилка під час надсилання заявки. Будь ласка, спробуйте ще раз.');
-                console.error('Error:', error);
-            })
-            .finally(() => {
-                submitButton.disabled = false;
-                submitButton.textContent = 'Відправити';
-            });
-        });
-
-        function updateVacancySelect() {
+           function updateVacancySelect() {
             vacancySelect.innerHTML = '<option value="">Оберіть вакансію</option>';
             vacancies.forEach(vacancy => {
                 let option = document.createElement('option');
