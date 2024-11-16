@@ -456,35 +456,25 @@
                 whatsapp: formData.get('whatsapp') ? 'Yes' : 'No',
                 about: formData.get('about'),
                 experience: formData.get('experience'),
+                callback: 'handleResponse'
             };
 
-            fetch('https://script.google.com/macros/s/AKfycbw1dXEZ-hPi0Tmh60Td1FJmaE7xAdT0mTipaPN0ushq1BvB-30WQYIiKaZ5U2IBtv0M/exec', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(emailData)
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.text();
-            })
-            .then(data => {
+            const script = document.createElement('script');
+            script.src = `https://script.google.com/macros/s/AKfycbw1dXEZ-hPi0Tmh60Td1FJmaE7xAdT0mTipaPN0ushq1BvB-30WQYIiKaZ5U2IBtv0M/exec?${new URLSearchParams(emailData).toString()}`;
+            document.body.appendChild(script);
+        });
+
+        function handleResponse(response) {
+            if (response.status === 'success') {
                 leadForm.style.display = 'none';
                 thankYouMessage.style.display = 'block';
                 thankYouMessage.scrollIntoView({ behavior: 'smooth' });
-            })
-            .catch(error => {
+            } else {
                 alert('Сталася помилка під час надсилання заявки. Будь ласка, спробуйте ще раз.');
-                console.error('Error:', error);
-            })
-            .finally(() => {
-                submitButton.disabled = false;
-                submitButton.textContent = 'Відправити';
-            });
-        });
+            }
+            submitButton.disabled = false;
+            submitButton.textContent = 'Відправити';
+        }
 
         function updateVacancySelect() {
             vacancySelect.innerHTML = '<option value="">Оберіть вакансію</option>';
@@ -509,7 +499,8 @@
         setInterval(() => {
             // Тут може бути виклик API для отримання нових вакансій
             // Наприклад: fetch('api/vacancies').then(response => response.json()).then(newVacancies => { vacancies = newVacancies; updateFilters(); displayVacancies(vacancies); updateVacancySelect(); });
-        }, 60000); // Оновлення кожні
+        }, 60000); // Оновлення кожні 60 секунд
     </script>
 </body>
+
 </html>
