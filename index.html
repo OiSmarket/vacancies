@@ -290,8 +290,7 @@
         }
     </style>
 </head>
-    
-    <body>
+<body>
     <header>
         <h1>Актуальні вакансії Flambir</h1>
         <p>Робота в Польщі для українців</p>
@@ -488,25 +487,18 @@
 
             // Зібрати дані з форми
             const formData = new FormData(leadFormElement);
-            const emailData = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                phone: formData.get('phone'),
-                vacancy: formData.get('vacancy'),
-                viber: formData.get('viber') ? 'Yes' : 'No',
-                telegram: formData.get('telegram') ? 'Yes' : 'No',
-                whatsapp: formData.get('whatsapp') ? 'Yes' : 'No',
-                about: formData.get('about'),
-                experience: formData.get('experience')
-            };
+            const emailData = new URLSearchParams();
+            formData.forEach((value, key) => {
+                emailData.append(key, value);
+            });
 
-            // Відправка даних через fetch з використанням JSON
+            // Відправка даних через fetch з використанням URLSearchParams
             fetch('https://script.google.com/macros/s/AKfycbz6FLpq-s_M7_w3CMXzhBPFFGgNJANprQhY8V03MvBJMbFvunqxb-LKLq_SkgiAveR-aw/exec', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                body: JSON.stringify(emailData)
+                body: emailData.toString()
             })
             .then(response => {
                 if (!response.ok) {
@@ -534,5 +526,4 @@
         });
     </script>
 </body>
-
 </html>
