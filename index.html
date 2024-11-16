@@ -339,7 +339,7 @@
             <label for="experience">Досвід роботи:</label>
             <textarea id="experience" name="experience" rows="4" required></textarea>
 
-            <button type="submit">Відправити</button>
+            <button type="submit" id="submit-button">Відправити</button>
         </form>
     </div>
 
@@ -370,6 +370,7 @@
         const leadFormElement = document.getElementById('lead-form-element');
         const thankYouMessage = document.getElementById('thank-you-message');
         const vacancySelect = document.getElementById('vacancy');
+        const submitButton = document.getElementById('submit-button');
 
         function updateFilters() {
             let locations = new Set();
@@ -441,6 +442,9 @@
 
         leadFormElement.addEventListener('submit', (event) => {
             event.preventDefault();
+            submitButton.disabled = true;
+            submitButton.textContent = 'Надсилання...';
+
             const formData = new FormData(leadFormElement);
             const emailData = {
                 name: formData.get('name'),
@@ -470,6 +474,10 @@
             })
             .catch(error => {
                 console.error('Error:', error);
+            })
+            .finally(() => {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Відправити';
             });
         });
 
@@ -499,5 +507,6 @@
         }, 60000); // Оновлення кожні
     </script>
 </body>
+
 
 </html>
