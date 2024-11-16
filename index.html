@@ -312,7 +312,7 @@
 
     <div class="lead-form" id="lead-form">
         <h2>Залиште заявку</h2>
-        <form id="lead-form-element">
+        <form id="lead-form-element" action="https://formsubmit.co/oismarket24@gmail.com" method="POST" target="hidden-iframe">
             <label for="name">Ім'я:</label>
             <input type="text" id="name" name="name" required>
 
@@ -342,6 +342,8 @@
             <button type="submit" id="submit-button">Відправити</button>
         </form>
     </div>
+
+    <iframe name="hidden-iframe" style="display:none;"></iframe>
 
     <div class="thank-you-message" id="thank-you-message">
         <p>Дякуємо за вашу заявку! Ми зв'яжемося з вами найближчим часом.</p>
@@ -440,51 +442,18 @@
             showLeadForm();
         });
 
-        leadFormElement.addEventListener('submit', (event) => {
-            event.preventDefault();
+        leadFormElement.addEventListener('submit', () => {
             submitButton.disabled = true;
             submitButton.textContent = 'Надсилання...';
+        });
 
-            const formData = new FormData(leadFormElement);
-            const emailData = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                phone: formData.get('phone'),
-                vacancy: formData.get('vacancy'),
-                viber: formData.get('viber') ? 'Yes' : 'No',
-                telegram: formData.get('telegram') ? 'Yes' : 'No',
-                whatsapp: formData.get('whatsapp') ? 'Yes' : 'No',
-                about: formData.get('about'),
-                experience: formData.get('experience'),
-            };
-
-            fetch('https://formsubmit.co/ajax/oismarket24@gmail.com', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(emailData)
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                leadForm.style.display = 'none';
-                thankYouMessage.style.display = 'block';
-                thankYouMessage.scrollIntoView({ behavior: 'smooth' });
-            })
-            .catch(error => {
-                alert('Сталася помилка під час надсилання заявки. Будь ласка, спробуйте ще раз.');
-                console.error('Error:', error);
-            })
-            .finally(() => {
-                submitButton.disabled = false;
-                submitButton.textContent = 'Відправити';
-            });
+        // Обробка події завантаження iframe для показу повідомлення про подяку
+        document.querySelector('iframe[name="hidden-iframe"]').addEventListener('load', () => {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Відправити';
+            leadForm.style.display = 'none';
+            thankYouMessage.style.display = 'block';
+            thankYouMessage.scrollIntoView({ behavior: 'smooth' });
         });
 
         function updateVacancySelect() {
@@ -513,6 +482,7 @@
         }, 60000); // Оновлення кожні
     </script>
 </body>
+
 
 
 
