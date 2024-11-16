@@ -6,7 +6,7 @@
     <title>Вакансії Flambir</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Основные стили */
+        /* Основні стилі */
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
@@ -14,20 +14,55 @@
             background-color: #f4f4f4;
         }
 
+        /* Анимация для фонового изображения */
+        @keyframes fadeInBackground {
+            0% {
+                opacity: 0;
+                transform: scale(1.1);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Анимация для текста */
+        @keyframes fadeInText {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Анимация для кнопки */
+        @keyframes fadeInButton {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
         header {
             position: relative;
             width: 100%;
             height: 100vh;
-            background-size: cover;
-            background-position: center;
+            background: url('https://img.freepik.com/free-photo/cute-girl-studying-computer-home_1303-25493.jpg') no-repeat center center/cover;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
             color: #fff;
             text-align: center;
+            animation: fadeInBackground 2s ease-in-out;
             overflow: hidden;
-            transition: background-image 2s ease-in-out;
         }
 
         header::after {
@@ -49,11 +84,15 @@
         header h1 {
             font-size: 3em;
             margin: 0 0 10px;
+            animation: fadeInText 1.5s ease-in-out;
         }
 
         header p {
             font-size: 1.2em;
             margin: 0;
+            animation: fadeInText 1.5s ease-in-out;
+            animation-delay: 0.5s;
+            animation-fill-mode: both;
         }
 
         .work-button {
@@ -67,6 +106,9 @@
             font-weight: bold;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInButton 1s ease-in-out;
+            animation-delay: 1s;
+            animation-fill-mode: both;
         }
 
         .work-button:hover {
@@ -89,6 +131,13 @@
             font-size: 1em;
             border-radius: 8px;
             border: 1px solid #ccc;
+        }
+
+        .filter-options p {
+            font-size: 1em;
+            color: #555;
+            margin-top: 10px;
+            text-align: center;
         }
 
         .vacancy-list {
@@ -138,6 +187,16 @@
             border-radius: 8px;
             text-decoration: none;
             cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .apply-button:hover {
+            background-color: #218838;
+            transform: scale(1.1);
+        }
+
+        .apply-button:focus {
+            outline: none;
         }
 
         /* Мобильная версия */
@@ -153,6 +212,11 @@
                 width: 90%;
                 font-size: 0.9em;
             }
+
+            .filter-options p {
+                font-size: 0.85em;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -162,7 +226,6 @@
         <p>Робота в Польщі для українців</p>
         <a href="#" class="work-button">Подати заявку</a>
     </header>
-
     <div class="filter-options">
         <select id="location-filter">
             <option value="all">Усі локації</option>
@@ -173,12 +236,13 @@
         </select>
 
         <button onclick="applyFilters()">Показати усі вакансії</button>
+
+        <p>Виберіть потрібну локацію та вашу кваліфікацію, а потім натисніть "Показати вакансії".</p>
     </div>
 
     <div class="vacancy-list" id="vacancy-list"></div>
 
     <script>
-        // Список вакансий
         const vacancies = [
             {
                 title: "Kucharz - Wrocław",
@@ -193,12 +257,10 @@
             }
         ];
 
-        // Фильтры
         const locationFilter = document.getElementById('location-filter');
         const qualificationFilter = document.getElementById('qualification-filter');
         const vacancyList = document.getElementById('vacancy-list');
 
-        // Функция для обновления вакансий
         function updateFilters() {
             let locations = new Set();
             let qualifications = new Set();
@@ -223,7 +285,6 @@
             });
         }
 
-        // Функция для отображения вакансий
         function displayVacancies(vacanciesToDisplay) {
             vacancyList.innerHTML = '';
             vacanciesToDisplay.forEach(vacancy => {
@@ -246,7 +307,6 @@
             });
         }
 
-        // Функция для фильтрации вакансий
         function applyFilters() {
             const selectedLocation = locationFilter.value;
             const selectedQualification = qualificationFilter.value;
@@ -259,27 +319,8 @@
             displayVacancies(filteredVacancies);
         }
 
-        // Обновление фильтров
         updateFilters();
         displayVacancies(vacancies);
-
-        // Смена фона каждую секунду
-        let backgroundImages = [
-            "url('https://images.pexels.com/photos/12662896/pexels-photo-12662896.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
-            "url('https://images.pexels.com/photos/8470688/pexels-photo-8470688.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
-            "url('https://images.pexels.com/photos/12730581/pexels-photo-12730581.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
-            "url('https://images.pexels.com/photos/6897412/pexels-photo-6897412.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
-            "url('https://images.pexels.com/photos/9462170/pexels-photo-9462170.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')"
-        ];
-
-        let currentIndex = 0;
-
-        function changeBackground() {
-            currentIndex = (currentIndex + 1) % backgroundImages.length;
-            document.querySelector('header').style.backgroundImage = backgroundImages[currentIndex];
-        }
-
-        setInterval(changeBackground, 2000);
     </script>
 </body>
 </html>
