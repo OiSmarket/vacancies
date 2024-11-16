@@ -6,7 +6,7 @@
     <title>Вакансії Flambir</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Основні стилі */
+        /* Основные стили */
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
@@ -14,55 +14,20 @@
             background-color: #f4f4f4;
         }
 
-        /* Анимация для фонового изображения */
-        @keyframes fadeInBackground {
-            0% {
-                opacity: 0;
-                transform: scale(1.1);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        /* Анимация для текста */
-        @keyframes fadeInText {
-            0% {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Анимация для кнопки */
-        @keyframes fadeInButton {
-            0% {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
         header {
             position: relative;
             width: 100%;
             height: 100vh;
-            background: url('https://img.freepik.com/free-photo/cute-girl-studying-computer-home_1303-25493.jpg') no-repeat center center/cover;
+            background-size: cover;
+            background-position: center;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
             color: #fff;
             text-align: center;
-            animation: fadeInBackground 2s ease-in-out;
             overflow: hidden;
+            transition: background-image 2s ease-in-out;
         }
 
         header::after {
@@ -84,15 +49,11 @@
         header h1 {
             font-size: 3em;
             margin: 0 0 10px;
-            animation: fadeInText 1.5s ease-in-out;
         }
 
         header p {
             font-size: 1.2em;
             margin: 0;
-            animation: fadeInText 1.5s ease-in-out;
-            animation-delay: 0.5s;
-            animation-fill-mode: both;
         }
 
         .work-button {
@@ -106,9 +67,6 @@
             font-weight: bold;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeInButton 1s ease-in-out;
-            animation-delay: 1s;
-            animation-fill-mode: both;
         }
 
         .work-button:hover {
@@ -131,13 +89,6 @@
             font-size: 1em;
             border-radius: 8px;
             border: 1px solid #ccc;
-        }
-
-        .filter-options p {
-            font-size: 1em;
-            color: #555;
-            margin-top: 10px;
-            text-align: center;
         }
 
         .vacancy-list {
@@ -187,16 +138,6 @@
             border-radius: 8px;
             text-decoration: none;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .apply-button:hover {
-            background-color: #218838;
-            transform: scale(1.1);
-        }
-
-        .apply-button:focus {
-            outline: none;
         }
 
         /* Мобильная версия */
@@ -212,11 +153,6 @@
                 width: 90%;
                 font-size: 0.9em;
             }
-
-            .filter-options p {
-                font-size: 0.85em;
-                text-align: center;
-            }
         }
     </style>
 </head>
@@ -226,6 +162,7 @@
         <p>Робота в Польщі для українців</p>
         <a href="#" class="work-button">Подати заявку</a>
     </header>
+
     <div class="filter-options">
         <select id="location-filter">
             <option value="all">Усі локації</option>
@@ -236,13 +173,12 @@
         </select>
 
         <button onclick="applyFilters()">Показати усі вакансії</button>
-
-        <p>Виберіть потрібну локацію та вашу кваліфікацію, а потім натисніть "Показати вакансії".</p>
     </div>
 
     <div class="vacancy-list" id="vacancy-list"></div>
 
     <script>
+        // Список вакансий
         const vacancies = [
             {
                 title: "Kucharz - Wrocław",
@@ -257,10 +193,12 @@
             }
         ];
 
+        // Фильтры
         const locationFilter = document.getElementById('location-filter');
         const qualificationFilter = document.getElementById('qualification-filter');
         const vacancyList = document.getElementById('vacancy-list');
 
+        // Функция для обновления вакансий
         function updateFilters() {
             let locations = new Set();
             let qualifications = new Set();
@@ -285,6 +223,7 @@
             });
         }
 
+        // Функция для отображения вакансий
         function displayVacancies(vacanciesToDisplay) {
             vacancyList.innerHTML = '';
             vacanciesToDisplay.forEach(vacancy => {
@@ -307,6 +246,7 @@
             });
         }
 
+        // Функция для фильтрации вакансий
         function applyFilters() {
             const selectedLocation = locationFilter.value;
             const selectedQualification = qualificationFilter.value;
@@ -319,8 +259,27 @@
             displayVacancies(filteredVacancies);
         }
 
+        // Обновление фильтров
         updateFilters();
         displayVacancies(vacancies);
+
+        // Смена фона каждую секунду
+        let backgroundImages = [
+            "url('https://img.freepik.com/free-photo/woman-wearing-chef-attire_23-2151217150.jpg?t=st=1731716688~exp=1731720288~hmac=e186dc826bfc3a18760ce176511e76fbac471995f7e7229fd90a199bfaecb22b&w=1380')",
+            "url('https://img.freepik.com/free-photo/young-woman-construction-uniform-red-safety-helmet-smiling-pointing-herself-looks-joyful-standing-dark-pink-background_141793-11132.jpg?t=st=1731716714~exp=1731720314~hmac=c7f60463c609dfbf6cdcfb2c775f29a7bf4886b5b612c180c8520437e962b452&w=1060')",
+            "url('https://img.freepik.com/free-photo/smiley-architect-giving-hand-shake_23-2148242981.jpg?t=st=1731716744~exp=1731720344~hmac=aa119d395b3036d4b1ec7d28e348935e86abc06517cb79dd8ebdb178cdb97c2d&w=740')",
+            "url('https://img.freepik.com/free-photo/expressive-young-lady-posing-studio_176474-74108.jpg?t=st=1731716807~exp=1731720407~hmac=da5a287566cbd29c482e3e29f98ecda3dab357ba5a5160b96a47a98421bb221c&w=1060')",
+            "url('https://img.freepik.com/free-photo/portrait-cheerful-male-wearing-protective-mask-goggles-gloves-holding-drill-fixing-something-house-his-wife-who-is-helping-him-with-construction-holding-hardhat-service-workers_273609-7924.jpg?t=st=1731716877~exp=1731720477~hmac=807a14b133fd51fc4929f2af3bd76016321931b79bab503cbf489cb2481e264e&w=1060')"
+        ];
+
+        let currentIndex = 0;
+
+        function changeBackground() {
+            currentIndex = (currentIndex + 1) % backgroundImages.length;
+            document.querySelector('header').style.backgroundImage = backgroundImages[currentIndex];
+        }
+
+        setInterval(changeBackground, 2000);
     </script>
 </body>
 </html>
