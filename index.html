@@ -289,7 +289,9 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
     </style>
-</head><body>
+</head>
+    
+    <body>
     <header>
         <h1>Актуальні вакансії Flambir</h1>
         <p>Робота в Польщі для українців</p>
@@ -347,6 +349,7 @@
     </div>
 
     <script>
+        // Масив, що містить дані про вакансії
         const vacancies = [
             {
                 title: "Kucharz - Wrocław",
@@ -361,6 +364,7 @@
             }
         ];
 
+        // Елементи DOM для взаємодії з фільтрами та формою
         const locationFilter = document.getElementById('location-filter');
         const qualificationFilter = document.getElementById('qualification-filter');
         const vacancyList = document.getElementById('vacancy-list');
@@ -371,15 +375,18 @@
         const vacancySelect = document.getElementById('vacancy');
         const submitButton = document.getElementById('submit-button');
 
+        // Функція для оновлення фільтрів локацій та кваліфікацій
         function updateFilters() {
             let locations = new Set();
             let qualifications = new Set();
 
+            // Збирання унікальних локацій та кваліфікацій з вакансій
             vacancies.forEach(vacancy => {
                 locations.add(vacancy.location);
                 qualifications.add(vacancy.qualification);
             });
 
+            // Додавання локацій до фільтра
             locations.forEach(location => {
                 let option = document.createElement('option');
                 option.value = location;
@@ -387,6 +394,7 @@
                 locationFilter.appendChild(option);
             });
 
+            // Додавання кваліфікацій до фільтра
             qualifications.forEach(qualification => {
                 let option = document.createElement('option');
                 option.value = qualification;
@@ -395,9 +403,11 @@
             });
         }
 
+        // Функція для відображення вакансій на сторінці
         function displayVacancies(vacanciesToDisplay) {
             vacancyList.innerHTML = '';
             vacanciesToDisplay.forEach(vacancy => {
+                // Створення елемента для кожної вакансії
                 let vacancyElement = document.createElement('div');
                 vacancyElement.classList.add('vacancy');
                 vacancyElement.innerHTML = `
@@ -417,60 +427,34 @@
             });
         }
 
+        // Функція для застосування фільтрів до списку вакансій
         function applyFilters() {
             const selectedLocation = locationFilter.value;
             const selectedQualification = qualificationFilter.value;
 
+            // Фільтрація вакансій на основі вибраних значень
             let filteredVacancies = vacancies.filter(vacancy => {
                 return (selectedLocation === 'all' || vacancy.location === selectedLocation) &&
                        (selectedQualification === 'all' || vacancy.qualification === selectedQualification);
             });
 
+            // Відображення відфільтрованих вакансій
             displayVacancies(filteredVacancies);
         }
 
+        // Функція для показу форми заявки
         function showLeadForm() {
             leadForm.style.display = 'block';
             leadForm.scrollIntoView({ behavior: 'smooth' });
         }
 
+        // Обробка події натискання на кнопку "Подати заявку"
         openLeadFormButton.addEventListener('click', (event) => {
             event.preventDefault();
             showLeadForm();
         });
 
-        leadFormElement.addEventListener('submit', (event) => {
-            event.preventDefault();
-            submitButton.disabled = true;
-            submitButton.textContent = 'Надсилання...';
-
-            const formData = new FormData(leadFormElement);
-
-            fetch('https://formsubmit.co/oismarket24@gmail.com', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.text();
-            })
-            .then(data => {
-                leadForm.style.display = 'none';
-                thankYouMessage.style.display = 'block';
-                thankYouMessage.scrollIntoView({ behavior: 'smooth' });
-            })
-            .catch(error => {
-                alert('Сталася помилка під час надсилання заявки. Будь ласка, спробуйте ще раз.');
-                console.error('Error:', error);
-            })
-            .finally(() => {
-                submitButton.disabled = false;
-                submitButton.textContent = 'Відправити';
-            });
-        });
-
+        // Функція для оновлення випадаючого списку вакансій у формі
         function updateVacancySelect() {
             vacancySelect.innerHTML = '<option value="">Оберіть вакансію</option>';
             vacancies.forEach(vacancy => {
@@ -485,18 +469,70 @@
         locationFilter.addEventListener('change', applyFilters);
         qualificationFilter.addEventListener('change', applyFilters);
 
-        // Ініціалізація
+        // Ініціалізація - оновлення фільтрів та відображення вакансій
         updateFilters();
         displayVacancies(vacancies);
         updateVacancySelect();
 
-        // Автоматичне оновлення списку вакансій
+        // Автоматичне оновлення списку вакансій кожні 60 секунд
         setInterval(() => {
             // Тут може бути виклик API для отримання нових вакансій
             // Наприклад: fetch('api/vacancies').then(response => response.json()).then(newVacancies => { vacancies = newVacancies; updateFilters(); displayVacancies(vacancies); updateVacancySelect(); });
-        }, 60000); // Оновлення кожні
+        }, 60000); // Оновлення кожні 60 секунд
+
+        // Додавання обробника для надсилання форми на Google Apps Script
+        leadFormElement.addEventListener('submit', (event) => {
+            event.preventDefault(); // Заборонити стандартну поведінку форми
+            submitButton.disabled = true; // Заблокувати кнопку відправки
+            submitButton.textContent = 'У процесі...';
+
+            // Зібрати дані з форми
+            const formData = new FormData(leadFormElement);
+            const emailData = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                vacancy: formData.get('vacancy'),
+                viber: formData.get('viber') ? 'Yes' : 'No',
+                telegram: formData.get('telegram') ? 'Yes' : 'No',
+                whatsapp: formData.get('whatsapp') ? 'Yes' : 'No',
+                about: formData.get('about'),
+                experience: formData.get('experience')
+            };
+
+            // Відправка даних через fetch з використанням JSON
+            fetch('https://script.google.com/macros/s/AKfycbz6FLpq-s_M7_w3CMXzhBPFFGgNJANprQhY8V03MvBJMbFvunqxb-LKLq_SkgiAveR-aw/exec', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(emailData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.status === 'success') {
+                    leadForm.style.display = 'none';
+                    thankYouMessage.style.display = 'block';
+                    thankYouMessage.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    throw new Error('Error in response');
+                }
+            })
+            .catch(error => {
+                alert('Сталася помилка під час надсилання заявки. Будь ласка, спробуйте ще раз.');
+                console.error('Error:', error);
+            })
+            .finally(() => {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Відправити';
+            });
+        });
     </script>
 </body>
-
 
 </html>
