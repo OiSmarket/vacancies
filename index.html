@@ -13,29 +13,6 @@
             background-color: #f4f4f4;
         }
 
-         /* Анимации */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInButton {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        
-
         header {
             position: relative;
             width: 100%;
@@ -47,58 +24,15 @@
             flex-direction: column;
             color: #fff;
             text-align: center;
-            overflow: hidden;
         }
 
         header h1 {
             font-size: 3em;
             margin-bottom: 10px;
-            opacity: 0;
-            animation: fadeIn 1.5s ease-in-out forwards;
         }
 
         header p {
             font-size: 1.2em;
-            opacity: 0;
-            animation: fadeIn 1.5s ease-in-out forwards;
-            animation-delay: 0.5s;
-        }
-
-        .work-button {
-            display: inline-block;
-            padding: 12px 25px;
-            background: linear-gradient(90deg, #007BFF, #0056b3);
-            color: #fff;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            opacity: 0;
-            animation: fadeInButton 1s ease-in-out forwards;
-            animation-delay: 1s;
-            margin-top: 20px;
-        }
-
-        .work-button:hover {
-            background: linear-gradient(90deg, #0056b3, #007BFF);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        }
-        .filter-options {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .filter-options select {
-            padding: 10px;
-            font-size: 1em;
-            border-radius: 8px;
-            border: 1px solid #ccc;
         }
 
         .vacancy-list {
@@ -113,7 +47,6 @@
             border-radius: 15px;
             padding: 20px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
         }
 
         .vacancy h3 {
@@ -141,202 +74,154 @@
 
         /* Модальное окно */
         .modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
 
-.modal-content {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 500px;
-    width: 90%;
-    text-align: left;
-    position: relative;
-}
+        .modal-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            text-align: left;
+            position: relative;
+        }
 
-.modal-content h3 {
-    margin-bottom: 20px;
-    text-align: center;
-}
+        .modal-content h3 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
 
-.modal-content label {
-    display: block;
-    margin: 10px 0 5px;
-    font-weight: bold;
-}
+        .modal-content label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
 
-.modal-content input, 
-.modal-content textarea, 
-.modal-content button {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    font-size: 1em;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
+        .modal-content input, 
+        .modal-content textarea, 
+        .modal-content button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
 
-.modal-content textarea {
-    resize: vertical;
-}
+        .modal-content textarea {
+            resize: vertical;
+        }
 
-.modal-content button {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-}
+        .modal-content button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
 
-.modal-content button:hover {
-    background-color: #0056b3;
-}
+        .modal-content button:hover {
+            background-color: #0056b3;
+        }
 
-.modal-content fieldset {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 15px;
-}
+        .modal-content fieldset {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
 
-.modal-content legend {
-    font-weight: bold;
-    margin-bottom: 10px;
-}
+        .modal-content legend {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
 
-.modal-close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 1.5em;
-    color: #555;
-    cursor: pointer;
-}
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5em;
+            color: #555;
+            cursor: pointer;
+        }
 
-.modal-close:hover {
-    color: #000;
-}
+        .modal-close:hover {
+            color: #000;
+        }
     </style>
 </head>
 <body>
-   <header>
+    <header>
         <h1>Актуальні вакансії Flambir</h1>
         <p>Робота в Польщі для українців</p>
-        <a href="#" class="work-button">Подати заявку</a>
     </header>
-
-    <div class="filter-options">
-        <select id="location-filter">
-            <option value="all">Усі локації</option>
-        </select>
-        <select id="qualification-filter">
-            <option value="all">Усі кваліфікації</option>
-        </select>
-    </div>
 
     <div class="vacancy-list" id="vacancy-list"></div>
 
     <!-- Модальное окно -->
     <div class="modal" id="lead-form-modal">
-    <div class="modal-content">
-        <span class="modal-close" id="modal-close">&times;</span>
-        <h3>Заповніть форму для подачі заявки</h3>
-        <form id="lead-form">
-            <!-- Имя -->
-            <label for="name">Ваше ім'я</label>
-            <input type="text" id="name" name="name" placeholder="Ваше ім'я" required>
+        <div class="modal-content">
+            <span class="modal-close" id="modal-close">&times;</span>
+            <h3>Заповніть форму для подачі заявки</h3>
+            <form id="lead-form">
+                <label for="name">Ваше ім'я</label>
+                <input type="text" id="name" name="name" placeholder="Ваше ім'я" required>
 
-            <!-- Email -->
-            <label for="email">Ваш Email</label>
-            <input type="email" id="email" name="email" placeholder="Ваш Email" required>
+                <label for="email">Ваш Email</label>
+                <input type="email" id="email" name="email" placeholder="Ваш Email" required>
 
-            <!-- Телефон -->
-            <label for="phone">Ваш номер телефону</label>
-            <input type="tel" id="phone" name="phone" placeholder="+380123456789" pattern="\+?\d{10,15}" required>
+                <label for="phone">Ваш номер телефону</label>
+                <input type="tel" id="phone" name="phone" placeholder="+380123456789" pattern="\+?\d{10,15}" required>
 
-            <!-- Чеклист (Viber, Telegram, WhatsApp) -->
-            <fieldset>
-                <legend>Наявність месенджерів (опціонально):</legend>
-                <label>
-                    <input type="checkbox" name="messenger" value="viber"> Viber
-                </label>
-                <label>
-                    <input type="checkbox" name="messenger" value="telegram"> Telegram
-                </label>
-                <label>
-                    <input type="checkbox" name="messenger" value="whatsapp"> WhatsApp
-                </label>
-            </fieldset>
+                <fieldset>
+                    <legend>Наявність месенджерів (опціонально):</legend>
+                    <label>
+                        <input type="checkbox" name="messenger" value="viber"> Viber
+                    </label>
+                    <label>
+                        <input type="checkbox" name="messenger" value="telegram"> Telegram
+                    </label>
+                    <label>
+                        <input type="checkbox" name="messenger" value="whatsapp"> WhatsApp
+                    </label>
+                </fieldset>
 
-            <!-- Информация о себе -->
-            <label for="about">Інформація про себе</label>
-            <textarea id="about" name="about" placeholder="Розкажіть трохи про себе" rows="3" required></textarea>
+                <label for="about">Інформація про себе</label>
+                <textarea id="about" name="about" placeholder="Розкажіть трохи про себе" rows="3" required></textarea>
 
-            <!-- Опыт работы -->
-            <label for="experience">Ваш досвід роботи</label>
-            <textarea id="experience" name="experience" placeholder="Опишіть ваш досвід роботи" rows="3" required></textarea>
+                <label for="experience">Ваш досвід роботи</label>
+                <textarea id="experience" name="experience" placeholder="Опишіть ваш досвід роботи" rows="3" required></textarea>
 
-            <!-- Отправить -->
-            <button type="submit">Відправити заявку</button>
-        </form>
+                <button type="submit">Відправити заявку</button>
+            </form>
+        </div>
     </div>
-</div>
 
     <script>
-        const vacancies = [
-            {
-                title: "Kucharz - Wrocław",
-                location: "Wrocław",
-                qualification: "Спеціалісти",
-            },
-            {
-                title: "Працівник складу - Kraków",
-                location: "Kraków",
-                qualification: "Робітники",
-            }
-        ];
-
-        const locationFilter = document.getElementById('location-filter');
-        const qualificationFilter = document.getElementById('qualification-filter');
-        const vacancyList = document.getElementById('vacancy-list');
         const modal = document.getElementById('lead-form-modal');
         const closeModal = document.getElementById('modal-close');
         const leadForm = document.getElementById('lead-form');
+        const vacancyList = document.getElementById('vacancy-list');
 
-        // Обновить фильтры
-        function updateFilters() {
-            const locations = [...new Set(vacancies.map(vacancy => vacancy.location))];
-            const qualifications = [...new Set(vacancies.map(vacancy => vacancy.qualification))];
-
-            locations.forEach(location => {
-                const option = document.createElement('option');
-                option.value = location;
-                option.textContent = location;
-                locationFilter.appendChild(option);
-            });
-
-            qualifications.forEach(qualification => {
-                const option = document.createElement('option');
-                option.value = qualification;
-                option.textContent = qualification;
-                qualificationFilter.appendChild(option);
-            });
-        }
+        const vacancies = [
+            { title: "Kucharz - Wrocław" },
+            { title: "Працівник складу - Kraków" },
+        ];
 
         // Показ вакансий
-        function displayVacancies(vacanciesToDisplay) {
-            vacancyList.innerHTML = '';
-            vacanciesToDisplay.forEach(vacancy => {
+        function displayVacancies() {
+            vacancies.forEach(vacancy => {
                 const vacancyElement = document.createElement('div');
                 vacancyElement.classList.add('vacancy');
                 vacancyElement.innerHTML = `
@@ -350,47 +235,23 @@
             });
         }
 
-       const modal = document.getElementById('lead-form-modal');
-const closeModal = document.getElementById('modal-close');
-const leadForm = document.getElementById('lead-form');
+        // Закрытие модального окна
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
 
-// Закрытие модального окна
-closeModal.addEventListener('click', () => {
-    modal.style.display = 'none';
-});
-
-// Отправка формы
-leadForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    // Сбор данных формы
-    const formData = new FormData(leadForm);
-    const data = Object.fromEntries(formData.entries());
-
-    console.log("Данные формы:", data);
-
-    alert("Дякуємо! Ми з вами зв'яжемось.");
-    modal.style.display = 'none';
-});
-      // Фильтрация вакансий
-        function applyFilters() {
-            const selectedLocation = locationFilter.value;
-            const selectedQualification = qualificationFilter.value;
-
-            const filteredVacancies = vacancies.filter(vacancy => {
-                return (selectedLocation === 'all' || vacancy.location === selectedLocation) &&
-                       (selectedQualification === 'all' || vacancy.qualification === selectedQualification);
-            });
-
-            displayVacancies(filteredVacancies);
-        }
-
-        locationFilter.addEventListener('change', applyFilters);
-        qualificationFilter.addEventListener('change', applyFilters);
+        // Отправка формы
+        leadForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(leadForm);
+            const data = Object.fromEntries(formData.entries());
+            console.log("Данные формы:", data);
+            alert("Дякуємо! Ми з вами зв'яжемось.");
+            modal.style.display = 'none';
+        });
 
         // Инициализация
-        updateFilters();
-        displayVacancies(vacancies);
+        displayVacancies();
     </script>
 </body>
 </html>
