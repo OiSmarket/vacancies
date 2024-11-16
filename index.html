@@ -458,17 +458,12 @@
                 experience: formData.get('experience'),
             };
 
-            fetch('https://api.emailjs.com/api/v1.0/email/send', {
+            fetch('https://script.google.com/macros/s/AKfycbw1dXEZ-hPi0Tmh60Td1FJmaE7xAdT0mTipaPN0ushq1BvB-30WQYIiKaZ5U2IBtv0M/exec', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                body: JSON.stringify({
-                    service_id: 'YOUR_SERVICE_ID',
-                    template_id: 'YOUR_TEMPLATE_ID',
-                    user_id: 'YOUR_USER_ID',
-                    template_params: emailData
-                })
+                body: new URLSearchParams(emailData).toString()
             })
             .then(response => {
                 if (!response.ok) {
@@ -517,4 +512,5 @@
         }, 60000); // Оновлення кожні
     </script>
 </body>
+
 </html>
