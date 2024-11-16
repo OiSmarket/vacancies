@@ -218,6 +218,62 @@
                 text-align: center;
             }
         } 
+
+        .lead-form {
+            background: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 40px auto;
+        }
+
+        .lead-form h2 {
+            text-align: center;
+            color: #007BFF;
+            margin-bottom: 20px;
+        }
+
+        .lead-form label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .lead-form input, .lead-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .lead-form input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .lead-form .checkbox-group label {
+            display: inline-block;
+            font-weight: normal;
+        }
+
+        .lead-form button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .lead-form button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -239,6 +295,34 @@
     </div>
 
     <div class="vacancy-list" id="vacancy-list"></div>
+
+    <div class="lead-form">
+        <h2>Залиште заявку</h2>
+        <form id="lead-form">
+            <label for="name">Ім'я:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Мейл:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Телефон:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <div class="checkbox-group">
+                <label><input type="checkbox" id="viber" name="viber"> Viber</label>
+                <label><input type="checkbox" id="telegram" name="telegram"> Telegram</label>
+                <label><input type="checkbox" id="whatsapp" name="whatsapp"> WhatsApp</label>
+            </div>
+
+            <label for="about">Інформація про себе:</label>
+            <textarea id="about" name="about" rows="4" required></textarea>
+
+            <label for="experience">Досвід роботи:</label>
+            <textarea id="experience" name="experience" rows="4" required></textarea>
+
+            <button type="submit">Відправити</button>
+        </form>
+    </div>
 
     <script>
         const vacancies = [
@@ -317,6 +401,7 @@
 
             displayVacancies(filteredVacancies);
         }
+
         // Автоматична фільтрація при зміні значень у фільтрах
         locationFilter.addEventListener('change', applyFilters);
         qualificationFilter.addEventListener('change', applyFilters);
