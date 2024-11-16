@@ -347,7 +347,6 @@
         <p>Дякуємо за вашу заявку! Ми зв'яжемося з вами найближчим часом.</p>
     </div>
 
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script>
         const vacancies = [
             {
@@ -459,34 +458,34 @@
                 experience: formData.get('experience'),
             };
 
-            Email.send({
-                SecureToken: "7b13b6c5ee7c62c5c0fa796e5d991dfc",
-                To: 'oismarket24@gmail.com',
-                From: formData.get('email'),
-                Subject: "Нова заявка на вакансію",
-                Body: `
-                    Ім'я: ${emailData.name}<br>
-                    Email: ${emailData.email}<br>
-                    Телефон: ${emailData.phone}<br>
-                    Вакансія: ${emailData.vacancy}<br>
-                    Viber: ${emailData.viber}<br>
-                    Telegram: ${emailData.telegram}<br>
-                    WhatsApp: ${emailData.whatsapp}<br>
-                    Інформація про себе: ${emailData.about}<br>
-                    Досвід роботи: ${emailData.experience}<br>
-                `
-            }).then(
-                message => {
-                    leadForm.style.display = 'none';
-                    thankYouMessage.style.display = 'block';
-                    thankYouMessage.scrollIntoView({ behavior: 'smooth' });
+            fetch('https://api.emailjs.com/api/v1.0/email/send', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    service_id: 'YOUR_SERVICE_ID',
+                    template_id: 'YOUR_TEMPLATE_ID',
+                    user_id: 'YOUR_USER_ID',
+                    template_params: emailData
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
                 }
-            ).catch(
-                error => {
-                    alert('Сталася помилка під час надсилання заявки. Будь ласка, спробуйте ще раз.');
-                    console.error('Error:', error);
-                }
-            ).finally(() => {
+                return response.text();
+            })
+            .then(data => {
+                leadForm.style.display = 'none';
+                thankYouMessage.style.display = 'block';
+                thankYouMessage.scrollIntoView({ behavior: 'smooth' });
+            })
+            .catch(error => {
+                alert('Сталася помилка під час надсилання заявки. Будь ласка, спробуйте ще раз.');
+                console.error('Error:', error);
+            })
+            .finally(() => {
                 submitButton.disabled = false;
                 submitButton.textContent = 'Відправити';
             });
@@ -518,5 +517,4 @@
         }, 60000); // Оновлення кожні
     </script>
 </body>
-
 </html>
