@@ -461,9 +461,9 @@
             fetch('https://script.google.com/macros/s/AKfycbw1dXEZ-hPi0Tmh60Td1FJmaE7xAdT0mTipaPN0ushq1BvB-30WQYIiKaZ5U2IBtv0M/exec', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
+                    'Content-Type': 'application/json'
                 },
-                body: new URLSearchParams(emailData).toString()
+                body: JSON.stringify(emailData)
             })
             .then(response => {
                 if (!response.ok) {
@@ -512,5 +512,4 @@
         }, 60000); // Оновлення кожні
     </script>
 </body>
-
 </html>
