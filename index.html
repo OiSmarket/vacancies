@@ -124,5 +124,101 @@
         <p>Робота в Польщі для українців</p>
         <a href="#" class="work-button">Подати заявку</a>
     </header>
+ <div class="filter-options">
+        <select id="location-filter">
+            <option value="all">Усі локації</option>
+        </select>
+
+        <select id="qualification-filter">
+            <option value="all">Усі кваліфікації</option>
+        </select>
+
+        <button onclick="applyFilters()">Показати усі вакансії</button>
+
+        <p>Виберіть потрібну локацію та вашу кваліфікацію, а потім натисніть "Показати вакансії".</p>
+    </div>
+
+    <div class="vacancy-list" id="vacancy-list"></div>
+
+    <script>
+        const vacancies = [
+            {
+                title: "Kucharz - Wrocław",
+                location: "Wrocław",
+                qualification: "Спеціалісти",
+                hourlyRate: "zł 24 (PIT2: zł 25)",
+                workSchedule: "06:00-14:00, пн-пт, перерва 15 хв в 11:00",
+                duties: ["Приготування страв", "Утримання робочого місця в чистоті"],
+                requirements: ["Бажано чоловік", "Досвід роботи кухарем"],
+                housing: "За рахунок працівника",
+                salary: "Аванс: після 5 днів роботи - 100 зл"
+            }
+        ];
+
+        const locationFilter = document.getElementById('location-filter');
+        const qualificationFilter = document.getElementById('qualification-filter');
+        const vacancyList = document.getElementById('vacancy-list');
+
+        function updateFilters() {
+            let locations = new Set();
+            let qualifications = new Set();
+
+            vacancies.forEach(vacancy => {
+                locations.add(vacancy.location);
+                qualifications.add(vacancy.qualification);
+            });
+
+            locations.forEach(location => {
+                let option = document.createElement('option');
+                option.value = location;
+                option.textContent = location;
+                locationFilter.appendChild(option);
+            });
+
+            qualifications.forEach(qualification => {
+                let option = document.createElement('option');
+                option.value = qualification;
+                option.textContent = qualification;
+                qualificationFilter.appendChild(option);
+            });
+        }
+
+        function displayVacancies(vacanciesToDisplay) {
+            vacancyList.innerHTML = '';
+            vacanciesToDisplay.forEach(vacancy => {
+                let vacancyElement = document.createElement('div');
+                vacancyElement.classList.add('vacancy');
+                vacancyElement.innerHTML = `
+                    <h3>${vacancy.title}</h3>
+                    <ul>
+                        <li><strong>Ставка:</strong> ${vacancy.hourlyRate}</li>
+                        <li><strong>Тип угоди:</strong> Umowa zlecenia</li>
+                        <li><strong>Графік:</strong> ${vacancy.workSchedule}</li>
+                        <li><strong>Обов'язки:</strong> ${vacancy.duties.join(', ')}</li>
+                        <li><strong>Вимоги:</strong> ${vacancy.requirements.join(', ')}</li>
+                        <li><strong>Проживання:</strong> ${vacancy.housing}</li>
+                        <li><strong>Зарплата:</strong> ${vacancy.salary}</li>
+                    </ul>
+                    <button class="apply-button">Інтересує</button>
+                `;
+                vacancyList.appendChild(vacancyElement);
+            });
+        }
+
+        function applyFilters() {
+            const selectedLocation = locationFilter.value;
+            const selectedQualification = qualificationFilter.value;
+
+            let filteredVacancies = vacancies.filter(vacancy => {
+                return (selectedLocation === 'all' || vacancy.location === selectedLocation) &&
+                       (selectedQualification === 'all' || vacancy.qualification === selectedQualification);
+            });
+
+            displayVacancies(filteredVacancies);
+        }
+
+        updateFilters();
+        displayVacancies(vacancies);
+    </script>
 </body>
 </html>
