@@ -13,6 +13,29 @@
             background-color: #f4f4f4;
         }
 
+         /* Анимации */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInButton {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
         header {
             position: relative;
             width: 100%;
@@ -24,17 +47,44 @@
             flex-direction: column;
             color: #fff;
             text-align: center;
+            overflow: hidden;
         }
 
         header h1 {
             font-size: 3em;
             margin-bottom: 10px;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
         }
 
         header p {
             font-size: 1.2em;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
+            animation-delay: 0.5s;
         }
 
+        .work-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(90deg, #007BFF, #0056b3);
+            color: #fff;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            animation: fadeInButton 1s ease-in-out forwards;
+            animation-delay: 1s;
+            margin-top: 20px;
+        }
+
+        .work-button:hover {
+            background: linear-gradient(90deg, #0056b3, #007BFF);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
         .filter-options {
             display: flex;
             justify-content: center;
@@ -151,9 +201,10 @@
     </style>
 </head>
 <body>
-    <header>
+   <header>
         <h1>Актуальні вакансії Flambir</h1>
         <p>Робота в Польщі для українців</p>
+        <a href="#" class="work-button">Подати заявку</a>
     </header>
 
     <div class="filter-options">
