@@ -289,8 +289,7 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
     </style>
-</head>
-<body>
+</head><body>
     <header>
         <h1>Актуальні вакансії Flambir</h1>
         <p>Робота в Польщі для українців</p>
@@ -446,12 +445,33 @@
             submitButton.textContent = 'Надсилання...';
 
             const formData = new FormData(leadFormElement);
-            const emailData = new URLSearchParams();
-            formData.forEach((value, key) => {
-                emailData.append(key, value);
-            });
 
-           function updateVacancySelect() {
+            fetch('https://formsubmit.co/oismarket24@gmail.com', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                leadForm.style.display = 'none';
+                thankYouMessage.style.display = 'block';
+                thankYouMessage.scrollIntoView({ behavior: 'smooth' });
+            })
+            .catch(error => {
+                alert('Сталася помилка під час надсилання заявки. Будь ласка, спробуйте ще раз.');
+                console.error('Error:', error);
+            })
+            .finally(() => {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Відправити';
+            });
+        });
+
+        function updateVacancySelect() {
             vacancySelect.innerHTML = '<option value="">Оберіть вакансію</option>';
             vacancies.forEach(vacancy => {
                 let option = document.createElement('option');
@@ -474,8 +494,9 @@
         setInterval(() => {
             // Тут може бути виклик API для отримання нових вакансій
             // Наприклад: fetch('api/vacancies').then(response => response.json()).then(newVacancies => { vacancies = newVacancies; updateFilters(); displayVacancies(vacancies); updateVacancySelect(); });
-        }, 60000); // Оновлення кожні 60 секунд
+        }, 60000); // Оновлення кожні
     </script>
 </body>
+
 
 </html>
