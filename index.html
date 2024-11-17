@@ -218,76 +218,6 @@
                 text-align: center;
             }
         } 
-
-        .lead-form {
-            background: #fff;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            margin: 40px auto;
-            display: none;
-        }
-
-        .lead-form h2 {
-            text-align: center;
-            color: #007BFF;
-            margin-bottom: 20px;
-        }
-
-        .lead-form label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .lead-form input, .lead-form textarea, .lead-form select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-        }
-
-        .lead-form input[type="checkbox"] {
-            width: auto;
-            margin-right: 10px;
-        }
-
-        .lead-form .checkbox-group label {
-            display: inline-block;
-            font-weight: normal;
-        }
-
-        .lead-form button {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            background-color: #007BFF;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .lead-form button:hover {
-            background-color: #0056b3;
-        }
-
-        .thank-you-message {
-            display: none;
-            text-align: center;
-            padding: 20px;
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-            border-radius: 8px;
-            max-width: 600px;
-            margin: 20px auto;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
     </style>
 </head>
 <body>
@@ -440,45 +370,6 @@
             // Відображення відфільтрованих вакансій
             displayVacancies(filteredVacancies);
         }
-
-        // Функція для показу форми заявки
-        function showLeadForm() {
-            leadForm.style.display = 'block';
-            leadForm.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Обробка події натискання на кнопку "Подати заявку"
-        openLeadFormButton.addEventListener('click', (event) => {
-            event.preventDefault();
-            showLeadForm();
-        });
-
-        // Функція для оновлення випадаючого списку вакансій у формі
-        function updateVacancySelect() {
-            vacancySelect.innerHTML = '<option value="">Оберіть вакансію</option>';
-            vacancies.forEach(vacancy => {
-                let option = document.createElement('option');
-                option.value = vacancy.title;
-                option.textContent = vacancy.title;
-                vacancySelect.appendChild(option);
-            });
-        }
-
-        // Автоматична фільтрація при зміні значень у фільтрах
-        locationFilter.addEventListener('change', applyFilters);
-        qualificationFilter.addEventListener('change', applyFilters);
-
-        // Ініціалізація - оновлення фільтрів та відображення вакансій
-        updateFilters();
-        displayVacancies(vacancies);
-        updateVacancySelect();
-
-        // Автоматичне оновлення списку вакансій кожні 60 секунд
-        setInterval(() => {
-            // Тут може бути виклик API для отримання нових вакансій
-            // Наприклад: fetch('api/vacancies').then(response => response.json()).then(newVacancies => { vacancies = newVacancies; updateFilters(); displayVacancies(vacancies); updateVacancySelect(); });
-        }, 60000); // Оновлення кожні 60 секунд
     </script>
 </body>
-
 </html>
