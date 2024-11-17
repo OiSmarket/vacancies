@@ -369,6 +369,30 @@
 
     <!-- JavaScript: Скрипт для роботи з фільтрами вакансій -->
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const showFormButton = document.getElementById('show-form-button');
+    const closeFormButton = document.getElementById('close-form-button');
+    const formContainer = document.getElementById('application-form-container');
+
+    // Показ формы
+    showFormButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        formContainer.style.display = 'flex';
+    });
+
+    // Скрытие формы
+    closeFormButton.addEventListener('click', () => {
+        formContainer.style.display = 'none';
+    });
+
+    // Закрытие при клике вне формы
+    formContainer.addEventListener('click', (e) => {
+        if (e.target === formContainer) {
+            formContainer.style.display = 'none';
+        }
+    });
+});
+
         const vacancies = [
             {
                 title: "Kucharz - Wrocław",
