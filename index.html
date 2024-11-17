@@ -234,6 +234,29 @@
     </style>
 </head>
 <body>
+<div class="lead-form" id="lead-form">
+        <h2>Залиште заявку</h2>
+        <form id="lead-form-element">
+            <label for="name">Ім'я:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Мейл:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Телефон:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="vacancy">Виберіть вакансію:</label>
+            <select id="vacancy" name="vacancy" required>
+                <option value="">Оберіть вакансію</option>
+                <option value="Kucharz - Wrocław">Kucharz - Wrocław</option>
+                <option value="Kucharz - Szczecin">Kucharz - Szczecin</option>
+            </select>
+
+            <button type="submit" id="submit-button">Відправити</button>
+        </form>
+    </div>
+
     <header>
         <h1>Актуальні вакансії Flambir</h1>
         <p>Робота в Польщі для українців</p>
@@ -255,6 +278,41 @@
 
     <!-- JavaScript: Скрипт для роботи з фільтрами вакансій -->
     <script>
+        document.getElementById('lead-form-element').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Збираємо дані з форми
+            const formData = new FormData(e.target);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                vacancy: formData.get('vacancy')
+            };
+
+            // Відправляємо дані на Google Apps Script
+            fetch('YOUR_GOOGLE_APPS_SCRIPT_URL', {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.status === 'success') {
+                        alert('Заявка успішно відправлена!');
+                    } else {
+                        alert('Помилка при відправці: ' + result.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Помилка:', error);
+                    alert('Відбулася помилка при відправці даних.');
+                });
+        });
+
         const vacancies = [
             {
                 title: "Kucharz - Wrocław",
