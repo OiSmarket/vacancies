@@ -371,13 +371,13 @@
 
             // Показываем форму
             showFormButton.addEventListener('click', (e) => {
-                e.preventDefault();
-                formContainer.style.display = 'flex';
+                e.preventDefault(); // Отменяем действие ссылки
+                formContainer.style.display = 'flex'; // Делаем контейнер формы видимым
             });
 
             // Закрываем форму
             closeFormButton.addEventListener('click', () => {
-                formContainer.style.display = 'none';
+                formContainer.style.display = 'none'; // Скрываем контейнер формы
             });
 
             // Закрываем форму при клике вне её области
