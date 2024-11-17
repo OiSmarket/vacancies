@@ -6,7 +6,7 @@
     <title>Вакансії Flambir</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Основні стилі */
+        /* Основні стилі для сторінки */
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
@@ -14,7 +14,7 @@
             background-color: #f4f4f4;
         }
 
-        /* Анимация для фонового изображения */
+        /* Анімація для фонового зображення */
         @keyframes fadeInBackground {
             0% {
                 opacity: 0;
@@ -26,7 +26,7 @@
             }
         }
 
-        /* Анимация для текста */
+        /* Анімація для тексту */
         @keyframes fadeInText {
             0% {
                 opacity: 0;
@@ -38,7 +38,7 @@
             }
         }
 
-        /* Анимация для кнопки */
+        /* Анімація для кнопки */
         @keyframes fadeInButton {
             0% {
                 opacity: 0;
@@ -50,6 +50,7 @@
             }
         }
 
+        /* Стилі для заголовка */
         header {
             position: relative;
             width: 100%;
@@ -65,6 +66,7 @@
             overflow: hidden;
         }
 
+        /* Напівпрозорий чорний фон поверх зображення для покращення читабельності тексту */
         header::after {
             content: '';
             position: absolute;
@@ -81,12 +83,14 @@
             z-index: 2;
         }
 
+        /* Анімація для заголовка */
         header h1 {
             font-size: 3em;
             margin: 0 0 10px;
             animation: fadeInText 1.5s ease-in-out;
         }
 
+        /* Анімація для підзаголовка */
         header p {
             font-size: 1.2em;
             margin: 0;
@@ -95,6 +99,7 @@
             animation-fill-mode: both;
         }
 
+        /* Стилі для кнопки "Подати заявку" */
         .work-button {
             display: inline-block;
             padding: 12px 25px;
@@ -111,12 +116,14 @@
             animation-fill-mode: both;
         }
 
+        /* Анімація для кнопки при наведенні */
         .work-button:hover {
             background: linear-gradient(90deg, #0056b3, #007BFF);
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
+        /* Стилі для фільтрів вакансій */
         .filter-options {
             display: flex;
             justify-content: center;
@@ -126,6 +133,7 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
+        /* Стилі для селекторів фільтрів та кнопки */
         .filter-options select, .filter-options button {
             padding: 10px;
             font-size: 1em;
@@ -140,6 +148,7 @@
             text-align: center;
         }
 
+        /* Сітка для списку вакансій */
         .vacancy-list {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -147,6 +156,7 @@
             padding: 20px;
         }
 
+        /* Стилі для карток вакансій */
         .vacancy {
             background: #fff;
             border-radius: 15px;
@@ -156,6 +166,7 @@
             cursor: pointer;
         }
 
+        /* Анімація для карток вакансій при наведенні */
         .vacancy:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
@@ -167,6 +178,7 @@
             margin-bottom: 10px;
         }
 
+        /* Список вимог та обов'язків для вакансій */
         .vacancy ul {
             list-style-type: none;
             padding: 0;
@@ -178,6 +190,7 @@
             margin-bottom: 5px;
         }
 
+        /* Стилі для кнопки "Інтересує" */
         .apply-button {
             display: inline-block;
             padding: 12px 25px;
@@ -199,7 +212,55 @@
             outline: none;
         }
 
-        /* Мобильная версия */
+        /* Стилі для форми подачі заявки */
+        .lead-form {
+            background: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .lead-form h2 {
+            text-align: center;
+            color: #007BFF;
+        }
+
+        .lead-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .lead-form input, .lead-form select, .lead-form textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .lead-form button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .lead-form button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        /* Мобільна версія для зручності перегляду на малих екранах */
         @media (max-width: 768px) {
             .filter-options {
                 flex-direction: column;
@@ -242,6 +303,91 @@
 
     <div class="vacancy-list" id="vacancy-list"></div>
 
+    <!-- HTML: Форма, яку заповнює користувач -->
+    <div class="lead-form" id="lead-form">
+        <h2>Залиште заявку</h2>
+        <form id="lead-form-element">
+            <!-- Поле для введення імені -->
+            <label for="name">Ім'я:</label>
+            <input type="text" id="name" name="name" required>
+
+            <!-- Поле для введення мейлу -->
+            <label for="email">Мейл:</label>
+            <input type="email" id="email" name="email" required>
+
+            <!-- Поле для введення телефону -->
+            <label for="phone">Телефон:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <!-- Вибір вакансії зі списку -->
+            <label for="vacancy">Виберіть вакансію:</label>
+            <select id="vacancy" name="vacancy" required>
+                <option value="">Оберіть вакансію</option>
+            </select>
+
+            <!-- Опції для вибору месенджера -->
+            <div class="checkbox-group">
+                <label><input type="checkbox" id="viber" name="viber"> Viber</label>
+                <label><input type="checkbox" id="telegram" name="telegram"> Telegram</label>
+                <label><input type="checkbox" id="whatsapp" name="whatsapp"> WhatsApp</label>
+            </div>
+
+            <!-- Поле для введення інформації про себе -->
+            <label for="about">Інформація про себе:</label>
+            <textarea id="about" name="about" rows="4" required></textarea>
+
+            <!-- Поле для введення досвіду роботи -->
+            <label for="experience">Досвід роботи:</label>
+            <textarea id="experience" name="experience" rows="4" required></textarea>
+
+            <!-- Кнопка для відправки форми -->
+            <button type="submit" id="submit-button">Відправити</button>
+        </form>
+    </div>
+
+    <!-- JavaScript: Скрипт для відправки даних на Google Apps Script -->
+    <script>
+        document.getElementById('lead-form-element').addEventListener('submit', function (e) {
+            e.preventDefault(); // Запобігає стандартній поведінці відправки форми
+
+            // Збираємо дані з форми
+            const formData = new FormData(e.target);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                vacancy: formData.get('vacancy'),
+                viber: formData.has('viber'),
+                telegram: formData.has('telegram'),
+                whatsapp: formData.has('whatsapp'),
+                about: formData.get('about'),
+                experience: formData.get('experience')
+            };
+
+            // Відправляємо дані на Google Apps Script
+            fetch('YOUR_GOOGLE_APPS_SCRIPT_URL', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.status === 'success') {
+                        alert('Заявка успішно відправлена!');
+                    } else {
+                        alert('Помилка при відправці: ' + result.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Помилка:', error);
+                    alert('Відбулася помилка при відправці даних.');
+                });
+        });
+    </script>
+
+    <!-- JavaScript: Скрипт для роботи з фільтрами вакансій -->
     <script>
         const vacancies = [
             {
@@ -260,16 +406,26 @@
         const locationFilter = document.getElementById('location-filter');
         const qualificationFilter = document.getElementById('qualification-filter');
         const vacancyList = document.getElementById('vacancy-list');
+        const vacancySelect = document.getElementById('vacancy');
 
+        // Функція для оновлення фільтрів локацій та кваліфікацій
         function updateFilters() {
             let locations = new Set();
             let qualifications = new Set();
 
+            // Заповнюємо списки локацій та кваліфікацій
             vacancies.forEach(vacancy => {
                 locations.add(vacancy.location);
                 qualifications.add(vacancy.qualification);
+
+                // Додаємо вакансію до списку вибору в формі
+                let option = document.createElement('option');
+                option.value = vacancy.title;
+                option.textContent = vacancy.title;
+                vacancySelect.appendChild(option);
             });
 
+            // Додаємо унікальні локації до фільтра
             locations.forEach(location => {
                 let option = document.createElement('option');
                 option.value = location;
@@ -277,6 +433,7 @@
                 locationFilter.appendChild(option);
             });
 
+            // Додаємо унікальні кваліфікації до фільтра
             qualifications.forEach(qualification => {
                 let option = document.createElement('option');
                 option.value = qualification;
@@ -285,9 +442,11 @@
             });
         }
 
+        // Функція для відображення списку вакансій
         function displayVacancies(vacanciesToDisplay) {
-            vacancyList.innerHTML = '';
+            vacancyList.innerHTML = ''; // Очищуємо попередні вакансії
             vacanciesToDisplay.forEach(vacancy => {
+                // Створюємо елемент для кожної вакансії
                 let vacancyElement = document.createElement('div');
                 vacancyElement.classList.add('vacancy');
                 vacancyElement.innerHTML = `
@@ -307,18 +466,22 @@
             });
         }
 
+        // Функція для застосування фільтрів
         function applyFilters() {
             const selectedLocation = locationFilter.value;
             const selectedQualification = qualificationFilter.value;
 
+            // Фільтруємо вакансії за обраними критеріями
             let filteredVacancies = vacancies.filter(vacancy => {
                 return (selectedLocation === 'all' || vacancy.location === selectedLocation) &&
                        (selectedQualification === 'all' || vacancy.qualification === selectedQualification);
             });
 
+            // Відображаємо відфільтровані вакансії
             displayVacancies(filteredVacancies);
         }
 
+        // Оновлюємо фільтри та відображаємо всі вакансії при завантаженні сторінки
         updateFilters();
         displayVacancies(vacancies);
     </script>
