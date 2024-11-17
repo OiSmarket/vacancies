@@ -312,7 +312,7 @@
             <input type="text" id="name" name="name" required>
 
             <!-- Поле для введення мейлу -->
-            <label for="email">Почта:</label>
+            <label for="email">Мейл:</label>
             <input type="email" id="email" name="email" required>
 
             <!-- Поле для введення телефону -->
@@ -367,6 +367,7 @@
             // Відправляємо дані на Google Apps Script
             fetch('https://script.google.com/macros/s/AKfycbz6FLpq-s_M7_w3CMXzhBPFFGgNJANprQhY8V03MvBJMbFvunqxb-LKLq_SkgiAveR-aw/exec', {
                 method: 'POST',
+                mode: 'cors', // Додаємо режим CORS для запиту
                 headers: {
                     'Content-Type': 'application/json'
                 },
