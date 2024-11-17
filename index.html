@@ -240,17 +240,15 @@
         <a href="#" class="work-button">Подати заявку</a>
     </header>
     <div class="filter-options">
-        <select id="location-filter">
+        <select id="location-filter" onchange="applyFilters()">
             <option value="all">Усі локації</option>
         </select>
 
-        <select id="qualification-filter">
+        <select id="qualification-filter" onchange="applyFilters()">
             <option value="all">Усі кваліфікації</option>
         </select>
 
-        <button onclick="applyFilters()">Показати усі вакансії</button>
-
-        <p>Виберіть потрібну локацію та вашу кваліфікацію, а потім натисніть "Показати вакансії".</p>
+        <p>Виберіть потрібну локацію та вашу кваліфікацію!".</p>
     </div>
 
     <div class="vacancy-list" id="vacancy-list"></div>
@@ -285,7 +283,6 @@
         const locationFilter = document.getElementById('location-filter');
         const qualificationFilter = document.getElementById('qualification-filter');
         const vacancyList = document.getElementById('vacancy-list');
-        const vacancySelect = document.getElementById('vacancy');
 
         // Функція для оновлення фільтрів локацій та кваліфікацій
         function updateFilters() {
@@ -296,12 +293,6 @@
             vacancies.forEach(vacancy => {
                 locations.add(vacancy.location);
                 qualifications.add(vacancy.qualification);
-
-                // Додаємо вакансію до списку вибору в формі
-                let option = document.createElement('option');
-                option.value = vacancy.title;
-                option.textContent = vacancy.title;
-                vacancySelect.appendChild(option);
             });
 
             // Додаємо унікальні локації до фільтра
