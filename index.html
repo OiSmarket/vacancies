@@ -478,47 +478,7 @@
             // Тут може бути виклик API для отримання нових вакансій
             // Наприклад: fetch('api/vacancies').then(response => response.json()).then(newVacancies => { vacancies = newVacancies; updateFilters(); displayVacancies(vacancies); updateVacancySelect(); });
         }, 60000); // Оновлення кожні 60 секунд
-
-
-            // Відправка даних через fetch з використанням URLSearchParams
-            document.getElementById('lead-form-element').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    // Собираем данные из формы
-    const formData = new FormData(e.target);
-    const data = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      phone: formData.get('phone'),
-      vacancy: formData.get('vacancy'),
-      viber: formData.has('viber'),
-      telegram: formData.has('telegram'),
-      whatsapp: formData.has('whatsapp'),
-      about: formData.get('about'),
-      experience: formData.get('experience')
-    };
-
-    // Отправляем данные на Google Apps Script
-    fetch('https://script.google.com/macros/s/AKfycbz6FLpq-s_M7_w3CMXzhBPFFGgNJANprQhY8V03MvBJMbFvunqxb-LKLq_SkgiAveR-aw/exec', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-      .then(response => response.json())
-      .then(result => {
-        if (result.status === 'success') {
-          alert('Заявка успешно отправлена!');
-        } else {
-          alert('Ошибка при отправке: ' + result.message);
-        }
-      })
-      .catch(error => {
-        console.error('Ошибка:', error);
-        alert('Произошла ошибка при отправке данных.');
-      });
-  });
     </script>
 </body>
+
 </html>
