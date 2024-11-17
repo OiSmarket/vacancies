@@ -250,7 +250,25 @@
 
         <p>Виберіть потрібну локацію та вашу кваліфікацію!".</p>
     </div>
-
+<!-- Форма для заявки -->
+<div class="application-form-container" id="application-form-container">
+    <div class="application-form">
+        <h3>Подати заявку</h3>
+        <form id="applicationForm">
+            <label for="name">Ваше ім'я:</label>
+            <input type="text" id="name" name="name" placeholder="Введіть ваше ім'я" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Введіть вашу електронну адресу" required>
+            
+            <label for="vacancy">Обрана вакансія:</label>
+            <input type="text" id="vacancy" name="vacancy" placeholder="Вкажіть вакансію" required>
+            
+            <button type="submit" class="submit-button">Відправити</button>
+            <button type="button" class="close-button" id="close-form-button">Закрити</button>
+        </form>
+    </div>
+</div>
     <div class="vacancy-list" id="vacancy-list"></div>
 
     <!-- JavaScript: Скрипт для роботи з фільтрами вакансій -->
