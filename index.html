@@ -14,7 +14,7 @@
             background-color: #f4f4f4;
         }
 
-        /* Анімація для фонового зображення */
+        /* Анимация для фонового изображения */
         @keyframes fadeInBackground {
             0% {
                 opacity: 0;
@@ -26,7 +26,7 @@
             }
         }
 
-        /* Анімація для тексту */
+        /* Анимация для текста */
         @keyframes fadeInText {
             0% {
                 opacity: 0;
@@ -38,7 +38,7 @@
             }
         }
 
-        /* Анімація для кнопки */
+        /* Анимация для кнопки */
         @keyframes fadeInButton {
             0% {
                 opacity: 0;
@@ -199,7 +199,7 @@
             outline: none;
         }
 
-        /* Мобільна версія */
+        /* Мобильная версия */
         @media (max-width: 768px) {
             .filter-options {
                 flex-direction: column;
@@ -217,14 +217,14 @@
                 font-size: 0.85em;
                 text-align: center;
             }
-        } 
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>Актуальні вакансії Flambir</h1>
         <p>Робота в Польщі для українців</p>
-        <a href="#" class="work-button" id="open-lead-form">Подати заявку</a>
+        <a href="#" class="work-button">Подати заявку</a>
     </header>
     <div class="filter-options">
         <select id="location-filter">
@@ -235,14 +235,14 @@
             <option value="all">Усі кваліфікації</option>
         </select>
 
-        <p>Виберіть потрібну локацію та вашу кваліфікацію, щоб переглянути вакансії.</p>
+        <button onclick="applyFilters()">Показати усі вакансії</button>
+
+        <p>Виберіть потрібну локацію та вашу кваліфікацію, а потім натисніть "Показати вакансії".</p>
     </div>
 
     <div class="vacancy-list" id="vacancy-list"></div>
 
-    
     <script>
-        // Масив, що містить дані про вакансії
         const vacancies = [
             {
                 title: "Kucharz - Wrocław",
@@ -257,29 +257,19 @@
             }
         ];
 
-        // Елементи DOM для взаємодії з фільтрами та формою
         const locationFilter = document.getElementById('location-filter');
         const qualificationFilter = document.getElementById('qualification-filter');
         const vacancyList = document.getElementById('vacancy-list');
-        const leadForm = document.getElementById('lead-form');
-        const openLeadFormButton = document.getElementById('open-lead-form');
-        const leadFormElement = document.getElementById('lead-form-element');
-        const thankYouMessage = document.getElementById('thank-you-message');
-        const vacancySelect = document.getElementById('vacancy');
-        const submitButton = document.getElementById('submit-button');
 
-        // Функція для оновлення фільтрів локацій та кваліфікацій
         function updateFilters() {
             let locations = new Set();
             let qualifications = new Set();
 
-            // Збирання унікальних локацій та кваліфікацій з вакансій
             vacancies.forEach(vacancy => {
                 locations.add(vacancy.location);
                 qualifications.add(vacancy.qualification);
             });
 
-            // Додавання локацій до фільтра
             locations.forEach(location => {
                 let option = document.createElement('option');
                 option.value = location;
@@ -287,7 +277,6 @@
                 locationFilter.appendChild(option);
             });
 
-            // Додавання кваліфікацій до фільтра
             qualifications.forEach(qualification => {
                 let option = document.createElement('option');
                 option.value = qualification;
@@ -296,11 +285,9 @@
             });
         }
 
-        // Функція для відображення вакансій на сторінці
         function displayVacancies(vacanciesToDisplay) {
             vacancyList.innerHTML = '';
             vacanciesToDisplay.forEach(vacancy => {
-                // Створення елемента для кожної вакансії
                 let vacancyElement = document.createElement('div');
                 vacancyElement.classList.add('vacancy');
                 vacancyElement.innerHTML = `
@@ -314,26 +301,26 @@
                         <li><strong>Проживання:</strong> ${vacancy.housing}</li>
                         <li><strong>Зарплата:</strong> ${vacancy.salary}</li>
                     </ul>
-                    <button class="apply-button" onclick="showLeadForm()">Інтересує</button>
+                    <button class="apply-button">Інтересує</button>
                 `;
                 vacancyList.appendChild(vacancyElement);
             });
         }
 
-        // Функція для застосування фільтрів до списку вакансій
         function applyFilters() {
             const selectedLocation = locationFilter.value;
             const selectedQualification = qualificationFilter.value;
 
-            // Фільтрація вакансій на основі вибраних значень
             let filteredVacancies = vacancies.filter(vacancy => {
                 return (selectedLocation === 'all' || vacancy.location === selectedLocation) &&
                        (selectedQualification === 'all' || vacancy.qualification === selectedQualification);
             });
 
-            // Відображення відфільтрованих вакансій
             displayVacancies(filteredVacancies);
         }
+
+        updateFilters();
+        displayVacancies(vacancies);
     </script>
 </body>
 </html>
