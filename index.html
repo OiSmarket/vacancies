@@ -231,33 +231,106 @@
                 text-align: center;
             }
         }
+       
+        
+        /* Контейнер для формы */
+.application-form-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Форма */
+.application-form {
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 400px;
+    animation: fadeInForm 0.5s ease-in-out;
+}
+
+/* Элементы формы */
+.application-form h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    color: #007BFF;
+}
+
+.application-form label {
+    display: block;
+    font-size: 1em;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.application-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+}
+
+/* Кнопки формы */
+.submit-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+.close-button {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.close-button:hover {
+    background-color: #c82333;
+}
+
+/* Анимация появления формы */
+@keyframes fadeInForm {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
     </style>
 </head>
 <body>
-<div class="lead-form" id="lead-form">
-        <h2>Залиште заявку</h2>
-        <form id="lead-form-element">
-            <label for="name">Ім'я:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Мейл:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="phone">Телефон:</label>
-            <input type="tel" id="phone" name="phone" required>
-
-            <label for="vacancy">Виберіть вакансію:</label>
-            <select id="vacancy" name="vacancy" required>
-                <option value="">Оберіть вакансію</option>
-                <option value="Kucharz - Wrocław">Kucharz - Wrocław</option>
-                <option value="Kucharz - Szczecin">Kucharz - Szczecin</option>
-            </select>
-
-            <button type="submit" id="submit-button">Відправити</button>
-        </form>
-    </div>
-
-    <header>
+ <header>
         <h1>Актуальні вакансії Flambir</h1>
         <p>Робота в Польщі для українців</p>
         <a href="#" class="work-button">Подати заявку</a>
@@ -273,6 +346,25 @@
 
         <p>Виберіть потрібну локацію та вашу кваліфікацію!".</p>
     </div>
+    <!-- Форма для заявки -->
+<div class="application-form-container" id="application-form-container">
+    <div class="application-form">
+        <h3>Подати заявку</h3>
+        <form id="applicationForm">
+            <label for="name">Ваше ім'я:</label>
+            <input type="text" id="name" name="name" placeholder="Введіть ваше ім'я" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Введіть вашу електронну адресу" required>
+            
+            <label for="vacancy">Обрана вакансія:</label>
+            <input type="text" id="vacancy" name="vacancy" placeholder="Вкажіть вакансію" required>
+            
+            <button type="submit" class="submit-button">Відправити</button>
+            <button type="button" class="close-button" id="close-form-button">Закрити</button>
+        </form>
+    </div>
+</div>
 
     <div class="vacancy-list" id="vacancy-list"></div>
 
@@ -412,6 +504,29 @@
         // Оновлюємо фільтри та відображаємо всі вакансії при завантаженні сторінки
         updateFilters();
         displayVacancies(vacancies);
+        document.addEventListener('DOMContentLoaded', () => {
+    const showFormButton = document.getElementById('show-form-button');
+    const closeFormButton = document.getElementById('close-form-button');
+    const formContainer = document.getElementById('application-form-container');
+
+    // Показ формы
+    showFormButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        formContainer.style.display = 'flex';
+    });
+
+    // Скрытие формы
+    closeFormButton.addEventListener('click', () => {
+        formContainer.style.display = 'none';
+    });
+
+    // Закрытие при клике вне формы
+    formContainer.addEventListener('click', (e) => {
+        if (e.target === formContainer) {
+            formContainer.style.display = 'none';
+        }
+    });
+});
     </script>
 </body>
 </html>
