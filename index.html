@@ -444,6 +444,15 @@
      document.addEventListener('DOMContentLoaded', () => {
     const formContainer = document.getElementById('application-form-container');
     const closeFormButton = document.getElementById('close-form-button');
+    const vacancySelect = document.getElementById('vacancy'); // Выпадающий список
+
+         // Заполняем выпадающий список названиями вакансий
+    vacancies.forEach(vacancy => {
+        const option = document.createElement('option');
+        option.value = vacancy.title;
+        option.textContent = vacancy.title;
+        vacancySelect.appendChild(option);
+    });
 
     // Показываем форму при клике на кнопки с классом show-form
     document.addEventListener('click', (e) => {
