@@ -338,10 +338,32 @@
             <form>
                 <label for="name">Ваше ім'я:</label>
                 <input type="text" id="name" name="name" placeholder="Введіть ваше ім'я" required>
+
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" placeholder="Введіть вашу електронну адресу" required>
+
+                <label for="phone">Телефон:</label>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <select id="country-code" name="country-code" required>
+                        <option value="+48">+48 (Польша)</option>
+                        <option value="+380">+380 (Украина)</option>
+                    </select>
+                    <input type="tel" id="phone" name="phone" placeholder="Введіть номер телефону" required>
+                </div>
+
+                <label>Доступність у месенджерах:</label>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <label><input type="checkbox" name="messenger" value="Viber"> Viber</label>
+                    <label><input type="checkbox" name="messenger" value="Whatsapp"> WhatsApp</label>
+                    <label><input type="checkbox" name="messenger" value="Telegram"> Telegram</label>
+                </div>
+
                 <label for="vacancy">Обрана вакансія:</label>
                 <input type="text" id="vacancy" name="vacancy" placeholder="Вкажіть вакансію" required>
+
+                <label for="experience">Напишіть про свій досвід:</label>
+                <textarea id="experience" name="experience" rows="4" placeholder="Коротко опишіть ваш професійний досвід"></textarea>
+
                 <button type="submit" class="submit-button">Відправити</button>
                 <button type="button" class="close-button" id="close-form-button">Закрити</button>
             </form>
