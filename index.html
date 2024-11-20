@@ -414,8 +414,10 @@
                 </div>
 
                 <label for="vacancy">Обрана вакансія:</label>
-                <input type="text" id="vacancy" name="vacancy" placeholder="Вкажіть вакансію" required>
-
+                <select id="vacancy" name="vacancy" required>
+    <option value="">Оберіть вакансію</option>
+    <!-- Здесь будут динамически добавляться варианты -->
+</select>
                 <label for="experience">Напишіть про свій досвід:</label>
                 <textarea id="experience" name="experience" rows="4" placeholder="Коротко опишіть ваш професійний досвід"></textarea>
 
