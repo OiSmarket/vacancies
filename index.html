@@ -247,6 +247,56 @@
         }
 
         /* Форма */
+        .application-form label {
+        display: block;
+        font-size: 1em;
+        margin-bottom: 8px;
+        color: #333;
+    }
+
+    .application-form input,
+    .application-form select,
+    .application-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 1em;
+        box-sizing: border-box;
+    }
+
+    .application-form textarea {
+        resize: vertical;
+    }
+
+    .application-form select {
+        cursor: pointer;
+    }
+
+    .application-form div {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .application-form .messenger-options {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 15px;
+    }
+
+    .application-form .messenger-options label {
+        display: flex;
+        align-items: center;
+        font-size: 0.9em;
+        color: #555;
+    }
+
+    .application-form .messenger-options input {
+        margin-right: 5px;
+    }
         .application-form {
             background: #fff;
             padding: 20px 30px;
