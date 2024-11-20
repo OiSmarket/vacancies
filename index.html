@@ -329,7 +329,7 @@
     <header>
         <h1>Актуальні вакансії Flambir</h1>
         <p>Робота в Польщі для українців</p>
-        <a href="#" class="work-button">Подати заявку</a>
+        <a href="#" class="work-button show-form">Подати заявку</a>
     </header>
     <!-- Форма -->
     <div class="application-form-container" id="application-form-container">
@@ -364,29 +364,31 @@
     
     <script>
        // JavaScript для управления формой
-        document.addEventListener('DOMContentLoaded', () => {
-            const showFormButton = document.getElementById('show-form-button');
-            const closeFormButton = document.getElementById('close-form-button');
-            const formContainer = document.getElementById('application-form-container');
+     document.addEventListener('DOMContentLoaded', () => {
+    const formContainer = document.getElementById('application-form-container');
+    const closeFormButton = document.getElementById('close-form-button');
 
-            // Показываем форму
-            showFormButton.addEventListener('click', (e) => {
-                e.preventDefault(); // Отменяем действие ссылки
-                formContainer.style.display = 'flex'; // Делаем контейнер формы видимым
-            });
+    // Показываем форму при клике на кнопки с классом show-form
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('show-form')) {
+            e.preventDefault(); // Отменяем действие ссылки
+            formContainer.style.display = 'flex'; // Делаем контейнер формы видимым
+        }
+    });
 
-            // Закрываем форму
-            closeFormButton.addEventListener('click', () => {
-                formContainer.style.display = 'none'; // Скрываем контейнер формы
-            });
+    // Закрываем форму
+    closeFormButton.addEventListener('click', () => {
+        formContainer.style.display = 'none'; // Скрываем контейнер формы
+    });
 
-            // Закрываем форму при клике вне её области
-            formContainer.addEventListener('click', (e) => {
-                if (e.target === formContainer) {
-                    formContainer.style.display = 'none';
-                }
-            });
-        });
+    // Закрываем форму при клике вне её области
+    formContainer.addEventListener('click', (e) => {
+        if (e.target === formContainer) {
+            formContainer.style.display = 'none';
+        }
+    });
+});
+
 <!-- JavaScript: Скрипт для роботи з фільтрами вакансій -->
         const vacancies = [
             {
@@ -463,7 +465,7 @@
                         <li><strong>Проживання:</strong> ${vacancy.housing}</li>
                         <li><strong>Зарплата:</strong> ${vacancy.salary}</li>
                     </ul>
-                    <button class="apply-button">Інтересує</button>
+                    <button class="apply-button show-form">Інтересує</button>
                 `;
                 vacancyList.appendChild(vacancyElement);
             });
