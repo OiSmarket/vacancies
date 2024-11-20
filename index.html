@@ -544,27 +544,43 @@
 
         // Функція для відображення списку вакансій
         function displayVacancies(vacanciesToDisplay) {
-            vacancyList.innerHTML = ''; // Очищуємо попередні вакансії
-            vacanciesToDisplay.forEach(vacancy => {
-                // Створюємо елемент для кожної вакансії
-                let vacancyElement = document.createElement('div');
-                vacancyElement.classList.add('vacancy');
-                vacancyElement.innerHTML = `
-                    <h3>${vacancy.title}</h3>
-                    <ul>
-                        <li><strong>Ставка:</strong> ${vacancy.hourlyRate}</li>
-                        <li><strong>Тип угоди:</strong> Umowa zlecenia</li>
-                        <li><strong>Графік:</strong> ${vacancy.workSchedule}</li>
-                        <li><strong>Обов'язки:</strong> ${vacancy.duties.join(', ')}</li>
-                        <li><strong>Вимоги:</strong> ${vacancy.requirements.join(', ')}</li>
-                        <li><strong>Проживання:</strong> ${vacancy.housing}</li>
-                        <li><strong>Зарплата:</strong> ${vacancy.salary}</li>
-                    </ul>
-                    <button class="apply-button show-form">Інтересує</button>
-                `;
-                vacancyList.appendChild(vacancyElement);
-            });
-        }
+    vacancyList.innerHTML = ''; // Очищаем текущий список вакансий
+
+    vacanciesToDisplay.forEach(vacancy => {
+        // Создаем элемент вакансии
+        let vacancyElement = document.createElement('div');
+        vacancyElement.classList.add('vacancy');
+        vacancyElement.innerHTML = `
+            <h3>${vacancy.title}</h3>
+            <ul>
+                <li><strong>Локація:</strong> ${vacancy.location}</li>
+                <li><strong>Кваліфікація:</strong> ${vacancy.qualification}</li>
+                <li><strong>Ставка:</strong> ${vacancy.hourlyRate}</li>
+                <li><strong>Тип угоди:</strong> ${vacancy.contractType}</li>
+                <li><strong>Графік роботи:</strong> ${vacancy.workSchedule}</li>
+                <li><strong>Обов'язки:</strong> ${vacancy.duties.join(', ')}</li>
+                <li><strong>Вимоги:</strong> ${vacancy.requirements.join(', ')}</li>
+                <li><strong>Проживання:</strong> ${vacancy.housing}</li>
+                ${vacancy.food ? `<li><strong>Харчування:</strong> ${vacancy.food}</li>` : ''}
+                ${vacancy.commute ? `<li><strong>Доїзд:</strong> ${vacancy.commute}</li>` : ''}
+                ${vacancy.medicalBook ? `<li><strong>Медична книжка:</strong> ${vacancy.medicalBook}</li>` : ''}
+                ${vacancy.salary ? `
+                    <li><strong>Система виплат:</strong>
+                        <ul>
+                            ${vacancy.salary.advance.map(advance => `<li>${advance}</li>`).join('')}
+                        </ul>
+                        <strong>Зарплата:</strong> ${vacancy.salary.payment}
+                    </li>
+                ` : ''}
+            </ul>
+            <button class="apply-button show-form">Інтересує</button>
+        `;
+
+        // Добавляем элемент вакансии в список
+        vacancyList.appendChild(vacancyElement);
+    });
+}
+
 
         // Функція для застосування фільтрів
         function applyFilters() {
