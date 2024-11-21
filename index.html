@@ -193,26 +193,110 @@
         }
 
         /* Стилі для кнопки "Інтересує" */
-        .apply-button {
-            display: inline-block;
-            padding: 12px 25px;
-            background-color: #00ff00;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            text-decoration: none;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-        }
+        button{
+    position: relative;
+    display: inline-block;
+    padding: 25px 30px;
+    margin: 40px 0;
+    color: #0066cc;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.5s;
+    letter-spacing: 4px;
+    overflow: hidden;
+    margin-right: 50px;
+    background: transparent;
+     border: none;
+   
+}
+button:hover{
+    background: #fff;
+    color: #004c99;
+    box-shadow: 0 0 5px #fff,
+                0 0 25px #fff,
+                0 0 50px #fff,
+                0 0 200px #fff;
+     -webkit-box-reflect:below 1px linear-gradient(transparent, #ff007f);
+}
+button:nth-child(1){
+    filter: hue-rotate(270deg);
+}
+button:nth-child(2){
+    filter: hue-rotate(110deg);
+}
+button span{
+    position: absolute;
+    display: block;
+}
+button span:nth-child(1){
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg,transparent,#ff007f);
+    animation: animate1 1s linear infinite;
+}
+@keyframes animate1{
+    0%{
+        left: -100%;
+    }
+    50%,100%{
+        left: 100%;
+    }
+}
+button span:nth-child(2){
+    top: 0;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg,transparent,#ff007f);
+    animation: animate2 1s linear infinite;
+    animation-delay: 0.25s;
+}
+@keyframes animate2{
+    0%{
+        top: -100%;
+    }
+    50%,100%{
+        top: 100%;
+    }
+}
+button span:nth-child(3){
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg,transparent,#ff007f);
+    animation: animate3 1s linear infinite;
+    animation-delay: 0.50s;
+}
+@keyframes animate3{
+    0%{
+        right: -100%;
+    }
+    50%,100%{
+        right: 100%;
+    }
+}
 
-        .apply-button:hover {
-            background-color: #218838;
-            transform: scale(1.1);
-        }
 
-        .apply-button:focus {
-            outline: none;
-        }
+button span:nth-child(4){
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg,transparent,#ff007f);
+    animation: animate4 1s linear infinite;
+    animation-delay: 0.75s;
+}
+@keyframes animate4{
+    0%{
+        bottom: -100%;
+    }
+    50%,100%{
+        bottom: 100%;
+    }
+}
 
        /* Мобільна версія для зручності перегляду на малих екранах */
         @media (max-width: 768px) {
@@ -1125,7 +1209,12 @@
                     </li>
                 ` : ''}
             </ul>
-            <button class="apply-button show-form">Інтересує</button>
+            <button class="apply-button show-form">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Інтересує</button>
         `;
 
         // Добавляем элемент вакансии в список
