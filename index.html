@@ -1247,7 +1247,9 @@ button span:nth-child(4){
         function displayVacancies(vacanciesToDisplay) {
     vacancyList.innerHTML = ''; // Очищаем текущий список вакансий
 
-    vacanciesToDisplay.forEach(vacancy => {
+    vacanciesToDisplay
+        .filter(vacancy => !vacancy.hidden) // Оставляем только вакансии без флага hidden
+        .forEach(vacancy => {
         // Создаем элемент вакансии
         let vacancyElement = document.createElement('div');
         vacancyElement.classList.add('vacancy');
