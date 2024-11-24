@@ -534,8 +534,8 @@ button span:nth-child(4){
     <label for="vacancy">Обрана вакансія:</label>
     <select id="vacancy" name="vacancy" required>
         <option value="">Оберіть вакансію</option>
-        <option value="Вакансія 1">Вакансія 1</option>
-        <option value="Вакансія 2">Вакансія 2</option>
+        <option value="">Не знайшлась підходяща вакансія!!</option>
+
     </select>
 
     <label for="experience">Напишіть про свій досвід:</label>
@@ -599,40 +599,7 @@ button span:nth-child(4){
 
 <!-- JavaScript: Скрипт для роботи з фільтрами вакансій -->
         const vacancies = [
-       
-           
-           {
-        title: "Не знайшлась підходяща вакансія!",
-        location: "Не знайшлась підходяща локація!",
-        qualification: "Спеціалісти",
-        hourlyRate: "zł 26 (PIT2: zł 27)",
-        workSchedule: "8-12 годин залежить від сезону, кількості туристів і замовлень (160-240 год)",
-               hidden: true, // Флаг для скрытия
-        duties: [
-            "Самостійне приготування страв",
-            "Страви польської кухні",
-            "На кухні є ще шеф-кухар"
-        ],
-        requirements: [
-            "Чоловік або жінка до 50 років",
-            "Досвід роботи мінімум 1 рік"
-        ],
-        housing: "На території закладу",
-        food: "На кухні, на якій працюєш, можна харчуватись",
-        commute: "На території закладу",
-        contractType: "Umowa zlecenia",
-        medicalBook: "Потрібна санепід книжка. Працівник має здати аналізи та отримати заключення лікаря.",
-        salary: {
-            advance: [
-                "Після 5 днів праці - 100 zł",
-                "Після 14 днів праці - 200 zł",
-                "Після 21 дня праці - 200 zł"
-            ],
-            payment: "Виплачується з 15 по 20 число кожного місяця (банківський переказ)"
-        }
-    },
-           
-           {
+       {
         title: "Kucharz - Osiecznica",
         location: "Osiecznica",
         qualification: "Спеціалісти",
