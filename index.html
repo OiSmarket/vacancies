@@ -1262,6 +1262,11 @@ button span:nth-child(4){
         vacancyList.appendChild(vacancyElement);
     });
 }
+            document.querySelector('.contact-button').addEventListener('click', () => {
+    alert('Зв’яжіться з нами за телефоном або через форму зворотного зв’язку на сайті.');
+    // Для перехода на форму контактов:
+    window.location.href = '/contact-form';
+});
 
 
         // Функція для застосування фільтрів
