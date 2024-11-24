@@ -508,40 +508,42 @@ button span:nth-child(4){
     <div class="application-form-container" id="application-form-container">
         <div class="application-form">
             <h3>Подати заявку</h3>
-            <form>
-                <label for="name">Ваше ім'я:</label>
-                <input type="text" id="name" name="name" placeholder="Введіть ваше ім'я" required>
+            <form action="https://script.google.com/macros/s/AKfycbz6FLpq-s_M7_w3CMXzhBPFFGgNJANprQhY8V03MvBJMbFvunqxb-LKLq_SkgiAveR-aw/exec" method="post">
+    <label for="name">Ваше ім'я:</label>
+    <input type="text" id="name" name="name" placeholder="Введіть ваше ім'я" required>
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Введіть вашу електронну адресу" required>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="Введіть вашу електронну адресу" required>
 
-                <label for="phone">Телефон:</label>
-                <div style="display: flex; gap: 10px; align-items: center;">
-                    <select id="country-code" name="country-code" required>
-                        <option value="+48">+48 (Польша)</option>
-                        <option value="+380">+380 (Украина)</option>
-                    </select>
-                    <input type="tel" id="phone" name="phone" placeholder="Введіть номер телефону" required>
-                </div>
+    <label for="phone">Телефон:</label>
+    <div style="display: flex; gap: 10px; align-items: center;">
+        <select id="country-code" name="country-code" required>
+            <option value="+48">+48 (Польща)</option>
+            <option value="+380">+380 (Україна)</option>
+        </select>
+        <input type="tel" id="phone" name="phone" placeholder="Введіть номер телефону" required>
+    </div>
 
-                <label>Доступність у месенджерах:</label>
-                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                    <label><input type="checkbox" name="messenger" value="Viber"> Viber</label>
-                    <label><input type="checkbox" name="messenger" value="Whatsapp"> WhatsApp</label>
-                    <label><input type="checkbox" name="messenger" value="Telegram"> Telegram</label>
-                </div>
+    <label>Доступність у месенджерах:</label>
+    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <label><input type="checkbox" name="messenger" value="Viber"> Viber</label>
+        <label><input type="checkbox" name="messenger" value="Whatsapp"> WhatsApp</label>
+        <label><input type="checkbox" name="messenger" value="Telegram"> Telegram</label>
+    </div>
 
-                <label for="vacancy">Обрана вакансія:</label>
-                <select id="vacancy" name="vacancy" required>
-    <option value="">Оберіть вакансію</option>
-    <!-- Здесь будут динамически добавляться варианты -->
-</select>
-                <label for="experience">Напишіть про свій досвід:</label>
-                <textarea id="experience" name="experience" rows="4" placeholder="Коротко опишіть ваш професійний досвід"></textarea>
+    <label for="vacancy">Обрана вакансія:</label>
+    <select id="vacancy" name="vacancy" required>
+        <option value="">Оберіть вакансію</option>
+        <option value="Вакансія 1">Вакансія 1</option>
+        <option value="Вакансія 2">Вакансія 2</option>
+    </select>
 
-                <button type="submit" class="submit-button">Відправити</button>
-                <button type="button" class="close-button" id="close-form-button">Закрити</button>
-            </form>
+    <label for="experience">Напишіть про свій досвід:</label>
+    <textarea id="experience" name="experience" rows="4" placeholder="Коротко опишіть ваш професійний досвід"></textarea>
+
+    <button type="submit" class="submit-button">Відправити</button>
+</form>
+
         </div>
     </div>
 
