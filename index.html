@@ -512,7 +512,7 @@ button span:nth-child(4){
     </header>
     <div class="no-vacancy-block">
     <p>Не знайшли підходящу вакансію?</p>
-    <button class="contact-button">Зв'яжіться з нами</button>
+     <a href="#" class="work-button show-form">Подати заявку</a>
 </div>
     <!-- Форма -->
     <div class="application-form-container" id="application-form-container">
@@ -1262,12 +1262,7 @@ button span:nth-child(4){
         vacancyList.appendChild(vacancyElement);
     });
 }
-            document.querySelector('.contact-button').addEventListener('click', () => {
-    alert('Зв’яжіться з нами за телефоном або через форму зворотного зв’язку на сайті.');
-    // Для перехода на форму контактов:
-    window.location.href = '/contact-form';
-});
-
+    
 
         // Функція для застосування фільтрів
         function applyFilters() {
